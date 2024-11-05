@@ -20,18 +20,18 @@ class FactoryConexion
 
         for (int i = 0; i <= ConfigurationManager.ConnectionStrings.Count -1 ; i++)
         {
-            if (ConfigurationManager.ConnectionStrings[i].Name.Equals("winLayers.Properties.Settings.SqlServer", StringComparison.InvariantCultureIgnoreCase))
+            if (ConfigurationManager.ConnectionStrings[i].Name.Equals("BikerStriker.Properties.Settings.SqlServer", StringComparison.InvariantCultureIgnoreCase))
                 existe = true;
         }
 
         if (!existe)
         {
-            throw new Exception("No existe registrada en ConnectionStrings del app.config el Key winLayers.Properties.Settings.SqlServer!");
+            throw new Exception("No existe registrada en ConnectionStrings del app.config el Key BikerStriker.Properties.Settings.SqlServer!");
         }
 
 
-        // Lee la conexion winLayers.Properties.Settings.SqlServer
-        conexion.AppendFormat("{0}", ConfigurationManager.ConnectionStrings["winLayers.Properties.Settings.SqlServer"].ConnectionString);
+        // Lee la conexion BikerStriker.Properties.Settings.SqlServer
+        conexion.AppendFormat("{0}", ConfigurationManager.ConnectionStrings["BikerStriker.Properties.Settings.SqlServer"].ConnectionString);
         
         return conexion.ToString();
     }
@@ -49,17 +49,17 @@ class FactoryConexion
 
         for (int i = 0; i < ConfigurationManager.ConnectionStrings.Count -1; i++)
         {
-            if (ConfigurationManager.ConnectionStrings[i].Name.Equals("winLayers.Properties.Settings.SqlServer", StringComparison.InvariantCultureIgnoreCase))
+            if (ConfigurationManager.ConnectionStrings[i].Name.Equals("BikerStriker.Properties.Settings.SqlServer", StringComparison.InvariantCultureIgnoreCase))
                 existe = true;
         }
 
         if (!existe) {
-            throw new Exception("No existe registrada en ConnectionStrings del app.config el Key winLayers.Properties.Settings.SqlServer!");
+            throw new Exception("No existe registrada en ConnectionStrings del app.config el Key BikerStriker.Properties.Settings.SqlServer!");
         }
 
 
-        // Lee la conexion winLayers.Properties.Settings.SqlServer
-        conexion.AppendFormat("{0}", ConfigurationManager.ConnectionStrings["winLayers.Properties.Settings.SqlServer"].ConnectionString);
+        // Lee la conexion BikerStriker.Properties.Settings.SqlServer
+        conexion.AppendFormat("{0}", ConfigurationManager.ConnectionStrings["BikerStriker.Properties.Settings.SqlServer"].ConnectionString);
         // Agrega al usuario
         conexion.AppendFormat("User Id={0};Password={1}", pUsuario, pContrasena);
         return conexion.ToString();
@@ -84,11 +84,11 @@ class FactoryConexion
 
         if (!existe)
         {
-            throw new Exception("No existe registrada en ConnectionStrings del app.config el Key winLayers.Properties.Settings.SqlServer!");
+            throw new Exception("No existe registrada en ConnectionStrings del app.config el Key BikerStriker.Properties.Settings.SqlServer!");
         }
 
 
-        // Lee la conexion winLayers.Properties.Settings.SqlServer
+        // Lee la conexion BikerStriker.Properties.Settings.SqlServer
         conexion.AppendFormat("{0}", ConfigurationManager.ConnectionStrings[pConexion].ConnectionString);
         // Agrega al usuario
         conexion.AppendFormat("User Id={0};Password={1}", pUsuario, pContrasena);
