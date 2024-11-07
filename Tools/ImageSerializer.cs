@@ -6,13 +6,13 @@ namespace BikerStriker.Tools
 {
     internal static class ImageSerializer
     {
-        public static string SerializeImageToString(Image image)
+        public static byte[] SerializeImageToString(Image image)
         {
             using (MemoryStream ms = new MemoryStream())
             {
                 image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
 
-                return Convert.ToBase64String(ms.ToArray());
+                return ms.ToArray();
             }
         }
         public static Image DeserializeImageFromString(string imageData)

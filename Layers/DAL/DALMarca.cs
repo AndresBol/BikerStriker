@@ -32,7 +32,7 @@ namespace BikerStriker.Layers.DAL
             List<Marca> lista = new List<Marca>();
             SqlCommand command = new SqlCommand();
 
-            string sql = @" select * from  Marca WITH (NOLOCK)  ";
+            string sql = @" select * from Marca WITH (NOLOCK)  ";
             command.CommandText = sql;
             command.CommandType = CommandType.Text;
 
@@ -62,9 +62,8 @@ namespace BikerStriker.Layers.DAL
 
         public void Insertar(Marca marca)
         {
-            string sql = @"Insert into Marca values (@id,@nombre,@logo)";
+            string sql = @"Insert into Marca values (@nombre,@logo)";
             SqlCommand command = new SqlCommand();
-            command.Parameters.AddWithValue("@id", marca.Id);
             command.Parameters.AddWithValue("@nombre", marca.Nombre);
             command.Parameters.AddWithValue("@logo", ImageSerializer.SerializeImageToString(marca.Logo));
             command.CommandType = CommandType.Text;

@@ -74,6 +74,9 @@
     <EmbeddedResource Include="Layers\UI\frmMenuPrincipal.resx">
       <DependentUpon>frmMenuPrincipal.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Layers\UI\Mantenimientos\frmMantenimientoMarca.resx">
+      <DependentUpon>frmMantenimientoMarca.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -82,6 +85,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -99,6 +103,12 @@
   <ItemGroup>
     <Folder Include="Layers\UI\Filtros\" />
     <Folder Include="Layers\UI\Procesos\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SearchImage_Logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SearchImage_Logo1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
