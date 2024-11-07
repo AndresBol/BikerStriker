@@ -13,6 +13,8 @@ using System.Diagnostics;
 using BikerStriker.Tools;
 using System.Text.RegularExpressions;
 using log4net;
+using BikerStriker.Extensions;
+
 
 namespace BikerStriker.Layers.DAL
 {
@@ -31,6 +33,7 @@ namespace BikerStriker.Layers.DAL
 
         public List<Marca> GetAllMarca()
         {
+            string msg = "";
             IDataReader reader = null;
             List<Marca> lista = new List<Marca>();
             SqlCommand command = new SqlCommand();
@@ -58,9 +61,15 @@ namespace BikerStriker.Layers.DAL
 
                 return lista;
             }
-            catch (Exception e)
+            catch (SqlException er)
             {
-                _Logger.Error(e);
+                _Logger.ErrorFormat("Error {0}", msg.ToExceptionDetail(MethodBase.GetCurrentMethod(), er, command));
+                throw new CustomException(msg.ToSqlServerDetailError(er));
+            }
+            catch (Exception er)
+            {
+                msg = msg.ToExceptionDetail(er, MethodBase.GetCurrentMethod());
+                _Logger.ErrorFormat("Error {0}", msg.ToString());
                 throw;
             }
         }
