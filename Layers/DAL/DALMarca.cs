@@ -12,6 +12,7 @@ using System.Collections;
 using System.Diagnostics;
 using BikerStriker.Tools;
 using System.Text.RegularExpressions;
+using log4net;
 
 namespace BikerStriker.Layers.DAL
 {
@@ -25,6 +26,8 @@ namespace BikerStriker.Layers.DAL
         /// </summary>
         /// <returns>Retorna un List<Marca></returns>
         /// 
+
+        private static readonly ILog _Logger = LogManager.GetLogger("MyControlEventos");
 
         public List<Marca> GetAllMarca()
         {
@@ -45,17 +48,19 @@ namespace BikerStriker.Layers.DAL
                     while (reader.Read())
                     {
                         Marca marca = new Marca();
+                        var tempId = reader["id"];
                         marca.Id = int.Parse(reader["id"].ToString());
                         marca.Nombre = reader["nombre"].ToString();
-                        marca.Logo = ImageSerializer.DeserializeImageFromString(reader["logo"].ToString());
+                        marca.Logo = ImageSerializer.DeserializeImageFromString(Convert.FromBase64String(reader["logo"].ToString()));
                         lista.Add(marca);
                     }
                 }
 
                 return lista;
             }
-            catch (Exception)
+            catch (Exception e)
             {
+                _Logger.Error(e);
                 throw;
             }
         }
@@ -146,7 +151,7 @@ namespace BikerStriker.Layers.DAL
                         Marca marca = new Marca();
                         marca.Id = int.Parse(reader["id"].ToString());
                         marca.Nombre = reader["nombre"].ToString();
-                        marca.Logo = ImageSerializer.DeserializeImageFromString(reader["logo"].ToString());
+                        marca.Logo = ImageSerializer.DeserializeImageFromString(Convert.FromBase64String(reader["logo"].ToString()));
 
                         return marca;
                     }
