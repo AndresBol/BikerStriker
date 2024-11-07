@@ -15,11 +15,10 @@ namespace BikerStriker.Tools
                 return ms.ToArray();
             }
         }
-        public static Image DeserializeImageFromString(string imageData)
+        public static Image DeserializeImageFromString(byte[] imageData)
         {
-            byte[] imageBytes = Convert.FromBase64String(imageData);
 
-            using (MemoryStream ms = new MemoryStream(imageBytes))
+            using (MemoryStream ms = new MemoryStream(imageData))
             {
                 return Image.FromStream(ms);
             }
