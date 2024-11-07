@@ -39,7 +39,7 @@ namespace BikerStriker.Layers.BLL
 
             if (existe != null)
             {
-                dal.Eliminar(id);
+                dal.Desactivar(id);
             }
             else
             {

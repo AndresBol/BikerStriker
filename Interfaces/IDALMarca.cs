@@ -12,7 +12,7 @@ namespace BikerStriker.Interfaces
         List<Marca> GetAllMarca();
         void Insertar(Marca marca);
         void Actualizar(Marca marca);
-        void Eliminar(int id);
+        void Desactivar(int id);
         Marca GetMarcaByID(int id);
     }
 }

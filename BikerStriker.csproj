@@ -51,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extensions\ExceptionsExtention.cs" />
     <Compile Include="Interfaces\IBLLMarca.cs" />
     <Compile Include="Interfaces\IDALMarca.cs" />
     <Compile Include="Layers\BLL\BLLMarca.cs" />
@@ -74,7 +75,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Tools\ImageSerializer.cs" />
+    <Compile Include="Util\DatabaseException.cs" />
+    <Compile Include="Util\ImageSerializer.cs" />
+    <Compile Include="Util\UtilError.cs" />
     <EmbeddedResource Include="Layers\UI\frmMenuPrincipal.resx">
       <DependentUpon>frmMenuPrincipal.cs</DependentUpon>
     </EmbeddedResource>

@@ -38,7 +38,7 @@ namespace BikerStriker.Layers.DAL
             List<Marca> lista = new List<Marca>();
             SqlCommand command = new SqlCommand();
 
-            string sql = @" select * from Marca WITH (NOLOCK)  ";
+            string sql = @" select * from Marca where activo = 1";
             command.CommandText = sql;
             command.CommandType = CommandType.Text;
 
@@ -51,10 +51,9 @@ namespace BikerStriker.Layers.DAL
                     while (reader.Read())
                     {
                         Marca marca = new Marca();
-                        var tempId = reader["id"];
-                        marca.Id = int.Parse(reader["id"].ToString());
+                        marca.Id = (int) reader["id"];
                         marca.Nombre = reader["nombre"].ToString();
-                        marca.Logo = ImageSerializer.DeserializeImageFromString(Convert.FromBase64String(reader["logo"].ToString()));
+                        marca.Logo = ImageSerializer.DeserializeImageFromString((byte[]) reader["logo"]);
                         lista.Add(marca);
                     }
                 }
@@ -64,7 +63,7 @@ namespace BikerStriker.Layers.DAL
             catch (SqlException er)
             {
                 _Logger.ErrorFormat("Error {0}", msg.ToExceptionDetail(MethodBase.GetCurrentMethod(), er, command));
-                throw new CustomException(msg.ToSqlServerDetailError(er));
+                throw new DatabaseException(msg.ToSqlServerDetailError(er), er);
             }
             catch (Exception er)
             {
@@ -76,7 +75,8 @@ namespace BikerStriker.Layers.DAL
 
         public void Insertar(Marca marca)
         {
-            string sql = @"Insert into Marca values (@nombre,@logo)";
+            string msg = "";
+            string sql = @"Insert into Marca values (@nombre,@logo,1)";
             SqlCommand command = new SqlCommand();
             command.Parameters.AddWithValue("@nombre", marca.Nombre);
             command.Parameters.AddWithValue("@logo", ImageSerializer.SerializeImageToString(marca.Logo));
@@ -90,15 +90,23 @@ namespace BikerStriker.Layers.DAL
                     db.ExecuteNonQuery(command);
                 }
             }
-            catch (Exception)
+            catch (SqlException er)
             {
+                _Logger.ErrorFormat("Error {0}", msg.ToExceptionDetail(MethodBase.GetCurrentMethod(), er, command));
+                throw new DatabaseException(msg.ToSqlServerDetailError(er), er);
+            }
+            catch (Exception er)
+            {
+                msg = msg.ToExceptionDetail(er, MethodBase.GetCurrentMethod());
+                _Logger.ErrorFormat("Error {0}", msg.ToString());
                 throw;
             }
         }
 
         public void Actualizar(Marca marca)
         {
-            string sql = @"Update  Marca SET nombre = @nombre, logo = @logo  Where (id = @id) ";
+            string msg = "";
+            string sql = @"Update  Marca SET nombre = @nombre, logo = @logo  Where (id = @id)";
             SqlCommand command = new SqlCommand();
             command.Parameters.AddWithValue("@id", marca.Id);
             command.Parameters.AddWithValue("@nombre", marca.Nombre);
@@ -113,15 +121,23 @@ namespace BikerStriker.Layers.DAL
                     db.ExecuteNonQuery(command);
                 }
             }
-            catch (Exception)
+            catch (SqlException er)
             {
+                _Logger.ErrorFormat("Error {0}", msg.ToExceptionDetail(MethodBase.GetCurrentMethod(), er, command));
+                throw new DatabaseException(msg.ToSqlServerDetailError(er), er);
+            }
+            catch (Exception er)
+            {
+                msg = msg.ToExceptionDetail(er, MethodBase.GetCurrentMethod());
+                _Logger.ErrorFormat("Error {0}", msg.ToString());
                 throw;
             }
         }
 
-        public void Eliminar(int id)
+        public void Desactivar(int id)
         {
-            string sql = @"Delete from  Marca   Where (id = @id) ";
+            string msg = "";
+            string sql = @"Update  Marca SET activo = 0 Where (id = @id)";
             SqlCommand command = new SqlCommand();
             command.Parameters.AddWithValue("@id", id);
             command.CommandType = CommandType.Text;
@@ -134,16 +150,24 @@ namespace BikerStriker.Layers.DAL
                     db.ExecuteNonQuery(command);
                 }
             }
-            catch (Exception)
+            catch (SqlException er)
             {
+                _Logger.ErrorFormat("Error {0}", msg.ToExceptionDetail(MethodBase.GetCurrentMethod(), er, command));
+                throw new DatabaseException(msg.ToSqlServerDetailError(er), er);
+            }
+            catch (Exception er)
+            {
+                msg = msg.ToExceptionDetail(er, MethodBase.GetCurrentMethod());
+                _Logger.ErrorFormat("Error {0}", msg.ToString());
                 throw;
             }
         }
 
         public Marca GetMarcaByID(int id)
         {
+            string msg = "";
             IDataReader reader = null;
-            string sql = @"Select  *  from  Marca   Where (id = @id) ";
+            string sql = @"Select  *  from  Marca   Where (id = @id)";
             SqlCommand command = new SqlCommand();
             command.Parameters.AddWithValue("@id", id);
             command.CommandType = CommandType.Text;
@@ -158,9 +182,9 @@ namespace BikerStriker.Layers.DAL
                     while (reader.Read())
                     {
                         Marca marca = new Marca();
-                        marca.Id = int.Parse(reader["id"].ToString());
+                        marca.Id = (int)reader["id"];
                         marca.Nombre = reader["nombre"].ToString();
-                        marca.Logo = ImageSerializer.DeserializeImageFromString(Convert.FromBase64String(reader["logo"].ToString()));
+                        marca.Logo = ImageSerializer.DeserializeImageFromString((byte[])reader["logo"]);
 
                         return marca;
                     }
@@ -168,8 +192,15 @@ namespace BikerStriker.Layers.DAL
                     return null;
                 }
             }
-            catch (Exception)
+            catch (SqlException er)
             {
+                _Logger.ErrorFormat("Error {0}", msg.ToExceptionDetail(MethodBase.GetCurrentMethod(), er, command));
+                throw new DatabaseException(msg.ToSqlServerDetailError(er), er);
+            }
+            catch (Exception er)
+            {
+                msg = msg.ToExceptionDetail(er, MethodBase.GetCurrentMethod());
+                _Logger.ErrorFormat("Error {0}", msg.ToString());
                 throw;
             }
         }
