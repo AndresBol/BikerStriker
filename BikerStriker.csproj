@@ -52,11 +52,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Extensions\ExceptionsExtention.cs" />
+    <Compile Include="Interfaces\IBLLModelo.cs" />
     <Compile Include="Interfaces\IBLLMarca.cs" />
+    <Compile Include="Interfaces\IDALModelo.cs" />
     <Compile Include="Interfaces\IDALMarca.cs" />
     <Compile Include="Layers\BLL\BLLMarca.cs" />
+    <Compile Include="Layers\BLL\BLLModelo.cs" />
     <Compile Include="Layers\DAL\DALMarca.cs" />
+    <Compile Include="Layers\DAL\DALModelo.cs" />
     <Compile Include="Layers\Entities\Marca.cs" />
+    <Compile Include="Layers\Entities\Modelo.cs" />
     <Compile Include="Layers\Persistencia\DataBase.cs" />
     <Compile Include="Layers\Persistencia\FactoryConexion.cs" />
     <Compile Include="Layers\Persistencia\FactoryDataBase.cs" />

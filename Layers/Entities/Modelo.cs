@@ -1,17 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace BikerStriker.Layers.Entities
 {
-    public class Marca
+    public class Modelo
     {
         public int Id { get; set; }
         public string Nombre { get; set; }
-        public Image Logo { get; set; }
+        public Marca Marca { get; set; }
 
         public override string ToString()
         {
