@@ -17,7 +17,7 @@ namespace BikerStriker
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmMantenimientoModelo());
+            Application.Run(new frmMenuPrincipal());
         }
     }
 }

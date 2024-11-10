@@ -28,22 +28,163 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMenuPrincipal));
+            this.pnlAsideMenu = new System.Windows.Forms.Panel();
+            this.btnModelos = new System.Windows.Forms.Button();
+            this.btnMarcas = new System.Windows.Forms.Button();
+            this.btnMantenimientos = new System.Windows.Forms.Button();
+            this.imgLogo = new System.Windows.Forms.PictureBox();
+            this.pnlHeader = new System.Windows.Forms.Panel();
+            this.lblChildFrmTitle = new System.Windows.Forms.Label();
+            this.pnlDesktop = new System.Windows.Forms.Panel();
+            this.pnlAsideMenu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.imgLogo)).BeginInit();
+            this.pnlHeader.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // pnlAsideMenu
+            // 
+            this.pnlAsideMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            this.pnlAsideMenu.Controls.Add(this.btnModelos);
+            this.pnlAsideMenu.Controls.Add(this.btnMarcas);
+            this.pnlAsideMenu.Controls.Add(this.btnMantenimientos);
+            this.pnlAsideMenu.Controls.Add(this.imgLogo);
+            this.pnlAsideMenu.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pnlAsideMenu.Location = new System.Drawing.Point(0, 0);
+            this.pnlAsideMenu.Name = "pnlAsideMenu";
+            this.pnlAsideMenu.Size = new System.Drawing.Size(208, 578);
+            this.pnlAsideMenu.TabIndex = 0;
+            // 
+            // btnModelos
+            // 
+            this.btnModelos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.btnModelos.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnModelos.FlatAppearance.BorderSize = 0;
+            this.btnModelos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnModelos.Font = new System.Drawing.Font("Sylfaen", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnModelos.ForeColor = System.Drawing.Color.White;
+            this.btnModelos.Image = ((System.Drawing.Image)(resources.GetObject("btnModelos.Image")));
+            this.btnModelos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnModelos.Location = new System.Drawing.Point(0, 199);
+            this.btnModelos.Name = "btnModelos";
+            this.btnModelos.Size = new System.Drawing.Size(208, 37);
+            this.btnModelos.TabIndex = 3;
+            this.btnModelos.Text = "Modelos";
+            this.btnModelos.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnModelos.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnModelos.UseVisualStyleBackColor = false;
+            this.btnModelos.Click += new System.EventHandler(this.btnModelos_Click);
+            // 
+            // btnMarcas
+            // 
+            this.btnMarcas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.btnMarcas.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnMarcas.FlatAppearance.BorderSize = 0;
+            this.btnMarcas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMarcas.Font = new System.Drawing.Font("Sylfaen", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMarcas.ForeColor = System.Drawing.Color.White;
+            this.btnMarcas.Image = ((System.Drawing.Image)(resources.GetObject("btnMarcas.Image")));
+            this.btnMarcas.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.btnMarcas.Location = new System.Drawing.Point(0, 162);
+            this.btnMarcas.Name = "btnMarcas";
+            this.btnMarcas.Size = new System.Drawing.Size(208, 37);
+            this.btnMarcas.TabIndex = 2;
+            this.btnMarcas.Text = "Marcas";
+            this.btnMarcas.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnMarcas.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnMarcas.UseVisualStyleBackColor = false;
+            this.btnMarcas.Click += new System.EventHandler(this.btnMarcas_Click);
+            // 
+            // btnMantenimientos
+            // 
+            this.btnMantenimientos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnMantenimientos.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnMantenimientos.FlatAppearance.BorderSize = 0;
+            this.btnMantenimientos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMantenimientos.Font = new System.Drawing.Font("Sylfaen", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMantenimientos.ForeColor = System.Drawing.Color.White;
+            this.btnMantenimientos.Image = global::BikerStriker.Properties.Resources.arrow_down;
+            this.btnMantenimientos.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnMantenimientos.Location = new System.Drawing.Point(0, 125);
+            this.btnMantenimientos.Name = "btnMantenimientos";
+            this.btnMantenimientos.Size = new System.Drawing.Size(208, 37);
+            this.btnMantenimientos.TabIndex = 1;
+            this.btnMantenimientos.Text = "Mantenimientos";
+            this.btnMantenimientos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnMantenimientos.UseVisualStyleBackColor = false;
+            this.btnMantenimientos.Click += new System.EventHandler(this.btnMantenimientos_Click);
+            // 
+            // imgLogo
+            // 
+            this.imgLogo.Dock = System.Windows.Forms.DockStyle.Top;
+            this.imgLogo.Image = global::BikerStriker.Properties.Resources.Logo_BikerStriker_BlackBackground;
+            this.imgLogo.Location = new System.Drawing.Point(0, 0);
+            this.imgLogo.Name = "imgLogo";
+            this.imgLogo.Padding = new System.Windows.Forms.Padding(20, 10, 20, 10);
+            this.imgLogo.Size = new System.Drawing.Size(208, 125);
+            this.imgLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.imgLogo.TabIndex = 0;
+            this.imgLogo.TabStop = false;
+            // 
+            // pnlHeader
+            // 
+            this.pnlHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            this.pnlHeader.Controls.Add(this.lblChildFrmTitle);
+            this.pnlHeader.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlHeader.Location = new System.Drawing.Point(208, 0);
+            this.pnlHeader.Name = "pnlHeader";
+            this.pnlHeader.Size = new System.Drawing.Size(954, 125);
+            this.pnlHeader.TabIndex = 1;
+            // 
+            // lblChildFrmTitle
+            // 
+            this.lblChildFrmTitle.AutoSize = true;
+            this.lblChildFrmTitle.Font = new System.Drawing.Font("Sylfaen", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblChildFrmTitle.ForeColor = System.Drawing.Color.White;
+            this.lblChildFrmTitle.Location = new System.Drawing.Point(18, 35);
+            this.lblChildFrmTitle.Name = "lblChildFrmTitle";
+            this.lblChildFrmTitle.Size = new System.Drawing.Size(262, 48);
+            this.lblChildFrmTitle.TabIndex = 0;
+            this.lblChildFrmTitle.Text = "Menú Principal";
+            // 
+            // pnlDesktop
+            // 
+            this.pnlDesktop.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlDesktop.Location = new System.Drawing.Point(208, 125);
+            this.pnlDesktop.Name = "pnlDesktop";
+            this.pnlDesktop.Size = new System.Drawing.Size(954, 453);
+            this.pnlDesktop.TabIndex = 2;
             // 
             // frmMenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(769, 379);
+            this.ClientSize = new System.Drawing.Size(1162, 578);
+            this.Controls.Add(this.pnlDesktop);
+            this.Controls.Add(this.pnlHeader);
+            this.Controls.Add(this.pnlAsideMenu);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "frmMenuPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Menú Principal";
+            this.pnlAsideMenu.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.imgLogo)).EndInit();
+            this.pnlHeader.ResumeLayout(false);
+            this.pnlHeader.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
+
+        private System.Windows.Forms.Panel pnlAsideMenu;
+        private System.Windows.Forms.PictureBox imgLogo;
+        private System.Windows.Forms.Panel pnlHeader;
+        private System.Windows.Forms.Button btnMantenimientos;
+        private System.Windows.Forms.Button btnMarcas;
+        private System.Windows.Forms.Button btnModelos;
+        private System.Windows.Forms.Label lblChildFrmTitle;
+        private System.Windows.Forms.Panel pnlDesktop;
     }
 }
 
