@@ -35,7 +35,6 @@
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
-            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.btnAdd = new System.Windows.Forms.Button();
             this.cmbMarca = new System.Windows.Forms.ComboBox();
             this.pnlBotom = new System.Windows.Forms.Panel();
@@ -124,10 +123,6 @@
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = false;
             this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
-            // 
-            // openFileDialog
-            // 
-            this.openFileDialog.FileName = "openFileDialog";
             // 
             // btnAdd
             // 
@@ -218,7 +213,6 @@
         private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.Button btnEliminar;
-        private System.Windows.Forms.OpenFileDialog openFileDialog;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.ComboBox cmbMarca;
         private System.Windows.Forms.Panel pnlBotom;

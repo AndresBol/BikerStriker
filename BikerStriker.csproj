@@ -52,15 +52,37 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Enums\TipoCategoriasMenu.cs" />
+    <Compile Include="Enums\TipoGenero.cs" />
+    <Compile Include="Enums\TipoUsuario.cs" />
     <Compile Include="Extensions\ExceptionsExtention.cs" />
+    <Compile Include="Interfaces\IBLLVendedor.cs" />
+    <Compile Include="Interfaces\IBLLCliente.cs" />
+    <Compile Include="Interfaces\IBLLAdministrador.cs" />
+    <Compile Include="Interfaces\IBLLUsuario.cs" />
     <Compile Include="Interfaces\IBLLModelo.cs" />
     <Compile Include="Interfaces\IBLLMarca.cs" />
+    <Compile Include="Interfaces\IDALUsuario.cs" />
+    <Compile Include="Interfaces\IDALCliente.cs" />
+    <Compile Include="Interfaces\IDALVendedor.cs" />
+    <Compile Include="Interfaces\IDALAdministrador.cs" />
     <Compile Include="Interfaces\IDALModelo.cs" />
     <Compile Include="Interfaces\IDALMarca.cs" />
+    <Compile Include="Layers\BLL\BLLAdministrador.cs" />
+    <Compile Include="Layers\BLL\BLLVendedor.cs" />
+    <Compile Include="Layers\BLL\BLLCliente.cs" />
+    <Compile Include="Layers\BLL\BLLUsuario.cs" />
     <Compile Include="Layers\BLL\BLLMarca.cs" />
     <Compile Include="Layers\BLL\BLLModelo.cs" />
+    <Compile Include="Layers\DAL\DALUsuario.cs" />
+    <Compile Include="Layers\DAL\DALCliente.cs" />
+    <Compile Include="Layers\DAL\DALVendedor.cs" />
+    <Compile Include="Layers\DAL\DALAdministrador.cs" />
     <Compile Include="Layers\DAL\DALMarca.cs" />
     <Compile Include="Layers\DAL\DALModelo.cs" />
+    <Compile Include="Layers\Entities\Cliente.cs" />
+    <Compile Include="Layers\Entities\Administrador.cs" />
+    <Compile Include="Layers\Entities\Vendedor.cs" />
+    <Compile Include="Layers\Entities\Usuario.cs" />
     <Compile Include="Layers\Entities\Marca.cs" />
     <Compile Include="Layers\Entities\Modelo.cs" />
     <Compile Include="Layers\Persistencia\DataBase.cs" />
@@ -72,6 +94,12 @@
     </Compile>
     <Compile Include="Layers\UI\frmMenuPrincipal.Designer.cs">
       <DependentUpon>frmMenuPrincipal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Layers\UI\Mantenimientos\frmMantenimientoUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Layers\UI\Mantenimientos\frmMantenimientoUsuario.Designer.cs">
+      <DependentUpon>frmMantenimientoUsuario.cs</DependentUpon>
     </Compile>
     <Compile Include="Layers\UI\Mantenimientos\frmMantenimientoModelo.cs">
       <SubType>Form</SubType>
@@ -92,6 +120,9 @@
     <Compile Include="Util\UtilError.cs" />
     <EmbeddedResource Include="Layers\UI\frmMenuPrincipal.resx">
       <DependentUpon>frmMenuPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Layers\UI\Mantenimientos\frmMantenimientoUsuario.resx">
+      <DependentUpon>frmMantenimientoUsuario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Layers\UI\Mantenimientos\frmMantenimientoModelo.resx">
       <DependentUpon>frmMantenimientoModelo.cs</DependentUpon>
