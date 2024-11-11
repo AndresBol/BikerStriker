@@ -56,6 +56,7 @@
     <Compile Include="Enums\TipoUsuario.cs" />
     <Compile Include="Extensions\ExceptionsExtention.cs" />
     <Compile Include="Interfaces\IBLLBicicleta.cs" />
+    <Compile Include="Interfaces\IBLLTienda.cs" />
     <Compile Include="Interfaces\IBLLProducto.cs" />
     <Compile Include="Interfaces\IBLLCategoria.cs" />
     <Compile Include="Interfaces\IBLLVendedor.cs" />
@@ -65,6 +66,7 @@
     <Compile Include="Interfaces\IBLLModelo.cs" />
     <Compile Include="Interfaces\IBLLMarca.cs" />
     <Compile Include="Interfaces\IDALBicicleta.cs" />
+    <Compile Include="Interfaces\IDALTienda.cs" />
     <Compile Include="Interfaces\IDALProducto.cs" />
     <Compile Include="Interfaces\IDALCategoria.cs" />
     <Compile Include="Interfaces\IDALUsuario.cs" />
@@ -75,6 +77,7 @@
     <Compile Include="Interfaces\IDALMarca.cs" />
     <Compile Include="Layers\BLL\BLLAdministrador.cs" />
     <Compile Include="Layers\BLL\BLLBicicleta.cs" />
+    <Compile Include="Layers\BLL\BLLTienda.cs" />
     <Compile Include="Layers\BLL\BLLProducto.cs" />
     <Compile Include="Layers\BLL\BLLCategoria.cs" />
     <Compile Include="Layers\BLL\BLLVendedor.cs" />
@@ -83,6 +86,7 @@
     <Compile Include="Layers\BLL\BLLMarca.cs" />
     <Compile Include="Layers\BLL\BLLModelo.cs" />
     <Compile Include="Layers\DAL\DALBicicleta.cs" />
+    <Compile Include="Layers\DAL\DALTienda.cs" />
     <Compile Include="Layers\DAL\DALCategoria.cs" />
     <Compile Include="Layers\DAL\DALProducto.cs" />
     <Compile Include="Layers\DAL\DALUsuario.cs" />
@@ -92,6 +96,7 @@
     <Compile Include="Layers\DAL\DALMarca.cs" />
     <Compile Include="Layers\DAL\DALModelo.cs" />
     <Compile Include="Layers\Entities\Bicicleta.cs" />
+    <Compile Include="Layers\Entities\Tienda.cs" />
     <Compile Include="Layers\Entities\Cliente.cs" />
     <Compile Include="Layers\Entities\Administrador.cs" />
     <Compile Include="Layers\Entities\Categoria.cs" />
@@ -115,6 +120,12 @@
     </Compile>
     <Compile Include="Layers\UI\Mantenimientos\frmMantenimientoBicicleta.Designer.cs">
       <DependentUpon>frmMantenimientoBicicleta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Layers\UI\Mantenimientos\frmMantenimientoTienda.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Layers\UI\Mantenimientos\frmMantenimientoTienda.Designer.cs">
+      <DependentUpon>frmMantenimientoTienda.cs</DependentUpon>
     </Compile>
     <Compile Include="Layers\UI\Mantenimientos\frmMantenimientoProducto.cs">
       <SubType>Form</SubType>
@@ -146,12 +157,6 @@
     <Compile Include="Layers\UI\Mantenimientos\frmMantenimientoAdministrador.Designer.cs">
       <DependentUpon>frmMantenimientoAdministrador.cs</DependentUpon>
     </Compile>
-    <Compile Include="Layers\UI\Mantenimientos\frmMantenimientoUsuario.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Layers\UI\Mantenimientos\frmMantenimientoUsuario.Designer.cs">
-      <DependentUpon>frmMantenimientoUsuario.cs</DependentUpon>
-    </Compile>
     <Compile Include="Layers\UI\Mantenimientos\frmMantenimientoModelo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -175,6 +180,9 @@
     <EmbeddedResource Include="Layers\UI\Mantenimientos\frmMantenimientoBicicleta.resx">
       <DependentUpon>frmMantenimientoBicicleta.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Layers\UI\Mantenimientos\frmMantenimientoTienda.resx">
+      <DependentUpon>frmMantenimientoTienda.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Layers\UI\Mantenimientos\frmMantenimientoProducto.resx">
       <DependentUpon>frmMantenimientoProducto.cs</DependentUpon>
     </EmbeddedResource>
@@ -189,9 +197,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Layers\UI\Mantenimientos\frmMantenimientoAdministrador.resx">
       <DependentUpon>frmMantenimientoAdministrador.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Layers\UI\Mantenimientos\frmMantenimientoUsuario.resx">
-      <DependentUpon>frmMantenimientoUsuario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Layers\UI\Mantenimientos\frmMantenimientoModelo.resx">
       <DependentUpon>frmMantenimientoModelo.cs</DependentUpon>

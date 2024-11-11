@@ -44,6 +44,7 @@
             this.btnModelos = new System.Windows.Forms.Button();
             this.btnMantenimientos = new System.Windows.Forms.Button();
             this.imgLogo = new System.Windows.Forms.PictureBox();
+            this.btnTiendas = new System.Windows.Forms.Button();
             this.pnlAsideMenu.SuspendLayout();
             this.pnlMantenimientos.SuspendLayout();
             this.pnlHeader.SuspendLayout();
@@ -64,6 +65,7 @@
             // 
             // pnlMantenimientos
             // 
+            this.pnlMantenimientos.Controls.Add(this.btnTiendas);
             this.pnlMantenimientos.Controls.Add(this.btnProductos);
             this.pnlMantenimientos.Controls.Add(this.btnCategorias);
             this.pnlMantenimientos.Controls.Add(this.btnBicicletas);
@@ -75,7 +77,7 @@
             this.pnlMantenimientos.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlMantenimientos.Location = new System.Drawing.Point(0, 162);
             this.pnlMantenimientos.Name = "pnlMantenimientos";
-            this.pnlMantenimientos.Size = new System.Drawing.Size(208, 310);
+            this.pnlMantenimientos.Size = new System.Drawing.Size(208, 348);
             this.pnlMantenimientos.TabIndex = 5;
             // 
             // pnlHeader
@@ -298,6 +300,26 @@
             this.imgLogo.TabIndex = 0;
             this.imgLogo.TabStop = false;
             // 
+            // btnTiendas
+            // 
+            this.btnTiendas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.btnTiendas.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnTiendas.FlatAppearance.BorderSize = 0;
+            this.btnTiendas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTiendas.Font = new System.Drawing.Font("Sylfaen", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTiendas.ForeColor = System.Drawing.Color.White;
+            this.btnTiendas.Image = ((System.Drawing.Image)(resources.GetObject("btnTiendas.Image")));
+            this.btnTiendas.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.btnTiendas.Location = new System.Drawing.Point(0, 296);
+            this.btnTiendas.Name = "btnTiendas";
+            this.btnTiendas.Size = new System.Drawing.Size(208, 37);
+            this.btnTiendas.TabIndex = 10;
+            this.btnTiendas.Text = "Tiendas";
+            this.btnTiendas.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnTiendas.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnTiendas.UseVisualStyleBackColor = false;
+            this.btnTiendas.Click += new System.EventHandler(this.btnTiendas_Click);
+            // 
             // frmMenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -336,6 +358,7 @@
         private System.Windows.Forms.Button btnBicicletas;
         private System.Windows.Forms.Button btnCategorias;
         private System.Windows.Forms.Button btnProductos;
+        private System.Windows.Forms.Button btnTiendas;
     }
 }
 
