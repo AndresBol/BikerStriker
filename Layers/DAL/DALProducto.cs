@@ -19,30 +19,30 @@ using BikerStriker.Extensions;
 namespace BikerStriker.Layers.DAL
 {
     /// <summary>
-    /// Clase de acceso a datos para el CRUD con la tabla Modelo en SqlServer
+    /// Clase de acceso a datos para el CRUD con la tabla Producto en SqlServer
     /// </summary>
-    public class DALModelo : IDALModelo
+    public class DALProducto : IDALProducto
     {
         /// <summary>
-        /// Obtiene una lista con todas las Modelos almacenadas en la tabla Modelo
+        /// Obtiene una lista con todas las Productos almacenadas en la tabla Producto
         /// </summary>
-        /// <returns>Retorna un List<Modelo></returns>
+        /// <returns>Retorna un List<Producto></returns>
         /// 
 
         private static readonly ILog _Logger = LogManager.GetLogger("MyControlEventos");
 
-        public List<Modelo> GetAllModelo()
+        public List<Producto> GetAllProducto()
         {
             string msg = "";
             IDataReader reader = null;
-            List<Modelo> lista = new List<Modelo>();
+            List<Producto> lista = new List<Producto>();
             SqlCommand command = new SqlCommand();
 
             string sql = @"
-            SELECT m.id, m.nombre, m.id_Marca, ma.nombre AS marca_nombre, ma.logo AS marca_logo
-            FROM Modelo m
-            LEFT JOIN Marca ma ON m.id_Marca = ma.id
-            WHERE m.activo = 1";
+            SELECT p.id, p.codigo, p.nombre, p.precio, p.descripcion, p.cantidad, p.id_Categoria, p.es_Servicio, ca.nombre AS Categoria_nombre
+            FROM Producto p
+            LEFT JOIN Categoria ca ON p.id_Categoria = ca.id
+            WHERE p.activo = 1";
             command.CommandText = sql;
             command.CommandType = CommandType.Text;
 
@@ -54,18 +54,23 @@ namespace BikerStriker.Layers.DAL
 
                     while (reader.Read())
                     {
-                        Modelo modelo = new Modelo();
-                        modelo.Id = (int) reader["id"];
-                        modelo.Nombre = reader["nombre"].ToString();
-
-                        modelo.Marca = new Marca
+                        Producto producto = new Producto();
+                        producto.Id = (int) reader["id"];
+                        producto.Codigo = reader["codigo"].ToString();
+                        producto.Nombre = reader["nombre"].ToString();
+                        producto.Precio = Convert.ToDouble(reader["precio"].ToString());
+                        producto.Descripcion = reader["descripcion"].ToString();
+                        producto.Cantidad = (int) reader["cantidad"];
+                        
+                        producto.Categoria = new Categoria
                         {
-                            Id = (int)reader["id_Marca"],
-                            Nombre = reader["marca_nombre"].ToString(),
-                            Logo = ImageSerializer.DeserializeImageFromString((byte[])reader["marca_logo"])
+                            Id = (int)reader["id_Categoria"],
+                            Nombre = reader["Categoria_nombre"].ToString(),
                         };
 
-                        lista.Add(modelo);
+                        producto.EsServicio = (bool) reader["es_Servicio"];
+
+                        lista.Add(producto);
                     }
                 }
 
@@ -84,13 +89,18 @@ namespace BikerStriker.Layers.DAL
             }
         }
 
-        public void Insertar(Modelo modelo)
+        public void Insertar(Producto producto)
         {
             string msg = "";
-            string sql = @"Insert into Modelo values (@nombre,@id_Marca,1)";
+            string sql = @"Insert into Producto values (@codigo,@nombre,@precio,@descripcion,@cantidad,@id_Categoria,@es_Servicio,1)";
             SqlCommand command = new SqlCommand();
-            command.Parameters.AddWithValue("@nombre", modelo.Nombre);
-            command.Parameters.AddWithValue("@id_Marca", modelo.Marca.Id);
+            command.Parameters.AddWithValue("@codigo", producto.Codigo);
+            command.Parameters.AddWithValue("@nombre", producto.Nombre);
+            command.Parameters.AddWithValue("@precio", producto.Precio);
+            command.Parameters.AddWithValue("@descripcion", producto.Descripcion);
+            command.Parameters.AddWithValue("@cantidad", producto.Cantidad);
+            command.Parameters.AddWithValue("@id_Categoria", producto.Categoria.Id);
+            command.Parameters.AddWithValue("@es_Servicio", producto.EsServicio);
             command.CommandType = CommandType.Text;
             command.CommandText = sql;
 
@@ -114,14 +124,19 @@ namespace BikerStriker.Layers.DAL
             }
         }
 
-        public void Actualizar(Modelo modelo)
+        public void Actualizar(Producto producto)
         {
             string msg = "";
-            string sql = @"Update  Modelo SET nombre = @nombre, id_Marca = @id_Marca  Where (id = @id)";
+            string sql = @"Update  Producto SET codigo = @codigo, nombre = @nombre, precio = @precio, descripcion = @descripcion, cantidad = @cantidad, id_Categoria = @id_Categoria, es_Servicio = @es_Servicio  Where (id = @id)";
             SqlCommand command = new SqlCommand();
-            command.Parameters.AddWithValue("@id", modelo.Id);
-            command.Parameters.AddWithValue("@nombre", modelo.Nombre);
-            command.Parameters.AddWithValue("@id_Marca", modelo.Marca.Id);
+            command.Parameters.AddWithValue("@id", producto.Id);
+            command.Parameters.AddWithValue("@codigo", producto.Codigo);
+            command.Parameters.AddWithValue("@nombre", producto.Nombre);
+            command.Parameters.AddWithValue("@precio", producto.Precio);
+            command.Parameters.AddWithValue("@descripcion", producto.Descripcion);
+            command.Parameters.AddWithValue("@cantidad", producto.Cantidad);
+            command.Parameters.AddWithValue("@id_Categoria", producto.Categoria.Id);
+            command.Parameters.AddWithValue("@es_Servicio", producto.EsServicio);
             command.CommandType = CommandType.Text;
             command.CommandText = sql;
 
@@ -148,7 +163,7 @@ namespace BikerStriker.Layers.DAL
         public void Desactivar(int id)
         {
             string msg = "";
-            string sql = @"Update  Modelo SET activo = 0 Where (id = @id)";
+            string sql = @"Update  Producto SET activo = 0 Where (id = @id)";
             SqlCommand command = new SqlCommand();
             command.Parameters.AddWithValue("@id", id);
             command.CommandType = CommandType.Text;
@@ -174,17 +189,17 @@ namespace BikerStriker.Layers.DAL
             }
         }
 
-        public Modelo GetModeloByID(int id)
+        public Producto GetProductoByID(int id)
         {
             string msg = "";
             IDataReader reader = null;
             SqlCommand command = new SqlCommand();
-            
+
             string sql = @"
-            SELECT m.id, m.nombre, m.id_Marca, ma.nombre AS marca_nombre, ma.logo AS marca_logo
-            FROM Modelo m
-            LEFT JOIN Marca ma ON m.id_Marca = ma.id
-            WHERE m.id = @id";
+            SELECT p.id, p.codigo, p.nombre, p.precio, p.descripcion, p.cantidad, p.id_Categoria, p.es_Servicio, ca.nombre AS Categoria_nombre
+            FROM Producto p
+            LEFT JOIN Categoria ca ON p.id_Categoria = ca.id
+            WHERE p.id = @id";
 
             command.Parameters.AddWithValue("@id", id);
             command.CommandText = sql;
@@ -192,7 +207,7 @@ namespace BikerStriker.Layers.DAL
 
             try
             {
-                Modelo modelo = null;
+                Producto producto = null;
 
                 using (IDataBase db = FactoryDatabase.CreateDataBase(FactoryConexion.CreateConnection()))
                 {
@@ -200,22 +215,26 @@ namespace BikerStriker.Layers.DAL
 
                     while (reader.Read())
                     {
-                        modelo = new Modelo();
-                        
-                        modelo.Id = (int)reader["id"];
-                        modelo.Nombre = reader["nombre"].ToString();
+                        producto = new Producto();
+                        producto.Id = (int)reader["id"];
+                        producto.Codigo = reader["codigo"].ToString();
+                        producto.Nombre = reader["nombre"].ToString();
+                        producto.Precio = Convert.ToDouble(reader["precio"].ToString());
+                        producto.Descripcion = reader["descripcion"].ToString();
+                        producto.Cantidad = (int)reader["cantidad"];
 
-                        modelo.Marca = new Marca
+                        producto.Categoria = new Categoria
                         {
-                            Id = (int)reader["id_Marca"],
-                            Nombre = reader["marca_nombre"].ToString(),
-                            Logo = ImageSerializer.DeserializeImageFromString((byte[])reader["marca_logo"])
+                            Id = (int)reader["id_Categoria"],
+                            Nombre = reader["Categoria_nombre"].ToString(),
                         };
+
+                        producto.EsServicio = (bool)reader["es_Servicio"];
 
                     }
                 }
 
-                return modelo;
+                return producto;
             }
             catch (SqlException er)
             {

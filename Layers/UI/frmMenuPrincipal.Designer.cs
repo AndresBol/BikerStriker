@@ -34,6 +34,7 @@
             this.pnlHeader = new System.Windows.Forms.Panel();
             this.lblChildFrmTitle = new System.Windows.Forms.Label();
             this.pnlDesktop = new System.Windows.Forms.Panel();
+            this.btnProductos = new System.Windows.Forms.Button();
             this.btnCategorias = new System.Windows.Forms.Button();
             this.btnBicicletas = new System.Windows.Forms.Button();
             this.btnVendedores = new System.Windows.Forms.Button();
@@ -63,6 +64,7 @@
             // 
             // pnlMantenimientos
             // 
+            this.pnlMantenimientos.Controls.Add(this.btnProductos);
             this.pnlMantenimientos.Controls.Add(this.btnCategorias);
             this.pnlMantenimientos.Controls.Add(this.btnBicicletas);
             this.pnlMantenimientos.Controls.Add(this.btnVendedores);
@@ -73,7 +75,7 @@
             this.pnlMantenimientos.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlMantenimientos.Location = new System.Drawing.Point(0, 162);
             this.pnlMantenimientos.Name = "pnlMantenimientos";
-            this.pnlMantenimientos.Size = new System.Drawing.Size(208, 305);
+            this.pnlMantenimientos.Size = new System.Drawing.Size(208, 310);
             this.pnlMantenimientos.TabIndex = 5;
             // 
             // pnlHeader
@@ -104,6 +106,26 @@
             this.pnlDesktop.Name = "pnlDesktop";
             this.pnlDesktop.Size = new System.Drawing.Size(954, 453);
             this.pnlDesktop.TabIndex = 2;
+            // 
+            // btnProductos
+            // 
+            this.btnProductos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.btnProductos.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnProductos.FlatAppearance.BorderSize = 0;
+            this.btnProductos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnProductos.Font = new System.Drawing.Font("Sylfaen", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnProductos.ForeColor = System.Drawing.Color.White;
+            this.btnProductos.Image = ((System.Drawing.Image)(resources.GetObject("btnProductos.Image")));
+            this.btnProductos.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.btnProductos.Location = new System.Drawing.Point(0, 259);
+            this.btnProductos.Name = "btnProductos";
+            this.btnProductos.Size = new System.Drawing.Size(208, 37);
+            this.btnProductos.TabIndex = 9;
+            this.btnProductos.Text = "Productos";
+            this.btnProductos.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnProductos.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnProductos.UseVisualStyleBackColor = false;
+            this.btnProductos.Click += new System.EventHandler(this.btnProductos_Click);
             // 
             // btnCategorias
             // 
@@ -313,6 +335,7 @@
         private System.Windows.Forms.Button btnVendedores;
         private System.Windows.Forms.Button btnBicicletas;
         private System.Windows.Forms.Button btnCategorias;
+        private System.Windows.Forms.Button btnProductos;
     }
 }
 

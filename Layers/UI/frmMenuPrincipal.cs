@@ -89,5 +89,10 @@ namespace BikerStriker
         {
             OpenChildForm(new frmMantenimientoCategoria());
         }
+
+        private void btnProductos_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new frmMantenimientoProducto());
+        }
     }
 }

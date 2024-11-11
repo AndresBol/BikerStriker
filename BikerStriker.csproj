@@ -56,6 +56,7 @@
     <Compile Include="Enums\TipoUsuario.cs" />
     <Compile Include="Extensions\ExceptionsExtention.cs" />
     <Compile Include="Interfaces\IBLLBicicleta.cs" />
+    <Compile Include="Interfaces\IBLLProducto.cs" />
     <Compile Include="Interfaces\IBLLCategoria.cs" />
     <Compile Include="Interfaces\IBLLVendedor.cs" />
     <Compile Include="Interfaces\IBLLCliente.cs" />
@@ -64,6 +65,7 @@
     <Compile Include="Interfaces\IBLLModelo.cs" />
     <Compile Include="Interfaces\IBLLMarca.cs" />
     <Compile Include="Interfaces\IDALBicicleta.cs" />
+    <Compile Include="Interfaces\IDALProducto.cs" />
     <Compile Include="Interfaces\IDALCategoria.cs" />
     <Compile Include="Interfaces\IDALUsuario.cs" />
     <Compile Include="Interfaces\IDALCliente.cs" />
@@ -73,6 +75,7 @@
     <Compile Include="Interfaces\IDALMarca.cs" />
     <Compile Include="Layers\BLL\BLLAdministrador.cs" />
     <Compile Include="Layers\BLL\BLLBicicleta.cs" />
+    <Compile Include="Layers\BLL\BLLProducto.cs" />
     <Compile Include="Layers\BLL\BLLCategoria.cs" />
     <Compile Include="Layers\BLL\BLLVendedor.cs" />
     <Compile Include="Layers\BLL\BLLCliente.cs" />
@@ -81,6 +84,7 @@
     <Compile Include="Layers\BLL\BLLModelo.cs" />
     <Compile Include="Layers\DAL\DALBicicleta.cs" />
     <Compile Include="Layers\DAL\DALCategoria.cs" />
+    <Compile Include="Layers\DAL\DALProducto.cs" />
     <Compile Include="Layers\DAL\DALUsuario.cs" />
     <Compile Include="Layers\DAL\DALCliente.cs" />
     <Compile Include="Layers\DAL\DALVendedor.cs" />
@@ -111,6 +115,12 @@
     </Compile>
     <Compile Include="Layers\UI\Mantenimientos\frmMantenimientoBicicleta.Designer.cs">
       <DependentUpon>frmMantenimientoBicicleta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Layers\UI\Mantenimientos\frmMantenimientoProducto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Layers\UI\Mantenimientos\frmMantenimientoProducto.Designer.cs">
+      <DependentUpon>frmMantenimientoProducto.cs</DependentUpon>
     </Compile>
     <Compile Include="Layers\UI\Mantenimientos\frmMantenimientoCategoria.cs">
       <SubType>Form</SubType>
@@ -164,6 +174,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Layers\UI\Mantenimientos\frmMantenimientoBicicleta.resx">
       <DependentUpon>frmMantenimientoBicicleta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Layers\UI\Mantenimientos\frmMantenimientoProducto.resx">
+      <DependentUpon>frmMantenimientoProducto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Layers\UI\Mantenimientos\frmMantenimientoCategoria.resx">
       <DependentUpon>frmMantenimientoCategoria.cs</DependentUpon>
