@@ -255,7 +255,7 @@ namespace BikerStriker.Layers.DAL
         {
             string msg = "";
             IDataReader reader = null;
-            string sql = @"Select  id  from  Usuario   Where (correo = @email)";
+            string sql = @"Select  id  from  Usuario   Where (correo = @email and activo = 1)";
             SqlCommand command = new SqlCommand();
             command.Parameters.AddWithValue("@email", email);
             command.CommandType = CommandType.Text;

@@ -36,7 +36,6 @@ namespace BikerStriker.Layers.UI.Mantenimientos
             txtIdentificacion.Text = cliente.Identificacion;
             txtNombre.Text = cliente.Nombre;
             txtApellidos.Text = cliente.Apellidos;
-            //cmbGenero.SelectedIndex = cmbGenero.FindString(cliente.Genero.ToString());
             cmbGenero.SelectedItem = cliente.Genero;
         }
 
@@ -61,8 +60,6 @@ namespace BikerStriker.Layers.UI.Mantenimientos
 
             try
             {
-                Cliente vCliente = (Cliente) dgvClientes.CurrentRow.DataBoundItem;
-
                 IBLLCliente bll = new BLLCliente();
                 Cliente cliente = new Cliente();
                 cliente.Correo = txtCorreo.Text;
@@ -75,6 +72,7 @@ namespace BikerStriker.Layers.UI.Mantenimientos
 
                 if(dgvClientes.SelectedRows.Count > 0)
                 {
+                    Cliente vCliente = (Cliente)dgvClientes.CurrentRow.DataBoundItem;
                     cliente.UsuarioId = vCliente.UsuarioId;
                     cliente.ClienteId = vCliente.ClienteId;
                 }

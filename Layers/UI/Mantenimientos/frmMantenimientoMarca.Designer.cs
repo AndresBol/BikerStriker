@@ -107,6 +107,7 @@
             this.txtLogo.Location = new System.Drawing.Point(96, 131);
             this.txtLogo.Name = "txtLogo";
             this.txtLogo.ReadOnly = true;
+            this.txtLogo.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
             this.txtLogo.Size = new System.Drawing.Size(291, 20);
             this.txtLogo.TabIndex = 5;
             // 
