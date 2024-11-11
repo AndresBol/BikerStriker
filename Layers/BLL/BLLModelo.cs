@@ -46,5 +46,20 @@ namespace BikerStriker.Layers.BLL
                 throw new ApplicationException($"La Modelo con id {id} no existe!");
             }
         }
+
+        public Modelo GetModeloByID(int id)
+        {
+            var dal = new DALModelo();
+            var existe = dal.GetModeloByID(id);
+
+            if (existe != null)
+            {
+                return existe;
+            }
+            else
+            {
+                throw new ApplicationException($"La Modelo con id {id} no existe!");
+            }
+        }
     }
 }

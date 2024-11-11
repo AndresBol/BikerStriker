@@ -16,5 +16,7 @@ namespace BikerStriker.Layers.Entities
         public TipoGenero Genero { get; set; }
         public override TipoUsuario TipoUsuario => TipoUsuario.Cliente;
 
+        public List<Bicicleta> Bicicletas { get; set;}
+
     }
 }

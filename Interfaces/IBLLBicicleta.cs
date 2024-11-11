@@ -7,12 +7,12 @@ using BikerStriker.Layers.Entities;
 
 namespace BikerStriker.Interfaces
 {
-    internal interface IBLLModelo
+    internal interface IBLLBicicleta
     {
-        List<Modelo> GetAllModelo();
+        List<Bicicleta> GetAllBicicleta();
+        List<Bicicleta> GetAllBicicletaFromCliente(int ClienteId);
 
-        void Save(Modelo Modelo);
+        void Save(Bicicleta bicicleta, int ClienteId);
         void Remove(int id);
-        Modelo GetModeloByID(int id);
     }
 }
