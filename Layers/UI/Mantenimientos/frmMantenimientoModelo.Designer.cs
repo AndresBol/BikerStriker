@@ -50,6 +50,7 @@
             // 
             this.dgvModelos.AllowUserToAddRows = false;
             this.dgvModelos.AllowUserToDeleteRows = false;
+            this.dgvModelos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.dgvModelos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvModelos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvModelos.Location = new System.Drawing.Point(0, 0);

@@ -126,6 +126,9 @@ namespace BikerStriker.Layers.DAL
 
         public void Actualizar(Vendedor vendedor)
         {
+            BLLUsuario bllUsuario = new BLLUsuario();
+            bllUsuario.Save(vendedor);
+
             string msg = "";
             string sql = @"Update  Vendedor SET codigo = @codigo, fechaNacimiento = @fechaNacimiento, fotografia = @fotografia  Where (id = @id)";
             SqlCommand command = new SqlCommand();

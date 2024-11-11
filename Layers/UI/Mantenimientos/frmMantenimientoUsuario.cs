@@ -52,7 +52,7 @@ namespace BikerStriker.Layers.UI.Mantenimientos
             try
             {
                 IBLLUsuario bll = new BLLUsuario();
-                Usuario usuario = new Usuario();
+                /*Usuario usuario = new Usuario();
                 usuario.Nombre = txtNombre.Text;
 
                 if(dgvUsuarios.SelectedRows.Count > 0)
@@ -60,7 +60,7 @@ namespace BikerStriker.Layers.UI.Mantenimientos
                     usuario.Id = ((Usuario)dgvUsuarios.CurrentRow.DataBoundItem).Id;
                 }
 
-                bll.Save(usuario);
+                bll.Save(usuario);*/
                 ActualizarTabla();
             }
             catch (Exception ex)
@@ -85,7 +85,7 @@ namespace BikerStriker.Layers.UI.Mantenimientos
         private void btnEliminar_Click(object sender, EventArgs e)
         {
             IBLLUsuario bll = new BLLUsuario();
-            bll.Remove(((Usuario)dgvUsuarios.CurrentRow.DataBoundItem).Id);
+            //bll.Remove(((Usuario)dgvUsuarios.CurrentRow.DataBoundItem).Id);
             ActualizarTabla();
         }
 

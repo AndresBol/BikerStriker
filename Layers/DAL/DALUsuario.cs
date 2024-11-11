@@ -53,7 +53,7 @@ namespace BikerStriker.Layers.DAL
                     while (reader.Read())
                     {
                         Usuario usuario;
-                        switch ((TipoUsuario) (short) reader["tipoUsuario"])
+                        switch ((TipoUsuario) Convert.ToInt16(reader["tipoUsuario"].ToString()))
                         {
                             case TipoUsuario.Cliente:
                                 usuario = new Cliente();
@@ -209,7 +209,8 @@ namespace BikerStriker.Layers.DAL
                     while (reader.Read())
                     {
                         Usuario usuario;
-                        switch ((TipoUsuario)(short)reader["tipoUsuario"])
+
+                        switch ((TipoUsuario) Convert.ToInt16(reader["tipoUsuario"].ToString()))
                         {
                             case TipoUsuario.Cliente:
                                 usuario = new Cliente();
@@ -254,7 +255,7 @@ namespace BikerStriker.Layers.DAL
         {
             string msg = "";
             IDataReader reader = null;
-            string sql = @"Select  id  from  Usuario   Where (email = @email)";
+            string sql = @"Select  id  from  Usuario   Where (correo = @email)";
             SqlCommand command = new SqlCommand();
             command.Parameters.AddWithValue("@email", email);
             command.CommandType = CommandType.Text;

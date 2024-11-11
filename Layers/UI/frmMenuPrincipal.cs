@@ -18,7 +18,7 @@ namespace BikerStriker
         public frmMenuPrincipal()
         {
             InitializeComponent();
-            HideButtons();
+            pnlMantenimientos.Visible = false;
         }
 
         private void OpenChildForm(Form childfrm)
@@ -39,23 +39,16 @@ namespace BikerStriker
 
         private void btnMantenimientos_Click(object sender, EventArgs e)
         {
-            ToggleVisibilityButtons(TipoCategoriasMenu.Mantenimiento);
+            ToggleVisibilityPanels(TipoCategoriasMenu.Mantenimiento);
             btnMantenimientos.Image = btnMarcas.Visible ? Properties.Resources.arrow_left : Properties.Resources.arrow_down;
         }
 
-        private void HideButtons()
-        {
-            btnMarcas.Visible = false;
-            btnModelos.Visible = false;
-        }
-
-        private void ToggleVisibilityButtons(TipoCategoriasMenu tipo)
+        private void ToggleVisibilityPanels(TipoCategoriasMenu tipo)
         {
             switch (tipo)
             {
                 case TipoCategoriasMenu.Mantenimiento:
-                    btnMarcas.Visible = !btnMarcas.Visible;
-                    btnModelos.Visible = !btnModelos.Visible;
+                    pnlMantenimientos.Visible = !pnlMantenimientos.Visible;
                     break;
                 case TipoCategoriasMenu.Reporte:
                     break;
@@ -70,6 +63,16 @@ namespace BikerStriker
         private void btnModelos_Click(object sender, EventArgs e)
         {
             OpenChildForm(new frmMantenimientoModelo());
+        }
+
+        private void btnAdministradores_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new frmMantenimientoAdministrador());
+        }
+
+        private void btnClientes_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new frmMantenimientoCliente());
         }
     }
 }

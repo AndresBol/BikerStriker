@@ -30,14 +30,18 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMenuPrincipal));
             this.pnlAsideMenu = new System.Windows.Forms.Panel();
-            this.btnModelos = new System.Windows.Forms.Button();
+            this.pnlMantenimientos = new System.Windows.Forms.Panel();
             this.btnMarcas = new System.Windows.Forms.Button();
+            this.btnAdministradores = new System.Windows.Forms.Button();
+            this.btnModelos = new System.Windows.Forms.Button();
             this.btnMantenimientos = new System.Windows.Forms.Button();
             this.imgLogo = new System.Windows.Forms.PictureBox();
             this.pnlHeader = new System.Windows.Forms.Panel();
             this.lblChildFrmTitle = new System.Windows.Forms.Label();
             this.pnlDesktop = new System.Windows.Forms.Panel();
+            this.btnClientes = new System.Windows.Forms.Button();
             this.pnlAsideMenu.SuspendLayout();
+            this.pnlMantenimientos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgLogo)).BeginInit();
             this.pnlHeader.SuspendLayout();
             this.SuspendLayout();
@@ -45,8 +49,7 @@
             // pnlAsideMenu
             // 
             this.pnlAsideMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            this.pnlAsideMenu.Controls.Add(this.btnModelos);
-            this.pnlAsideMenu.Controls.Add(this.btnMarcas);
+            this.pnlAsideMenu.Controls.Add(this.pnlMantenimientos);
             this.pnlAsideMenu.Controls.Add(this.btnMantenimientos);
             this.pnlAsideMenu.Controls.Add(this.imgLogo);
             this.pnlAsideMenu.Dock = System.Windows.Forms.DockStyle.Left;
@@ -55,25 +58,17 @@
             this.pnlAsideMenu.Size = new System.Drawing.Size(208, 578);
             this.pnlAsideMenu.TabIndex = 0;
             // 
-            // btnModelos
+            // pnlMantenimientos
             // 
-            this.btnModelos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.btnModelos.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnModelos.FlatAppearance.BorderSize = 0;
-            this.btnModelos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnModelos.Font = new System.Drawing.Font("Sylfaen", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnModelos.ForeColor = System.Drawing.Color.White;
-            this.btnModelos.Image = ((System.Drawing.Image)(resources.GetObject("btnModelos.Image")));
-            this.btnModelos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnModelos.Location = new System.Drawing.Point(0, 199);
-            this.btnModelos.Name = "btnModelos";
-            this.btnModelos.Size = new System.Drawing.Size(208, 37);
-            this.btnModelos.TabIndex = 3;
-            this.btnModelos.Text = "Modelos";
-            this.btnModelos.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnModelos.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnModelos.UseVisualStyleBackColor = false;
-            this.btnModelos.Click += new System.EventHandler(this.btnModelos_Click);
+            this.pnlMantenimientos.Controls.Add(this.btnClientes);
+            this.pnlMantenimientos.Controls.Add(this.btnMarcas);
+            this.pnlMantenimientos.Controls.Add(this.btnAdministradores);
+            this.pnlMantenimientos.Controls.Add(this.btnModelos);
+            this.pnlMantenimientos.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlMantenimientos.Location = new System.Drawing.Point(0, 162);
+            this.pnlMantenimientos.Name = "pnlMantenimientos";
+            this.pnlMantenimientos.Size = new System.Drawing.Size(208, 173);
+            this.pnlMantenimientos.TabIndex = 5;
             // 
             // btnMarcas
             // 
@@ -85,7 +80,7 @@
             this.btnMarcas.ForeColor = System.Drawing.Color.White;
             this.btnMarcas.Image = ((System.Drawing.Image)(resources.GetObject("btnMarcas.Image")));
             this.btnMarcas.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnMarcas.Location = new System.Drawing.Point(0, 162);
+            this.btnMarcas.Location = new System.Drawing.Point(0, 74);
             this.btnMarcas.Name = "btnMarcas";
             this.btnMarcas.Size = new System.Drawing.Size(208, 37);
             this.btnMarcas.TabIndex = 2;
@@ -94,6 +89,46 @@
             this.btnMarcas.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnMarcas.UseVisualStyleBackColor = false;
             this.btnMarcas.Click += new System.EventHandler(this.btnMarcas_Click);
+            // 
+            // btnAdministradores
+            // 
+            this.btnAdministradores.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.btnAdministradores.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnAdministradores.FlatAppearance.BorderSize = 0;
+            this.btnAdministradores.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAdministradores.Font = new System.Drawing.Font("Sylfaen", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdministradores.ForeColor = System.Drawing.Color.White;
+            this.btnAdministradores.Image = ((System.Drawing.Image)(resources.GetObject("btnAdministradores.Image")));
+            this.btnAdministradores.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.btnAdministradores.Location = new System.Drawing.Point(0, 37);
+            this.btnAdministradores.Name = "btnAdministradores";
+            this.btnAdministradores.Size = new System.Drawing.Size(208, 37);
+            this.btnAdministradores.TabIndex = 4;
+            this.btnAdministradores.Text = "Administradores";
+            this.btnAdministradores.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnAdministradores.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnAdministradores.UseVisualStyleBackColor = false;
+            this.btnAdministradores.Click += new System.EventHandler(this.btnAdministradores_Click);
+            // 
+            // btnModelos
+            // 
+            this.btnModelos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.btnModelos.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnModelos.FlatAppearance.BorderSize = 0;
+            this.btnModelos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnModelos.Font = new System.Drawing.Font("Sylfaen", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnModelos.ForeColor = System.Drawing.Color.White;
+            this.btnModelos.Image = ((System.Drawing.Image)(resources.GetObject("btnModelos.Image")));
+            this.btnModelos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnModelos.Location = new System.Drawing.Point(0, 0);
+            this.btnModelos.Name = "btnModelos";
+            this.btnModelos.Size = new System.Drawing.Size(208, 37);
+            this.btnModelos.TabIndex = 3;
+            this.btnModelos.Text = "Modelos";
+            this.btnModelos.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnModelos.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnModelos.UseVisualStyleBackColor = false;
+            this.btnModelos.Click += new System.EventHandler(this.btnModelos_Click);
             // 
             // btnMantenimientos
             // 
@@ -155,6 +190,26 @@
             this.pnlDesktop.Size = new System.Drawing.Size(954, 453);
             this.pnlDesktop.TabIndex = 2;
             // 
+            // btnClientes
+            // 
+            this.btnClientes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.btnClientes.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnClientes.FlatAppearance.BorderSize = 0;
+            this.btnClientes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClientes.Font = new System.Drawing.Font("Sylfaen", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClientes.ForeColor = System.Drawing.Color.White;
+            this.btnClientes.Image = ((System.Drawing.Image)(resources.GetObject("btnClientes.Image")));
+            this.btnClientes.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.btnClientes.Location = new System.Drawing.Point(0, 111);
+            this.btnClientes.Name = "btnClientes";
+            this.btnClientes.Size = new System.Drawing.Size(208, 37);
+            this.btnClientes.TabIndex = 5;
+            this.btnClientes.Text = "Clientes";
+            this.btnClientes.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnClientes.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnClientes.UseVisualStyleBackColor = false;
+            this.btnClientes.Click += new System.EventHandler(this.btnClientes_Click);
+            // 
             // frmMenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -168,6 +223,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Menú Principal";
             this.pnlAsideMenu.ResumeLayout(false);
+            this.pnlMantenimientos.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.imgLogo)).EndInit();
             this.pnlHeader.ResumeLayout(false);
             this.pnlHeader.PerformLayout();
@@ -185,6 +241,9 @@
         private System.Windows.Forms.Button btnModelos;
         private System.Windows.Forms.Label lblChildFrmTitle;
         private System.Windows.Forms.Panel pnlDesktop;
+        private System.Windows.Forms.Button btnAdministradores;
+        private System.Windows.Forms.Panel pnlMantenimientos;
+        private System.Windows.Forms.Button btnClientes;
     }
 }
 

@@ -64,10 +64,10 @@ namespace BikerStriker.Layers.DAL
                         cliente.Contraseña = reader["user_contrasena"].ToString();
                         cliente.Nombre = reader["user_nombre"].ToString();
                         cliente.Apellidos = reader["user_apellidos"].ToString();
-                        cliente.ClienteId = (int)reader["id"];
+                        cliente.ClienteId = (int) reader["id"];
                         cliente.Identificacion = reader["identificacion"].ToString();
                         cliente.Direccion = reader["direccion"].ToString();
-                        cliente.Genero = (TipoGenero) (short) reader["genero"];
+                        cliente.Genero = (TipoGenero) Convert.ToInt16(reader["genero"].ToString());
                         lista.Add(cliente);
                     }
                 }
@@ -126,6 +126,9 @@ namespace BikerStriker.Layers.DAL
 
         public void Actualizar(Cliente cliente)
         {
+            BLLUsuario bllUsuario = new BLLUsuario();
+            bllUsuario.Save(cliente);
+
             string msg = "";
             string sql = @"Update  Cliente SET identificacion = @identificacion, direccion = @direccion, genero = @genero  Where (id = @id)";
             SqlCommand command = new SqlCommand();
@@ -219,7 +222,7 @@ namespace BikerStriker.Layers.DAL
                         cliente.ClienteId = (int)reader["id"];
                         cliente.Identificacion = reader["identificacion"].ToString();
                         cliente.Direccion = reader["direccion"].ToString();
-                        cliente.Genero = (TipoGenero)(short)reader["genero"];
+                        cliente.Genero = (TipoGenero) Convert.ToInt16(reader["genero"].ToString());
                         return cliente;
                     }
                     
