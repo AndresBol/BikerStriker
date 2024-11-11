@@ -55,12 +55,16 @@
     <Compile Include="Enums\TipoGenero.cs" />
     <Compile Include="Enums\TipoUsuario.cs" />
     <Compile Include="Extensions\ExceptionsExtention.cs" />
+    <Compile Include="Interfaces\IBLLBicicleta.cs" />
+    <Compile Include="Interfaces\IBLLCategoria.cs" />
     <Compile Include="Interfaces\IBLLVendedor.cs" />
     <Compile Include="Interfaces\IBLLCliente.cs" />
     <Compile Include="Interfaces\IBLLAdministrador.cs" />
     <Compile Include="Interfaces\IBLLUsuario.cs" />
     <Compile Include="Interfaces\IBLLModelo.cs" />
     <Compile Include="Interfaces\IBLLMarca.cs" />
+    <Compile Include="Interfaces\IDALBicicleta.cs" />
+    <Compile Include="Interfaces\IDALCategoria.cs" />
     <Compile Include="Interfaces\IDALUsuario.cs" />
     <Compile Include="Interfaces\IDALCliente.cs" />
     <Compile Include="Interfaces\IDALVendedor.cs" />
@@ -68,19 +72,26 @@
     <Compile Include="Interfaces\IDALModelo.cs" />
     <Compile Include="Interfaces\IDALMarca.cs" />
     <Compile Include="Layers\BLL\BLLAdministrador.cs" />
+    <Compile Include="Layers\BLL\BLLBicicleta.cs" />
+    <Compile Include="Layers\BLL\BLLCategoria.cs" />
     <Compile Include="Layers\BLL\BLLVendedor.cs" />
     <Compile Include="Layers\BLL\BLLCliente.cs" />
     <Compile Include="Layers\BLL\BLLUsuario.cs" />
     <Compile Include="Layers\BLL\BLLMarca.cs" />
     <Compile Include="Layers\BLL\BLLModelo.cs" />
+    <Compile Include="Layers\DAL\DALBicicleta.cs" />
+    <Compile Include="Layers\DAL\DALCategoria.cs" />
     <Compile Include="Layers\DAL\DALUsuario.cs" />
     <Compile Include="Layers\DAL\DALCliente.cs" />
     <Compile Include="Layers\DAL\DALVendedor.cs" />
     <Compile Include="Layers\DAL\DALAdministrador.cs" />
     <Compile Include="Layers\DAL\DALMarca.cs" />
     <Compile Include="Layers\DAL\DALModelo.cs" />
+    <Compile Include="Layers\Entities\Bicicleta.cs" />
     <Compile Include="Layers\Entities\Cliente.cs" />
     <Compile Include="Layers\Entities\Administrador.cs" />
+    <Compile Include="Layers\Entities\Categoria.cs" />
+    <Compile Include="Layers\Entities\Producto.cs" />
     <Compile Include="Layers\Entities\Vendedor.cs" />
     <Compile Include="Layers\Entities\Usuario.cs" />
     <Compile Include="Layers\Entities\Marca.cs" />
@@ -94,6 +105,18 @@
     </Compile>
     <Compile Include="Layers\UI\frmMenuPrincipal.Designer.cs">
       <DependentUpon>frmMenuPrincipal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Layers\UI\Mantenimientos\frmMantenimientoBicicleta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Layers\UI\Mantenimientos\frmMantenimientoBicicleta.Designer.cs">
+      <DependentUpon>frmMantenimientoBicicleta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Layers\UI\Mantenimientos\frmMantenimientoCategoria.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Layers\UI\Mantenimientos\frmMantenimientoCategoria.Designer.cs">
+      <DependentUpon>frmMantenimientoCategoria.cs</DependentUpon>
     </Compile>
     <Compile Include="Layers\UI\Mantenimientos\frmMantenimientoVendedor.cs">
       <SubType>Form</SubType>
@@ -138,6 +161,12 @@
     <Compile Include="Util\UtilError.cs" />
     <EmbeddedResource Include="Layers\UI\frmMenuPrincipal.resx">
       <DependentUpon>frmMenuPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Layers\UI\Mantenimientos\frmMantenimientoBicicleta.resx">
+      <DependentUpon>frmMantenimientoBicicleta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Layers\UI\Mantenimientos\frmMantenimientoCategoria.resx">
+      <DependentUpon>frmMantenimientoCategoria.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Layers\UI\Mantenimientos\frmMantenimientoVendedor.resx">
       <DependentUpon>frmMantenimientoVendedor.cs</DependentUpon>
@@ -199,6 +228,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\arrow_left.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ColorPicker_Icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

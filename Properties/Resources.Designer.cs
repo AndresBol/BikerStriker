@@ -83,6 +83,16 @@ namespace BikerStriker.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ColorPicker_Icon {
+            get {
+                object obj = ResourceManager.GetObject("ColorPicker_Icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap CRUD_Logo {
             get {
                 object obj = ResourceManager.GetObject("CRUD_Logo", resourceCulture);

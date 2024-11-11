@@ -34,13 +34,15 @@
             this.pnlHeader = new System.Windows.Forms.Panel();
             this.lblChildFrmTitle = new System.Windows.Forms.Label();
             this.pnlDesktop = new System.Windows.Forms.Panel();
+            this.btnCategorias = new System.Windows.Forms.Button();
+            this.btnBicicletas = new System.Windows.Forms.Button();
+            this.btnVendedores = new System.Windows.Forms.Button();
             this.btnClientes = new System.Windows.Forms.Button();
             this.btnMarcas = new System.Windows.Forms.Button();
             this.btnAdministradores = new System.Windows.Forms.Button();
             this.btnModelos = new System.Windows.Forms.Button();
             this.btnMantenimientos = new System.Windows.Forms.Button();
             this.imgLogo = new System.Windows.Forms.PictureBox();
-            this.btnVendedores = new System.Windows.Forms.Button();
             this.pnlAsideMenu.SuspendLayout();
             this.pnlMantenimientos.SuspendLayout();
             this.pnlHeader.SuspendLayout();
@@ -61,6 +63,8 @@
             // 
             // pnlMantenimientos
             // 
+            this.pnlMantenimientos.Controls.Add(this.btnCategorias);
+            this.pnlMantenimientos.Controls.Add(this.btnBicicletas);
             this.pnlMantenimientos.Controls.Add(this.btnVendedores);
             this.pnlMantenimientos.Controls.Add(this.btnClientes);
             this.pnlMantenimientos.Controls.Add(this.btnMarcas);
@@ -69,7 +73,7 @@
             this.pnlMantenimientos.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlMantenimientos.Location = new System.Drawing.Point(0, 162);
             this.pnlMantenimientos.Name = "pnlMantenimientos";
-            this.pnlMantenimientos.Size = new System.Drawing.Size(208, 199);
+            this.pnlMantenimientos.Size = new System.Drawing.Size(208, 305);
             this.pnlMantenimientos.TabIndex = 5;
             // 
             // pnlHeader
@@ -100,6 +104,66 @@
             this.pnlDesktop.Name = "pnlDesktop";
             this.pnlDesktop.Size = new System.Drawing.Size(954, 453);
             this.pnlDesktop.TabIndex = 2;
+            // 
+            // btnCategorias
+            // 
+            this.btnCategorias.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.btnCategorias.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnCategorias.FlatAppearance.BorderSize = 0;
+            this.btnCategorias.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCategorias.Font = new System.Drawing.Font("Sylfaen", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCategorias.ForeColor = System.Drawing.Color.White;
+            this.btnCategorias.Image = ((System.Drawing.Image)(resources.GetObject("btnCategorias.Image")));
+            this.btnCategorias.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.btnCategorias.Location = new System.Drawing.Point(0, 222);
+            this.btnCategorias.Name = "btnCategorias";
+            this.btnCategorias.Size = new System.Drawing.Size(208, 37);
+            this.btnCategorias.TabIndex = 8;
+            this.btnCategorias.Text = "Categorias";
+            this.btnCategorias.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnCategorias.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnCategorias.UseVisualStyleBackColor = false;
+            this.btnCategorias.Click += new System.EventHandler(this.btnCategorias_Click);
+            // 
+            // btnBicicletas
+            // 
+            this.btnBicicletas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.btnBicicletas.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnBicicletas.FlatAppearance.BorderSize = 0;
+            this.btnBicicletas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBicicletas.Font = new System.Drawing.Font("Sylfaen", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBicicletas.ForeColor = System.Drawing.Color.White;
+            this.btnBicicletas.Image = ((System.Drawing.Image)(resources.GetObject("btnBicicletas.Image")));
+            this.btnBicicletas.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.btnBicicletas.Location = new System.Drawing.Point(0, 185);
+            this.btnBicicletas.Name = "btnBicicletas";
+            this.btnBicicletas.Size = new System.Drawing.Size(208, 37);
+            this.btnBicicletas.TabIndex = 7;
+            this.btnBicicletas.Text = "Bicicletas";
+            this.btnBicicletas.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnBicicletas.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnBicicletas.UseVisualStyleBackColor = false;
+            this.btnBicicletas.Click += new System.EventHandler(this.btnBicicletas_Click);
+            // 
+            // btnVendedores
+            // 
+            this.btnVendedores.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.btnVendedores.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnVendedores.FlatAppearance.BorderSize = 0;
+            this.btnVendedores.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnVendedores.Font = new System.Drawing.Font("Sylfaen", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVendedores.ForeColor = System.Drawing.Color.White;
+            this.btnVendedores.Image = ((System.Drawing.Image)(resources.GetObject("btnVendedores.Image")));
+            this.btnVendedores.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.btnVendedores.Location = new System.Drawing.Point(0, 148);
+            this.btnVendedores.Name = "btnVendedores";
+            this.btnVendedores.Size = new System.Drawing.Size(208, 37);
+            this.btnVendedores.TabIndex = 6;
+            this.btnVendedores.Text = "Vendedores";
+            this.btnVendedores.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnVendedores.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnVendedores.UseVisualStyleBackColor = false;
+            this.btnVendedores.Click += new System.EventHandler(this.btnVendedores_Click);
             // 
             // btnClientes
             // 
@@ -212,26 +276,6 @@
             this.imgLogo.TabIndex = 0;
             this.imgLogo.TabStop = false;
             // 
-            // btnVendedores
-            // 
-            this.btnVendedores.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.btnVendedores.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnVendedores.FlatAppearance.BorderSize = 0;
-            this.btnVendedores.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnVendedores.Font = new System.Drawing.Font("Sylfaen", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVendedores.ForeColor = System.Drawing.Color.White;
-            this.btnVendedores.Image = ((System.Drawing.Image)(resources.GetObject("btnVendedores.Image")));
-            this.btnVendedores.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnVendedores.Location = new System.Drawing.Point(0, 148);
-            this.btnVendedores.Name = "btnVendedores";
-            this.btnVendedores.Size = new System.Drawing.Size(208, 37);
-            this.btnVendedores.TabIndex = 6;
-            this.btnVendedores.Text = "Vendedores";
-            this.btnVendedores.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnVendedores.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnVendedores.UseVisualStyleBackColor = false;
-            this.btnVendedores.Click += new System.EventHandler(this.btnVendedores_Click);
-            // 
             // frmMenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -267,6 +311,8 @@
         private System.Windows.Forms.Panel pnlMantenimientos;
         private System.Windows.Forms.Button btnClientes;
         private System.Windows.Forms.Button btnVendedores;
+        private System.Windows.Forms.Button btnBicicletas;
+        private System.Windows.Forms.Button btnCategorias;
     }
 }
 

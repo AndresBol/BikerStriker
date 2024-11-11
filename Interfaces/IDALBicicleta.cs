@@ -11,8 +11,9 @@ namespace BikerStriker.Interfaces
     {
         List<Bicicleta> GetAllBicicleta();
         List<Bicicleta> GetAllBicicletaFromCliente(int ClienteId);
+        int GetClientIdFromId(int id);
         void Insertar(Bicicleta bicicleta, int ClienteId);
-        void Actualizar(Bicicleta bicicleta);
+        void Actualizar(Bicicleta bicicleta, int ClienteId);
         void Desactivar(int id);
         Bicicleta GetBicicletaByID(int id);
     }

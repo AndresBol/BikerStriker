@@ -32,6 +32,22 @@ namespace BikerStriker.Layers.BLL
             }
         }
 
+        public int GetClientIdFromId(int id)
+        {
+            var dal = new DALBicicleta();
+
+            int existe = dal.GetClientIdFromId(id);
+
+            if (existe != 0)
+            {
+                return existe;
+            }
+            else
+            {
+                throw new ApplicationException($"La bicicleta con id {id} no tiene cliente!");
+            }
+        }
+
         public void Save(Bicicleta bicicleta, int ClienteId)
         {
             var dal = new DALBicicleta();
@@ -39,7 +55,7 @@ namespace BikerStriker.Layers.BLL
 
             if (existe != null)
             {
-                dal.Actualizar(bicicleta);
+                dal.Actualizar(bicicleta, ClienteId);
             }
             else
             {

@@ -17,6 +17,21 @@ namespace BikerStriker.Layers.BLL
             return _DALCliente.GetAllCliente();
         }
 
+        public Cliente GetClienteByID(int id)
+        {
+            var dal = new DALCliente();
+            var existe = dal.GetClienteByID(id);
+
+            if (existe != null)
+            {
+                return existe;
+            }
+            else
+            {
+                throw new ApplicationException($"El Cliente con id {id} no existe!");
+            }
+        }
+
         public void Save(Cliente cliente)
         {
             var dal = new DALCliente();

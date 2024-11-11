@@ -117,23 +117,30 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="CRUD_Logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\CRUD_Logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="btnColor.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACMAAAAjCAYAAAAe2bNZAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        wwAADsMBx2+oZAAAAwRJREFUWEft1lmoTVEYwPFjnjPPQySSKBkLkRdDUcrQjUeeJBEpQ8aUZCp5khBJ
+        KRIh8uDJCxIyZsg8ZCrz/P/fzrrtc5yzz77n3tN9cL/6dTrT3t9e61vfWqnaKFE0QHPUK39XQ1EHA7AR
+        5zAy/VmNRCdcxi/8xkE0QY1ESyzHdfzBD0yGo9MQTl9Jw9rogzGYgraYj5DMKnTHNuzGXDRF0eGT+dRD
+        MAur4RQ4JY/wEm9xAI1wDO9gUv5vGUzMBD9hOioVPuF2XMAL/IQXy8fE2sPEO6ALLGavERLRffRDpWqp
+        B24gesN87mEYjBFwhM7gCSzk8LtnmITB2IHGSBRJk/mGxagLi3QnXE3R3ziqVzAozeu+xlgkiiTJ+NT7
+        EIa8Dc4jfO/0uLLWwCKehmsI3x9CMxSMJMmchnUSwgvvxWMcxUz0hLVzBO8R/f9XzEbBKJSM9TAc2eEW
+        0Aqd4epzSZvEKziFm3AVn+F1rKOOiI24ZKyJeci399hLXF0uY3/vq6PUG0uxC7cROvVWxDbEuGR8Qos1
+        X3SFfSb8/g4m4Ba+pz+LFvlD9EfeyJWMT3EWrVEoliD0F5OwX0WXebbY0cmVjIU5FEl2YpveJfi/L7AF
+        RK+V7SMmImdkJ+NTzoH9JEmY8CK4YqI3jWMvaoF/IpqM87wZSRMJ4YWjfacQE8+5MEIyzvMJtEMxYY/5
+        gFw3j3Kpey9HxynOiJCMm6T7TbFRH1uQvUVEWS+n4LZhQiuQUZcm4wooK39XtXB0HiBXIt7cI8c6hNXn
+        UvchKqIbpqI6TmfWwAaE0fEM5KjfhUcMpyVssI7OQvifitpxmCpbsHHhIesmwmh4hHDE3DZGwcZop3ah
+        uD2sxXiULLy49RESeoqL6Vf3KzfNvtgDazXxEaOY8Lx8GCYjp8Vm6F5ljcoObytZj4y6KUWMw0kcx0q4
+        J3mgdwN9Dot3AZJ0+SqHN7EZ9sIM7If14pbhId+TYL7TQEnCZCzmN/Cc49SMRtxJoKQxEB4rLNjqXLW1
+        8d9HKvUXPyA/ZQMkN7sAAAAASUVORK5CYII=
+</value>
   </data>
-  <data name="SearchImage_Logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\SearchImage_Logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Logo_BikerStriker_BlackBackground" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Logo_BikerStriker_BlackBackground.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="arrow_down" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\arrow_down.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="arrow_left" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\arrow_left.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ColorPicker_Icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ColorPicker_Icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
+  <metadata name="colorDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>50</value>
+  </metadata>
 </root>

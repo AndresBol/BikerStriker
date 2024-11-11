@@ -127,6 +127,49 @@ namespace BikerStriker.Layers.DAL
             }
         }
 
+        public int GetClientIdFromId(int id)
+        {
+            string msg = "";
+            IDataReader reader = null;
+            List<Bicicleta> lista = new List<Bicicleta>();
+
+            string sql = @" select id_Cliente from Bicicleta where id = @id";
+
+            SqlCommand command = new SqlCommand();
+            command.Parameters.AddWithValue("@id", id);
+            command.CommandText = sql;
+            command.CommandType = CommandType.Text;
+
+            try
+            {
+                int idClienteBici = 0;
+
+                using (IDataBase db = FactoryDatabase.CreateDataBase(FactoryConexion.CreateConnection()))
+                {
+                    reader = db.ExecuteReader(command);
+
+                    while (reader.Read())
+                    {
+                        idClienteBici = (int) reader["id_Cliente"];
+
+                    }
+                }
+
+                return idClienteBici;
+            }
+            catch (SqlException er)
+            {
+                _Logger.ErrorFormat("Error {0}", msg.ToExceptionDetail(MethodBase.GetCurrentMethod(), er, command));
+                throw new DatabaseException(msg.ToSqlServerDetailError(er), er);
+            }
+            catch (Exception er)
+            {
+                msg = msg.ToExceptionDetail(er, MethodBase.GetCurrentMethod());
+                _Logger.ErrorFormat("Error {0}", msg.ToString());
+                throw;
+            }
+        }
+
         public void Insertar(Bicicleta bicicleta, int ClienteId)
         {
             string msg = "";
@@ -159,14 +202,16 @@ namespace BikerStriker.Layers.DAL
             }
         }
 
-        public void Actualizar(Bicicleta bicicleta)
+        public void Actualizar(Bicicleta bicicleta, int ClienteId)
         {
             string msg = "";
-            string sql = @"Update  Bicicleta SET numeroSerie = @numeroSerie, color = @color  Where (id = @id)";
+            string sql = @"Update  Bicicleta SET numeroSerie = @numeroSerie, color = @color, id_Modelo = @id_Modelo, id_Cliente = @id_Cliente  Where (id = @id)";
             SqlCommand command = new SqlCommand();
             command.Parameters.AddWithValue("@id", bicicleta.Id);
             command.Parameters.AddWithValue("@numeroSerie", bicicleta.NumeroSerie);
             command.Parameters.AddWithValue("@color", ColorTranslator.ToHtml(bicicleta.Color));
+            command.Parameters.AddWithValue("@id_Modelo", bicicleta.Modelo.Id);
+            command.Parameters.AddWithValue("@id_Cliente", ClienteId);
             command.CommandType = CommandType.Text;
             command.CommandText = sql;
 
@@ -233,7 +278,7 @@ namespace BikerStriker.Layers.DAL
 
             try
             {
-                Bicicleta bicicleta = new Bicicleta();
+                Bicicleta bicicleta = null;
                 BLLModelo bllModelo = new BLLModelo();
 
                 using (IDataBase db = FactoryDatabase.CreateDataBase(FactoryConexion.CreateConnection()))
@@ -242,7 +287,7 @@ namespace BikerStriker.Layers.DAL
 
                     while (reader.Read())
                     {
-
+                        bicicleta = new Bicicleta();
                         bicicleta.Id = (int)reader["id"];
                         bicicleta.NumeroSerie = reader["numeroSerie"].ToString();
                         bicicleta.Color = ColorTranslator.FromHtml(reader["color"].ToString());

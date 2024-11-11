@@ -7,11 +7,11 @@ using BikerStriker.Layers.Entities;
 
 namespace BikerStriker.Interfaces
 {
-    internal interface IBLLCliente
+    internal interface IBLLCategoria
     {
-        List<Cliente> GetAllCliente();
-        Cliente GetClienteByID(int id);
-        void Save(Cliente cliente);
+        List<Categoria> GetAllCategoria();
+
+        void Save(Categoria categoria);
         void Remove(int id);
     }
 }
