@@ -113,9 +113,29 @@ namespace BikerStriker.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Logo_BikerStriker_WhiteBackground_WithSlogan {
+            get {
+                object obj = ResourceManager.GetObject("Logo_BikerStriker_WhiteBackground_WithSlogan", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap SearchImage_Logo {
             get {
                 object obj = ResourceManager.GetObject("SearchImage_Logo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap user_logo {
+            get {
+                object obj = ResourceManager.GetObject("user_logo", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

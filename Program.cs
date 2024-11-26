@@ -1,4 +1,4 @@
-﻿using BikerStriker.Layers.UI.Mantenimientos;
+﻿using BikerStriker.Layers.UI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +17,11 @@ namespace BikerStriker
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmMenuPrincipal());
+
+            frmLogin ofrmLogin = new frmLogin();
+            ofrmLogin.ShowDialog();
+
+            if(ofrmLogin.DialogResult == DialogResult.OK) Application.Run(new frmMenuPrincipal());
         }
     }
 }

@@ -9,6 +9,7 @@ namespace BikerStriker.Interfaces
 {
     internal interface IDALUsuario
     {
+        Usuario Login(string pLogin, string pPassword);
         List<Usuario> GetAllUsuario();
         void Insertar(Usuario usuario);
         void Actualizar(Usuario usuario);

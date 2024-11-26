@@ -1,5 +1,6 @@
 ﻿using BikerStriker.Enums;
 using BikerStriker.Layers.UI.Mantenimientos;
+using BikerStriker.Properties;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,6 +20,7 @@ namespace BikerStriker
         {
             InitializeComponent();
             pnlMantenimientos.Visible = false;
+            lblUsuario.Text = Settings.Default.Nombre;
         }
 
         private void OpenChildForm(Form childfrm)

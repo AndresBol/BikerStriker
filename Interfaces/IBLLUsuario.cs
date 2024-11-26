@@ -9,8 +9,8 @@ namespace BikerStriker.Interfaces
 {
     internal interface IBLLUsuario
     {
+        Usuario Login(string pLogin, string pPassword);
         List<Usuario> GetAllUsuario();
-
         void Save(Usuario usuario);
         void Remove(int id);
         int GetIdByEmail(string email);

@@ -32,6 +32,63 @@ namespace BikerStriker.Layers.DAL
 
         private static readonly ILog _Logger = LogManager.GetLogger("MyControlEventos");
 
+        public Usuario Login(string pLogin, string pPassword)
+        {
+            Usuario usuario = null;
+
+            string msg = "";
+            IDataReader reader = null;
+            string sql = @"Select  *  from  Usuario   Where (correo = @correo and contrasena = @contrasena)";
+            SqlCommand command = new SqlCommand();
+            command.Parameters.AddWithValue("@correo", pLogin);
+            command.Parameters.AddWithValue("@contrasena", pPassword);
+            command.CommandType = CommandType.Text;
+            command.CommandText = sql;
+
+            try
+            {
+                using (IDataBase db = FactoryDatabase.CreateDataBase(FactoryConexion.CreateConnection()))
+                {
+                    reader = db.ExecuteReader(command);
+
+                    while (reader.Read())
+                    {
+                        switch ((TipoUsuario)Convert.ToInt16(reader["tipoUsuario"].ToString()))
+                        {
+                            case TipoUsuario.Cliente:
+                                usuario = new Cliente();
+                                break;
+                            case TipoUsuario.Vendedor:
+                                usuario = new Vendedor();
+                                break;
+                            case TipoUsuario.Administrador:
+                                usuario = new Administrador();
+                                break;
+                        }
+
+                        usuario.UsuarioId = (int)reader["id"];
+                        usuario.Correo = reader["correo"].ToString();
+                        usuario.Contraseña = reader["contrasena"].ToString();
+                        usuario.Nombre = reader["nombre"].ToString();
+                        usuario.Apellidos = reader["apellidos"].ToString();
+                    }
+
+                    return usuario;
+                }
+            }
+            catch (SqlException er)
+            {
+                _Logger.ErrorFormat("Error {0}", msg.ToExceptionDetail(MethodBase.GetCurrentMethod(), er, command));
+                throw new DatabaseException(msg.ToSqlServerDetailError(er), er);
+            }
+            catch (Exception er)
+            {
+                msg = msg.ToExceptionDetail(er, MethodBase.GetCurrentMethod());
+                _Logger.ErrorFormat("Error {0}", msg.ToString());
+                throw;
+            }
+        }
+
         public List<Usuario> GetAllUsuario()
         {
             string msg = "";

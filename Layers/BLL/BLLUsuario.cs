@@ -11,6 +11,12 @@ namespace BikerStriker.Layers.BLL
 {
     internal class BLLUsuario : IBLLUsuario
     {
+        public Usuario Login(string pLogin, string pPassword)
+        {
+            IDALUsuario _DALUsuario = new DALUsuario();
+
+            return _DALUsuario.Login(pLogin, pPassword);
+        }
         public List<Usuario> GetAllUsuario()
         {
             IDALUsuario _DALUsuario = new DALUsuario();

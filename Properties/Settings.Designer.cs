@@ -8,6 +8,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using BikerStriker.Enums;
+
 namespace BikerStriker.Properties
 {
 
@@ -24,6 +26,66 @@ namespace BikerStriker.Properties
             get
             {
                 return defaultInstance;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Correo
+        {
+            get
+            {
+                return ((string)(this["Correo"]));
+            }
+            set
+            {
+                this["Correo"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Contrasena
+        {
+            get
+            {
+                return ((string)(this["Contrasena"]));
+            }
+            set
+            {
+                this["Contrasena"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Nombre
+        {
+            get
+            {
+                return ((string)(this["Nombre"]));
+            }
+            set
+            {
+                this["Nombre"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public TipoUsuario TipoUsuario
+        {
+            get
+            {
+                return ((TipoUsuario)(this["TipoUsuario"]));
+            }
+            set
+            {
+                this["TipoUsuario"] = value;
             }
         }
     }

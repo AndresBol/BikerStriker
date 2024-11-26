@@ -31,9 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMenuPrincipal));
             this.pnlAsideMenu = new System.Windows.Forms.Panel();
             this.pnlMantenimientos = new System.Windows.Forms.Panel();
-            this.pnlHeader = new System.Windows.Forms.Panel();
-            this.lblChildFrmTitle = new System.Windows.Forms.Label();
-            this.pnlDesktop = new System.Windows.Forms.Panel();
+            this.btnTiendas = new System.Windows.Forms.Button();
             this.btnProductos = new System.Windows.Forms.Button();
             this.btnCategorias = new System.Windows.Forms.Button();
             this.btnBicicletas = new System.Windows.Forms.Button();
@@ -44,11 +42,18 @@
             this.btnModelos = new System.Windows.Forms.Button();
             this.btnMantenimientos = new System.Windows.Forms.Button();
             this.imgLogo = new System.Windows.Forms.PictureBox();
-            this.btnTiendas = new System.Windows.Forms.Button();
+            this.pnlHeader = new System.Windows.Forms.Panel();
+            this.pnlUsuario = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.lblUsuario = new System.Windows.Forms.Label();
+            this.lblChildFrmTitle = new System.Windows.Forms.Label();
+            this.pnlDesktop = new System.Windows.Forms.Panel();
             this.pnlAsideMenu.SuspendLayout();
             this.pnlMantenimientos.SuspendLayout();
-            this.pnlHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgLogo)).BeginInit();
+            this.pnlHeader.SuspendLayout();
+            this.pnlUsuario.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlAsideMenu
@@ -80,34 +85,25 @@
             this.pnlMantenimientos.Size = new System.Drawing.Size(208, 348);
             this.pnlMantenimientos.TabIndex = 5;
             // 
-            // pnlHeader
+            // btnTiendas
             // 
-            this.pnlHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            this.pnlHeader.Controls.Add(this.lblChildFrmTitle);
-            this.pnlHeader.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlHeader.Location = new System.Drawing.Point(208, 0);
-            this.pnlHeader.Name = "pnlHeader";
-            this.pnlHeader.Size = new System.Drawing.Size(954, 125);
-            this.pnlHeader.TabIndex = 1;
-            // 
-            // lblChildFrmTitle
-            // 
-            this.lblChildFrmTitle.AutoSize = true;
-            this.lblChildFrmTitle.Font = new System.Drawing.Font("Sylfaen", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblChildFrmTitle.ForeColor = System.Drawing.Color.White;
-            this.lblChildFrmTitle.Location = new System.Drawing.Point(18, 35);
-            this.lblChildFrmTitle.Name = "lblChildFrmTitle";
-            this.lblChildFrmTitle.Size = new System.Drawing.Size(262, 48);
-            this.lblChildFrmTitle.TabIndex = 0;
-            this.lblChildFrmTitle.Text = "Menú Principal";
-            // 
-            // pnlDesktop
-            // 
-            this.pnlDesktop.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlDesktop.Location = new System.Drawing.Point(208, 125);
-            this.pnlDesktop.Name = "pnlDesktop";
-            this.pnlDesktop.Size = new System.Drawing.Size(954, 453);
-            this.pnlDesktop.TabIndex = 2;
+            this.btnTiendas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.btnTiendas.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnTiendas.FlatAppearance.BorderSize = 0;
+            this.btnTiendas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTiendas.Font = new System.Drawing.Font("Sylfaen", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTiendas.ForeColor = System.Drawing.Color.White;
+            this.btnTiendas.Image = ((System.Drawing.Image)(resources.GetObject("btnTiendas.Image")));
+            this.btnTiendas.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.btnTiendas.Location = new System.Drawing.Point(0, 296);
+            this.btnTiendas.Name = "btnTiendas";
+            this.btnTiendas.Size = new System.Drawing.Size(208, 37);
+            this.btnTiendas.TabIndex = 10;
+            this.btnTiendas.Text = "Tiendas";
+            this.btnTiendas.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnTiendas.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnTiendas.UseVisualStyleBackColor = false;
+            this.btnTiendas.Click += new System.EventHandler(this.btnTiendas_Click);
             // 
             // btnProductos
             // 
@@ -300,25 +296,67 @@
             this.imgLogo.TabIndex = 0;
             this.imgLogo.TabStop = false;
             // 
-            // btnTiendas
+            // pnlHeader
             // 
-            this.btnTiendas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.btnTiendas.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnTiendas.FlatAppearance.BorderSize = 0;
-            this.btnTiendas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnTiendas.Font = new System.Drawing.Font("Sylfaen", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTiendas.ForeColor = System.Drawing.Color.White;
-            this.btnTiendas.Image = ((System.Drawing.Image)(resources.GetObject("btnTiendas.Image")));
-            this.btnTiendas.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnTiendas.Location = new System.Drawing.Point(0, 296);
-            this.btnTiendas.Name = "btnTiendas";
-            this.btnTiendas.Size = new System.Drawing.Size(208, 37);
-            this.btnTiendas.TabIndex = 10;
-            this.btnTiendas.Text = "Tiendas";
-            this.btnTiendas.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnTiendas.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnTiendas.UseVisualStyleBackColor = false;
-            this.btnTiendas.Click += new System.EventHandler(this.btnTiendas_Click);
+            this.pnlHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            this.pnlHeader.Controls.Add(this.pnlUsuario);
+            this.pnlHeader.Controls.Add(this.lblChildFrmTitle);
+            this.pnlHeader.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlHeader.Location = new System.Drawing.Point(208, 0);
+            this.pnlHeader.Name = "pnlHeader";
+            this.pnlHeader.Size = new System.Drawing.Size(954, 125);
+            this.pnlHeader.TabIndex = 1;
+            // 
+            // pnlUsuario
+            // 
+            this.pnlUsuario.Controls.Add(this.lblUsuario);
+            this.pnlUsuario.Controls.Add(this.pictureBox1);
+            this.pnlUsuario.Dock = System.Windows.Forms.DockStyle.Right;
+            this.pnlUsuario.Location = new System.Drawing.Point(608, 0);
+            this.pnlUsuario.Name = "pnlUsuario";
+            this.pnlUsuario.Size = new System.Drawing.Size(346, 125);
+            this.pnlUsuario.TabIndex = 1;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::BikerStriker.Properties.Resources.user_logo;
+            this.pictureBox1.Location = new System.Drawing.Point(275, 33);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(53, 50);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 3;
+            this.pictureBox1.TabStop = false;
+            // 
+            // lblUsuario
+            // 
+            this.lblUsuario.AutoSize = true;
+            this.lblUsuario.Font = new System.Drawing.Font("Sylfaen", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUsuario.ForeColor = System.Drawing.Color.White;
+            this.lblUsuario.Location = new System.Drawing.Point(129, 35);
+            this.lblUsuario.Name = "lblUsuario";
+            this.lblUsuario.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.lblUsuario.Size = new System.Drawing.Size(140, 48);
+            this.lblUsuario.TabIndex = 2;
+            this.lblUsuario.Text = "Usuario";
+            // 
+            // lblChildFrmTitle
+            // 
+            this.lblChildFrmTitle.AutoSize = true;
+            this.lblChildFrmTitle.Font = new System.Drawing.Font("Sylfaen", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblChildFrmTitle.ForeColor = System.Drawing.Color.White;
+            this.lblChildFrmTitle.Location = new System.Drawing.Point(18, 35);
+            this.lblChildFrmTitle.Name = "lblChildFrmTitle";
+            this.lblChildFrmTitle.Size = new System.Drawing.Size(262, 48);
+            this.lblChildFrmTitle.TabIndex = 0;
+            this.lblChildFrmTitle.Text = "Menú Principal";
+            // 
+            // pnlDesktop
+            // 
+            this.pnlDesktop.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlDesktop.Location = new System.Drawing.Point(208, 125);
+            this.pnlDesktop.Name = "pnlDesktop";
+            this.pnlDesktop.Size = new System.Drawing.Size(954, 453);
+            this.pnlDesktop.TabIndex = 2;
             // 
             // frmMenuPrincipal
             // 
@@ -334,9 +372,12 @@
             this.Text = "Menú Principal";
             this.pnlAsideMenu.ResumeLayout(false);
             this.pnlMantenimientos.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.imgLogo)).EndInit();
             this.pnlHeader.ResumeLayout(false);
             this.pnlHeader.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.imgLogo)).EndInit();
+            this.pnlUsuario.ResumeLayout(false);
+            this.pnlUsuario.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -359,6 +400,9 @@
         private System.Windows.Forms.Button btnCategorias;
         private System.Windows.Forms.Button btnProductos;
         private System.Windows.Forms.Button btnTiendas;
+        private System.Windows.Forms.Panel pnlUsuario;
+        private System.Windows.Forms.Label lblUsuario;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 
