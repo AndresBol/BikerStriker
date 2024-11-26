@@ -2,6 +2,7 @@
 using BikerStriker.Interfaces;
 using BikerStriker.Layers.BLL;
 using BikerStriker.Layers.Entities;
+using BikerStriker.Util;
 using log4net;
 using System;
 using System.Collections.Generic;
@@ -132,5 +133,35 @@ namespace BikerStriker.Layers.UI.Mantenimientos
             btnAdd.Visible = true;
         }
 
+        private async void txtIdentificacion_TextChanged(object sender, EventArgs e)
+        {
+            string cedula = txtIdentificacion.Text;
+
+            if (Regex.IsMatch(cedula, @"^\d-\d{4}-\d{4}$"))
+            {
+                string nombre = await HaciendaApiHelper.ObtenerNombrePorCedulaAsync(cedula.Replace("-", ""));
+                
+                if(nombre != null)
+                {
+                    string[] nombreSegmentado = nombre.Split(' ');
+
+                    for (int i = 0; i < nombreSegmentado.Length; i++)
+                    {
+                        nombreSegmentado[i] = char.ToUpper(nombreSegmentado[i][0]) + nombreSegmentado[i].Substring(1).ToLower();
+                    }
+                    
+                    if(nombreSegmentado.Length >= 4)
+                    {
+                        txtNombre.Text = $"{nombreSegmentado[0]} {nombreSegmentado[1]}";
+                        txtApellidos.Text = $"{nombreSegmentado[2]} {nombreSegmentado[3]}";
+                    }
+                    else
+                    {
+                        txtNombre.Text = $"{nombreSegmentado[0]}";
+                        txtApellidos.Text = $"{nombreSegmentado[1]} {nombreSegmentado[2]}";
+                    }
+                }
+            }
+        }
     }
 }

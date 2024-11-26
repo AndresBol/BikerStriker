@@ -2,14 +2,16 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using System.Xml.Linq;
 
 namespace BikerStriker.Util
 {
-    public class HaciendaApiHelper
+    public static class HaciendaApiHelper
     {
         private static readonly HttpClient client = new HttpClient();
 
@@ -20,6 +22,13 @@ namespace BikerStriker.Util
                 string url = $"https://api.hacienda.go.cr/fe/ae?identificacion={cedula}";
 
                 HttpResponseMessage response = await client.GetAsync(url);
+
+                if (response.StatusCode == HttpStatusCode.NotFound)
+                {
+                    MessageBox.Show("Error: Verifique la cédula ingresada.");
+                    return null;
+                }
+
                 response.EnsureSuccessStatusCode();
 
                 string responseBody = await response.Content.ReadAsStringAsync();
@@ -32,11 +41,13 @@ namespace BikerStriker.Util
             }
             catch (HttpRequestException e)
             {
-                return $"Error al realizar la solicitud: {e.Message}";
+                MessageBox.Show($"Error al realizar la solicitud: {e.Message}");
+                return null;
             }
             catch (Exception e)
             {
-                return $"Error inesperado: {e.Message}";
+                MessageBox.Show($"Error inesperado: {e.Message}");
+                return null;
             }
         }
     }

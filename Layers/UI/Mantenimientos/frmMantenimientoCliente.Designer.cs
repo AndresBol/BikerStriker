@@ -39,10 +39,10 @@
             this.btnAdd = new System.Windows.Forms.Button();
             this.pnlBotom = new System.Windows.Forms.Panel();
             this.pnlRight = new System.Windows.Forms.Panel();
+            this.txtIdentificacion = new System.Windows.Forms.TextBox();
             this.cmbGenero = new System.Windows.Forms.ComboBox();
             this.lblGenero = new System.Windows.Forms.Label();
             this.lblIdentificacion = new System.Windows.Forms.Label();
-            this.txtIdentificacion = new System.Windows.Forms.TextBox();
             this.lblApellidos = new System.Windows.Forms.Label();
             this.txtApellidos = new System.Windows.Forms.TextBox();
             this.pnlLeft = new System.Windows.Forms.Panel();
@@ -168,10 +168,10 @@
             // 
             // pnlRight
             // 
+            this.pnlRight.Controls.Add(this.txtIdentificacion);
             this.pnlRight.Controls.Add(this.cmbGenero);
             this.pnlRight.Controls.Add(this.lblGenero);
             this.pnlRight.Controls.Add(this.lblIdentificacion);
-            this.pnlRight.Controls.Add(this.txtIdentificacion);
             this.pnlRight.Controls.Add(this.lblApellidos);
             this.pnlRight.Controls.Add(this.txtApellidos);
             this.pnlRight.Controls.Add(this.lblNombre);
@@ -183,6 +183,14 @@
             this.pnlRight.Name = "pnlRight";
             this.pnlRight.Size = new System.Drawing.Size(399, 215);
             this.pnlRight.TabIndex = 1;
+            // 
+            // txtIdentificacion
+            // 
+            this.txtIdentificacion.Location = new System.Drawing.Point(118, 35);
+            this.txtIdentificacion.Name = "txtIdentificacion";
+            this.txtIdentificacion.Size = new System.Drawing.Size(269, 20);
+            this.txtIdentificacion.TabIndex = 14;
+            this.txtIdentificacion.TextChanged += new System.EventHandler(this.txtIdentificacion_TextChanged);
             // 
             // cmbGenero
             // 
@@ -210,13 +218,6 @@
             this.lblIdentificacion.Size = new System.Drawing.Size(70, 13);
             this.lblIdentificacion.TabIndex = 10;
             this.lblIdentificacion.Text = "Identificación";
-            // 
-            // txtIdentificacion
-            // 
-            this.txtIdentificacion.Location = new System.Drawing.Point(118, 35);
-            this.txtIdentificacion.Name = "txtIdentificacion";
-            this.txtIdentificacion.Size = new System.Drawing.Size(269, 20);
-            this.txtIdentificacion.TabIndex = 11;
             // 
             // lblApellidos
             // 
@@ -326,10 +327,10 @@
         private System.Windows.Forms.Label lblApellidos;
         private System.Windows.Forms.TextBox txtApellidos;
         private System.Windows.Forms.Label lblIdentificacion;
-        private System.Windows.Forms.TextBox txtIdentificacion;
         private System.Windows.Forms.ComboBox cmbGenero;
         private System.Windows.Forms.Label lblGenero;
         private System.Windows.Forms.TextBox txtDireccion;
         private System.Windows.Forms.Label lblDireccion;
+        private System.Windows.Forms.TextBox txtIdentificacion;
     }
 }

@@ -30,6 +30,12 @@ namespace BikerStriker.Layers.UI
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
+            LogIn();
+        }
+
+
+        private void LogIn()
+        {
             // Debe validar los datos requeridos
             IBLLUsuario _BLLUsuario = new BLLUsuario();
             epError.Clear();
