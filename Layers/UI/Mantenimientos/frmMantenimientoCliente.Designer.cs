@@ -46,7 +46,9 @@
             this.lblApellidos = new System.Windows.Forms.Label();
             this.txtApellidos = new System.Windows.Forms.TextBox();
             this.pnlLeft = new System.Windows.Forms.Panel();
-            this.txtDireccion = new System.Windows.Forms.TextBox();
+            this.cmbDistrito = new System.Windows.Forms.ComboBox();
+            this.cmbCanton = new System.Windows.Forms.ComboBox();
+            this.cmbProvincia = new System.Windows.Forms.ComboBox();
             this.lblDireccion = new System.Windows.Forms.Label();
             this.txtContrasena = new System.Windows.Forms.TextBox();
             this.lblContrasena = new System.Windows.Forms.Label();
@@ -237,7 +239,9 @@
             // 
             // pnlLeft
             // 
-            this.pnlLeft.Controls.Add(this.txtDireccion);
+            this.pnlLeft.Controls.Add(this.cmbDistrito);
+            this.pnlLeft.Controls.Add(this.cmbCanton);
+            this.pnlLeft.Controls.Add(this.cmbProvincia);
             this.pnlLeft.Controls.Add(this.lblDireccion);
             this.pnlLeft.Controls.Add(this.txtContrasena);
             this.pnlLeft.Controls.Add(this.btnAdd);
@@ -251,19 +255,40 @@
             this.pnlLeft.Size = new System.Drawing.Size(354, 215);
             this.pnlLeft.TabIndex = 0;
             // 
-            // txtDireccion
+            // cmbDistrito
             // 
-            this.txtDireccion.Location = new System.Drawing.Point(100, 91);
-            this.txtDireccion.Multiline = true;
-            this.txtDireccion.Name = "txtDireccion";
-            this.txtDireccion.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtDireccion.Size = new System.Drawing.Size(251, 38);
-            this.txtDireccion.TabIndex = 12;
+            this.cmbDistrito.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbDistrito.FormattingEnabled = true;
+            this.cmbDistrito.Location = new System.Drawing.Point(188, 116);
+            this.cmbDistrito.Name = "cmbDistrito";
+            this.cmbDistrito.Size = new System.Drawing.Size(163, 21);
+            this.cmbDistrito.TabIndex = 14;
+            // 
+            // cmbCanton
+            // 
+            this.cmbCanton.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbCanton.DropDownWidth = 170;
+            this.cmbCanton.FormattingEnabled = true;
+            this.cmbCanton.Location = new System.Drawing.Point(21, 116);
+            this.cmbCanton.Name = "cmbCanton";
+            this.cmbCanton.Size = new System.Drawing.Size(161, 21);
+            this.cmbCanton.TabIndex = 13;
+            this.cmbCanton.SelectedIndexChanged += new System.EventHandler(this.cmbCanton_SelectedIndexChanged);
+            // 
+            // cmbProvincia
+            // 
+            this.cmbProvincia.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbProvincia.FormattingEnabled = true;
+            this.cmbProvincia.Location = new System.Drawing.Point(100, 86);
+            this.cmbProvincia.Name = "cmbProvincia";
+            this.cmbProvincia.Size = new System.Drawing.Size(251, 21);
+            this.cmbProvincia.TabIndex = 12;
+            this.cmbProvincia.SelectedIndexChanged += new System.EventHandler(this.cmbProvincia_SelectedIndexChanged);
             // 
             // lblDireccion
             // 
             this.lblDireccion.AutoSize = true;
-            this.lblDireccion.Location = new System.Drawing.Point(18, 94);
+            this.lblDireccion.Location = new System.Drawing.Point(18, 90);
             this.lblDireccion.Name = "lblDireccion";
             this.lblDireccion.Size = new System.Drawing.Size(52, 13);
             this.lblDireccion.TabIndex = 11;
@@ -298,6 +323,7 @@
             this.Name = "frmMantenimientoCliente";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Mantenimiento de Clientes";
+            this.Load += new System.EventHandler(this.frmMantenimientoCliente_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).EndInit();
             this.pnlBotom.ResumeLayout(false);
             this.pnlRight.ResumeLayout(false);
@@ -329,8 +355,10 @@
         private System.Windows.Forms.Label lblIdentificacion;
         private System.Windows.Forms.ComboBox cmbGenero;
         private System.Windows.Forms.Label lblGenero;
-        private System.Windows.Forms.TextBox txtDireccion;
         private System.Windows.Forms.Label lblDireccion;
         private System.Windows.Forms.TextBox txtIdentificacion;
+        private System.Windows.Forms.ComboBox cmbCanton;
+        private System.Windows.Forms.ComboBox cmbProvincia;
+        private System.Windows.Forms.ComboBox cmbDistrito;
     }
 }

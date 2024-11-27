@@ -21,19 +21,39 @@ namespace BikerStriker.Layers.UI.Mantenimientos
     public partial class frmMantenimientoCliente : Form
     {
         private static readonly ILog _Logger = LogManager.GetLogger("MyControlEventos");
+
+        private CR_DirectorioApiHelper Cr_Directorio = new CR_DirectorioApiHelper();
         public frmMantenimientoCliente()
         {
             InitializeComponent();
+        }
+
+        private async void frmMantenimientoCliente_Load(object sender, EventArgs e)
+        {
+            await Inicializar();
             cmbGenero.DataSource = Enum.GetValues(typeof(TipoGenero));
             ActualizarTabla();
-            CrearClienteComponentes();
         }
+
+        public async Task Inicializar()
+        {
+            await Cr_Directorio.LlenarListasAsync();
+
+            cmbProvincia.DataSource = Cr_Directorio.Provincias;
+        }
+
 
         private void ActualizarCampos(Cliente cliente)
         {
             txtCorreo.Text = cliente.Correo;
             txtContrasena.Text = cliente.Contraseña;
-            txtDireccion.Text = cliente.Direccion;
+            
+            string[] direccion = cliente.Direccion.Split(',');
+
+            cmbProvincia.SelectedIndex = cmbProvincia.FindString(direccion[0]);
+            cmbCanton.SelectedIndex = cmbCanton.FindString(direccion[1]);
+            cmbDistrito.SelectedIndex = cmbDistrito.FindString(direccion[2]);
+
             txtIdentificacion.Text = cliente.Identificacion;
             txtNombre.Text = cliente.Nombre;
             txtApellidos.Text = cliente.Apellidos;
@@ -65,7 +85,7 @@ namespace BikerStriker.Layers.UI.Mantenimientos
                 Cliente cliente = new Cliente();
                 cliente.Correo = txtCorreo.Text;
                 cliente.Contraseña = txtContrasena.Text;
-                cliente.Direccion = txtDireccion.Text;
+                cliente.Direccion = $"{cmbProvincia.SelectedItem},{cmbCanton.SelectedItem},{cmbDistrito.SelectedItem}";
                 cliente.Identificacion = txtIdentificacion.Text;
                 cliente.Nombre = txtNombre.Text;
                 cliente.Apellidos = txtApellidos.Text;
@@ -121,9 +141,9 @@ namespace BikerStriker.Layers.UI.Mantenimientos
             txtNombre.Text = "";
             txtApellidos.Text = "";
             cmbGenero.SelectedIndex = 0;
+            //ActualizarProvincias();
             txtCorreo.Text = "";
             txtContrasena.Text = "";
-            txtDireccion.Text = "";
             btnAdd.Visible = false;
         }
         private void EditarClienteComponentes()
@@ -162,6 +182,23 @@ namespace BikerStriker.Layers.UI.Mantenimientos
                     }
                 }
             }
+        }
+
+        private void cmbProvincia_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var cantonesFiltrados = Cr_Directorio.Cantones
+                    .Where(c => c.Provincia.Id == ((Provincia) cmbProvincia.SelectedItem).Id)
+                    .ToList();
+
+            cmbCanton.DataSource = cantonesFiltrados;
+        }
+        private void cmbCanton_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var distritosFiltrados = Cr_Directorio.Distritos
+                   .Where(d => d.Canton.Id == ((Canton)cmbCanton.SelectedItem).Id)
+                   .ToList();
+
+            cmbDistrito.DataSource = distritosFiltrados;
         }
     }
 }

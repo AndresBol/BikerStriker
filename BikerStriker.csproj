@@ -99,6 +99,9 @@
     <Compile Include="Layers\DAL\DALMarca.cs" />
     <Compile Include="Layers\DAL\DALModelo.cs" />
     <Compile Include="Layers\Entities\Bicicleta.cs" />
+    <Compile Include="Layers\Entities\Canton.cs" />
+    <Compile Include="Layers\Entities\Distrito.cs" />
+    <Compile Include="Layers\Entities\Provincia.cs" />
     <Compile Include="Layers\Entities\Tienda.cs" />
     <Compile Include="Layers\Entities\Cliente.cs" />
     <Compile Include="Layers\Entities\Administrador.cs" />
@@ -180,6 +183,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Util\CR_DirectorioApiHelper.cs" />
     <Compile Include="Util\DatabaseException.cs" />
     <Compile Include="Util\HaciendaApiHelper.cs" />
     <Compile Include="Util\ImageSerializer.cs" />
