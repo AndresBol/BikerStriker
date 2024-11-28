@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMenuPrincipal));
             this.pnlAsideMenu = new System.Windows.Forms.Panel();
+            this.btnOrden = new System.Windows.Forms.Button();
             this.pnlMantenimientos = new System.Windows.Forms.Panel();
             this.btnTiendas = new System.Windows.Forms.Button();
             this.btnProductos = new System.Windows.Forms.Button();
@@ -44,8 +45,8 @@
             this.imgLogo = new System.Windows.Forms.PictureBox();
             this.pnlHeader = new System.Windows.Forms.Panel();
             this.pnlUsuario = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblUsuario = new System.Windows.Forms.Label();
+            this.imgUserLogo = new System.Windows.Forms.PictureBox();
             this.lblChildFrmTitle = new System.Windows.Forms.Label();
             this.pnlDesktop = new System.Windows.Forms.Panel();
             this.pnlAsideMenu.SuspendLayout();
@@ -53,12 +54,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.imgLogo)).BeginInit();
             this.pnlHeader.SuspendLayout();
             this.pnlUsuario.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgUserLogo)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlAsideMenu
             // 
             this.pnlAsideMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            this.pnlAsideMenu.Controls.Add(this.btnOrden);
             this.pnlAsideMenu.Controls.Add(this.pnlMantenimientos);
             this.pnlAsideMenu.Controls.Add(this.btnMantenimientos);
             this.pnlAsideMenu.Controls.Add(this.imgLogo);
@@ -67,6 +69,25 @@
             this.pnlAsideMenu.Name = "pnlAsideMenu";
             this.pnlAsideMenu.Size = new System.Drawing.Size(208, 578);
             this.pnlAsideMenu.TabIndex = 0;
+            // 
+            // btnOrden
+            // 
+            this.btnOrden.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnOrden.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnOrden.FlatAppearance.BorderSize = 0;
+            this.btnOrden.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnOrden.Font = new System.Drawing.Font("Sylfaen", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnOrden.ForeColor = System.Drawing.Color.White;
+            this.btnOrden.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.btnOrden.Location = new System.Drawing.Point(0, 500);
+            this.btnOrden.Name = "btnOrden";
+            this.btnOrden.Size = new System.Drawing.Size(208, 37);
+            this.btnOrden.TabIndex = 10;
+            this.btnOrden.Text = "Orden de trabajo";
+            this.btnOrden.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnOrden.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnOrden.UseVisualStyleBackColor = false;
+            this.btnOrden.Click += new System.EventHandler(this.btnOrden_Click);
             // 
             // pnlMantenimientos
             // 
@@ -82,7 +103,7 @@
             this.pnlMantenimientos.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlMantenimientos.Location = new System.Drawing.Point(0, 162);
             this.pnlMantenimientos.Name = "pnlMantenimientos";
-            this.pnlMantenimientos.Size = new System.Drawing.Size(208, 348);
+            this.pnlMantenimientos.Size = new System.Drawing.Size(208, 338);
             this.pnlMantenimientos.TabIndex = 5;
             // 
             // btnTiendas
@@ -310,34 +331,36 @@
             // pnlUsuario
             // 
             this.pnlUsuario.Controls.Add(this.lblUsuario);
-            this.pnlUsuario.Controls.Add(this.pictureBox1);
+            this.pnlUsuario.Controls.Add(this.imgUserLogo);
             this.pnlUsuario.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pnlUsuario.Location = new System.Drawing.Point(608, 0);
+            this.pnlUsuario.Location = new System.Drawing.Point(524, 0);
             this.pnlUsuario.Name = "pnlUsuario";
-            this.pnlUsuario.Size = new System.Drawing.Size(346, 125);
+            this.pnlUsuario.Size = new System.Drawing.Size(430, 125);
             this.pnlUsuario.TabIndex = 1;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::BikerStriker.Properties.Resources.user_logo;
-            this.pictureBox1.Location = new System.Drawing.Point(275, 33);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(53, 50);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 3;
-            this.pictureBox1.TabStop = false;
             // 
             // lblUsuario
             // 
             this.lblUsuario.AutoSize = true;
             this.lblUsuario.Font = new System.Drawing.Font("Sylfaen", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUsuario.ForeColor = System.Drawing.Color.White;
-            this.lblUsuario.Location = new System.Drawing.Point(129, 35);
+            this.lblUsuario.Location = new System.Drawing.Point(219, 35);
             this.lblUsuario.Name = "lblUsuario";
-            this.lblUsuario.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.lblUsuario.Size = new System.Drawing.Size(140, 48);
             this.lblUsuario.TabIndex = 2;
             this.lblUsuario.Text = "Usuario";
+            this.lblUsuario.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblUsuario.Click += new System.EventHandler(this.lblUsuario_Click);
+            // 
+            // imgUserLogo
+            // 
+            this.imgUserLogo.Image = global::BikerStriker.Properties.Resources.user_logo;
+            this.imgUserLogo.Location = new System.Drawing.Point(365, 33);
+            this.imgUserLogo.Name = "imgUserLogo";
+            this.imgUserLogo.Size = new System.Drawing.Size(53, 50);
+            this.imgUserLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.imgUserLogo.TabIndex = 3;
+            this.imgUserLogo.TabStop = false;
+            this.imgUserLogo.Click += new System.EventHandler(this.imgUserLogo_Click);
             // 
             // lblChildFrmTitle
             // 
@@ -377,7 +400,7 @@
             this.pnlHeader.PerformLayout();
             this.pnlUsuario.ResumeLayout(false);
             this.pnlUsuario.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgUserLogo)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -402,7 +425,8 @@
         private System.Windows.Forms.Button btnTiendas;
         private System.Windows.Forms.Panel pnlUsuario;
         private System.Windows.Forms.Label lblUsuario;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button btnOrden;
+        private System.Windows.Forms.PictureBox imgUserLogo;
     }
 }
 

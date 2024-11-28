@@ -20,8 +20,26 @@ namespace BikerStriker
         {
             InitializeComponent();
             pnlMantenimientos.Visible = false;
+            btnMantenimientos.Visible = Settings.Default.TipoUsuario == TipoUsuario.Administrador;
             lblUsuario.Text = Settings.Default.Nombre;
+            AdjustLabelToLeft(lblUsuario);
         }
+
+        private void AdjustLabelToLeft(Label label)
+        {
+            label.AutoSize = false;
+
+            using (Graphics g = label.CreateGraphics())
+            {
+                SizeF size = g.MeasureString(label.Text, label.Font);
+                int newWidth = (int)Math.Ceiling(size.Width) + 5;
+                int widthDifference = newWidth - label.Width;
+                label.Left -= widthDifference;
+                label.Width = newWidth;
+            }
+        }
+
+
 
         private void OpenChildForm(Form childfrm)
         {
@@ -100,6 +118,32 @@ namespace BikerStriker
         private void btnTiendas_Click(object sender, EventArgs e)
         {
             OpenChildForm(new frmMantenimientoTienda());
+        }
+
+        private void btnOrden_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblUsuario_Click(object sender, EventArgs e)
+        {
+            CerrarSesion();
+        }
+
+        private void imgUserLogo_Click(object sender, EventArgs e)
+        {
+            CerrarSesion();
+        }
+
+        private void CerrarSesion()
+        {
+            DialogResult respuesta = MessageBox.Show("¿Desea cerrar la sesión?", "Cerrar sesión", MessageBoxButtons.YesNo);
+
+            if(respuesta == DialogResult.Yes)
+            {
+                System.Diagnostics.Process.Start(Application.ExecutablePath);
+                Application.Exit();
+            }
         }
     }
 }
