@@ -63,6 +63,7 @@
     </Compile>
     <Compile Include="Enums\TipoCategoriasMenu.cs" />
     <Compile Include="Enums\TipoGenero.cs" />
+    <Compile Include="Enums\TipoTarjeta.cs" />
     <Compile Include="Enums\TipoUsuario.cs" />
     <Compile Include="Extensions\ExceptionsExtention.cs" />
     <Compile Include="Interfaces\IBLLBicicleta.cs" />
@@ -75,6 +76,7 @@
     <Compile Include="Interfaces\IBLLUsuario.cs" />
     <Compile Include="Interfaces\IBLLModelo.cs" />
     <Compile Include="Interfaces\IBLLMarca.cs" />
+    <Compile Include="Interfaces\IDALTarjeta.cs" />
     <Compile Include="Interfaces\IDALBicicleta.cs" />
     <Compile Include="Interfaces\IDALTienda.cs" />
     <Compile Include="Interfaces\IDALProducto.cs" />
@@ -95,6 +97,7 @@
     <Compile Include="Layers\BLL\BLLUsuario.cs" />
     <Compile Include="Layers\BLL\BLLMarca.cs" />
     <Compile Include="Layers\BLL\BLLModelo.cs" />
+    <Compile Include="Layers\DAL\DALTarjeta.cs" />
     <Compile Include="Layers\DAL\DALBicicleta.cs" />
     <Compile Include="Layers\DAL\DALTienda.cs" />
     <Compile Include="Layers\DAL\DALCategoria.cs" />
@@ -110,6 +113,7 @@
     <Compile Include="Layers\Entities\Distrito.cs" />
     <Compile Include="Layers\Entities\Dolar.cs" />
     <Compile Include="Layers\Entities\Provincia.cs" />
+    <Compile Include="Layers\Entities\Tarjeta.cs" />
     <Compile Include="Layers\Entities\Tienda.cs" />
     <Compile Include="Layers\Entities\Cliente.cs" />
     <Compile Include="Layers\Entities\Administrador.cs" />

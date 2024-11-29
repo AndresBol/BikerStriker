@@ -17,6 +17,7 @@ namespace BikerStriker.Layers.Entities
         public override TipoUsuario TipoUsuario => TipoUsuario.Cliente;
 
         public List<Bicicleta> Bicicletas { get; set;}
+        public List<Tarjeta> Tarjetas { get; set; }
 
     }
 }

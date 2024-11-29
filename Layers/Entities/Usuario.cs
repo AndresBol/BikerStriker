@@ -19,7 +19,7 @@ namespace BikerStriker.Layers.Entities
 
         public override string ToString()
         {
-            return Nombre + Apellidos;
+            return $"{Nombre} {Apellidos}";
         }
     }
 }
