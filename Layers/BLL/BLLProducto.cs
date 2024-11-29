@@ -11,10 +11,10 @@ namespace BikerStriker.Layers.BLL
 {
     internal class BLLProducto : IBLLProducto
     {
-        public List<Producto> GetAllProducto()
+        public async Task<List<Producto>> GetAllProducto()
         {
             IDALProducto _DALProducto = new DALProducto();
-            return _DALProducto.GetAllProducto();
+            return await _DALProducto.GetAllProducto();
         }
 
         public void Save(Producto producto)

@@ -9,10 +9,10 @@ namespace BikerStriker.Interfaces
 {
     internal interface IDALProducto
     {
-        List<Producto> GetAllProducto();
+        Task<List<Producto>> GetAllProducto();
         void Insertar(Producto producto);
         void Actualizar(Producto producto);
         void Desactivar(int id);
-        Producto GetProductoByID(int id);
+        Task<Producto> GetProductoByID(int id);
     }
 }

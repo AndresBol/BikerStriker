@@ -42,12 +42,12 @@ namespace BikerStriker.Layers.UI.Mantenimientos
             chkServicio.Checked = producto.EsServicio;
         }
 
-        private void ActualizarTabla()
+        private async void ActualizarTabla()
         {
             try
             {
                 IBLLProducto bll = new BLLProducto();
-                dgvProductos.DataSource = bll.GetAllProducto();
+                dgvProductos.DataSource = await bll.GetAllProducto();
                 dgvProductos.Columns["Descripcion"].Visible = false;
             }
             catch (Exception ex)

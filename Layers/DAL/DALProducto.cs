@@ -14,6 +14,8 @@ using BikerStriker.Tools;
 using System.Text.RegularExpressions;
 using log4net;
 using BikerStriker.Extensions;
+using System.Windows.Forms;
+using BikerStriker.Util;
 
 
 namespace BikerStriker.Layers.DAL
@@ -31,7 +33,21 @@ namespace BikerStriker.Layers.DAL
 
         private static readonly ILog _Logger = LogManager.GetLogger("MyControlEventos");
 
-        public List<Producto> GetAllProducto()
+        private async Task<double> ObtenerDolarizado(double montoColones)
+        {
+            BancoCentralApiHelper bccrAPI = new BancoCentralApiHelper();
+            double tipoCambioCompra = 0;
+
+            await Task.Run(() =>
+            {
+                tipoCambioCompra = bccrAPI.ObtenerTipoCambio(DateTime.Now);
+            });
+
+
+            return Math.Round(montoColones / tipoCambioCompra, 2);
+        }
+
+        public async Task<List<Producto>> GetAllProducto()
         {
             string msg = "";
             IDataReader reader = null;
@@ -59,6 +75,7 @@ namespace BikerStriker.Layers.DAL
                         producto.Codigo = reader["codigo"].ToString();
                         producto.Nombre = reader["nombre"].ToString();
                         producto.Precio = Convert.ToDouble(reader["precio"].ToString());
+                        producto.Dolarizado = await ObtenerDolarizado(producto.Precio);
                         producto.Descripcion = reader["descripcion"].ToString();
                         producto.Cantidad = (int) reader["cantidad"];
                         
@@ -189,7 +206,7 @@ namespace BikerStriker.Layers.DAL
             }
         }
 
-        public Producto GetProductoByID(int id)
+        public async Task<Producto> GetProductoByID(int id)
         {
             string msg = "";
             IDataReader reader = null;
@@ -220,6 +237,7 @@ namespace BikerStriker.Layers.DAL
                         producto.Codigo = reader["codigo"].ToString();
                         producto.Nombre = reader["nombre"].ToString();
                         producto.Precio = Convert.ToDouble(reader["precio"].ToString());
+                        producto.Dolarizado = await ObtenerDolarizado(producto.Precio);
                         producto.Descripcion = reader["descripcion"].ToString();
                         producto.Cantidad = (int)reader["cantidad"];
 

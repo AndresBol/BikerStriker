@@ -9,7 +9,7 @@ namespace BikerStriker.Interfaces
 {
     internal interface IBLLProducto
     {
-        List<Producto> GetAllProducto();
+        Task<List<Producto>> GetAllProducto();
 
         void Save(Producto producto);
         void Remove(int id);
