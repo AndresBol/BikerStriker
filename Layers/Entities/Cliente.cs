@@ -18,6 +18,7 @@ namespace BikerStriker.Layers.Entities
 
         public List<Bicicleta> Bicicletas { get; set;}
         public List<Tarjeta> Tarjetas { get; set; }
+        public List<Contacto> Contactos { get; set; }
 
     }
 }

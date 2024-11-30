@@ -49,6 +49,7 @@
             this.imgUserLogo = new System.Windows.Forms.PictureBox();
             this.lblChildFrmTitle = new System.Windows.Forms.Label();
             this.pnlDesktop = new System.Windows.Forms.Panel();
+            this.btnTarjetas = new System.Windows.Forms.Button();
             this.pnlAsideMenu.SuspendLayout();
             this.pnlMantenimientos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgLogo)).BeginInit();
@@ -67,7 +68,7 @@
             this.pnlAsideMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlAsideMenu.Location = new System.Drawing.Point(0, 0);
             this.pnlAsideMenu.Name = "pnlAsideMenu";
-            this.pnlAsideMenu.Size = new System.Drawing.Size(208, 578);
+            this.pnlAsideMenu.Size = new System.Drawing.Size(208, 628);
             this.pnlAsideMenu.TabIndex = 0;
             // 
             // btnOrden
@@ -79,7 +80,7 @@
             this.btnOrden.Font = new System.Drawing.Font("Sylfaen", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnOrden.ForeColor = System.Drawing.Color.White;
             this.btnOrden.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnOrden.Location = new System.Drawing.Point(0, 500);
+            this.btnOrden.Location = new System.Drawing.Point(0, 541);
             this.btnOrden.Name = "btnOrden";
             this.btnOrden.Size = new System.Drawing.Size(208, 37);
             this.btnOrden.TabIndex = 10;
@@ -91,6 +92,7 @@
             // 
             // pnlMantenimientos
             // 
+            this.pnlMantenimientos.Controls.Add(this.btnTarjetas);
             this.pnlMantenimientos.Controls.Add(this.btnTiendas);
             this.pnlMantenimientos.Controls.Add(this.btnProductos);
             this.pnlMantenimientos.Controls.Add(this.btnCategorias);
@@ -103,7 +105,7 @@
             this.pnlMantenimientos.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlMantenimientos.Location = new System.Drawing.Point(0, 162);
             this.pnlMantenimientos.Name = "pnlMantenimientos";
-            this.pnlMantenimientos.Size = new System.Drawing.Size(208, 338);
+            this.pnlMantenimientos.Size = new System.Drawing.Size(208, 379);
             this.pnlMantenimientos.TabIndex = 5;
             // 
             // btnTiendas
@@ -378,14 +380,34 @@
             this.pnlDesktop.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlDesktop.Location = new System.Drawing.Point(208, 125);
             this.pnlDesktop.Name = "pnlDesktop";
-            this.pnlDesktop.Size = new System.Drawing.Size(954, 453);
+            this.pnlDesktop.Size = new System.Drawing.Size(954, 503);
             this.pnlDesktop.TabIndex = 2;
+            // 
+            // btnTarjetas
+            // 
+            this.btnTarjetas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.btnTarjetas.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnTarjetas.FlatAppearance.BorderSize = 0;
+            this.btnTarjetas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTarjetas.Font = new System.Drawing.Font("Sylfaen", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTarjetas.ForeColor = System.Drawing.Color.White;
+            this.btnTarjetas.Image = ((System.Drawing.Image)(resources.GetObject("btnTarjetas.Image")));
+            this.btnTarjetas.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.btnTarjetas.Location = new System.Drawing.Point(0, 333);
+            this.btnTarjetas.Name = "btnTarjetas";
+            this.btnTarjetas.Size = new System.Drawing.Size(208, 37);
+            this.btnTarjetas.TabIndex = 11;
+            this.btnTarjetas.Text = "Tarjetas";
+            this.btnTarjetas.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnTarjetas.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnTarjetas.UseVisualStyleBackColor = false;
+            this.btnTarjetas.Click += new System.EventHandler(this.btnTarjetas_Click);
             // 
             // frmMenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1162, 578);
+            this.ClientSize = new System.Drawing.Size(1162, 628);
             this.Controls.Add(this.pnlDesktop);
             this.Controls.Add(this.pnlHeader);
             this.Controls.Add(this.pnlAsideMenu);
@@ -427,6 +449,7 @@
         private System.Windows.Forms.Label lblUsuario;
         private System.Windows.Forms.Button btnOrden;
         private System.Windows.Forms.PictureBox imgUserLogo;
+        private System.Windows.Forms.Button btnTarjetas;
     }
 }
 

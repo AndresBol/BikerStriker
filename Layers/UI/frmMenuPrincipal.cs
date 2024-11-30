@@ -145,5 +145,10 @@ namespace BikerStriker
                 Application.Exit();
             }
         }
+
+        private void btnTarjetas_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new frmMantenimientoTarjeta());
+        }
     }
 }

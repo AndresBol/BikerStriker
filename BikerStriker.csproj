@@ -66,6 +66,7 @@
     <Compile Include="Enums\TipoTarjeta.cs" />
     <Compile Include="Enums\TipoUsuario.cs" />
     <Compile Include="Extensions\ExceptionsExtention.cs" />
+    <Compile Include="Interfaces\IBLLTarjeta.cs" />
     <Compile Include="Interfaces\IBLLBicicleta.cs" />
     <Compile Include="Interfaces\IBLLTienda.cs" />
     <Compile Include="Interfaces\IBLLProducto.cs" />
@@ -88,6 +89,7 @@
     <Compile Include="Interfaces\IDALModelo.cs" />
     <Compile Include="Interfaces\IDALMarca.cs" />
     <Compile Include="Layers\BLL\BLLAdministrador.cs" />
+    <Compile Include="Layers\BLL\BLLTarjeta.cs" />
     <Compile Include="Layers\BLL\BLLBicicleta.cs" />
     <Compile Include="Layers\BLL\BLLTienda.cs" />
     <Compile Include="Layers\BLL\BLLProducto.cs" />
@@ -138,6 +140,12 @@
     </Compile>
     <Compile Include="Layers\UI\frmMenuPrincipal.Designer.cs">
       <DependentUpon>frmMenuPrincipal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Layers\UI\Mantenimientos\frmMantenimientoTarjeta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Layers\UI\Mantenimientos\frmMantenimientoTarjeta.Designer.cs">
+      <DependentUpon>frmMantenimientoTarjeta.cs</DependentUpon>
     </Compile>
     <Compile Include="Layers\UI\Mantenimientos\frmMantenimientoBicicleta.cs">
       <SubType>Form</SubType>
@@ -206,6 +214,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Layers\UI\frmMenuPrincipal.resx">
       <DependentUpon>frmMenuPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Layers\UI\Mantenimientos\frmMantenimientoTarjeta.resx">
+      <DependentUpon>frmMantenimientoTarjeta.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Layers\UI\Mantenimientos\frmMantenimientoBicicleta.resx">
       <DependentUpon>frmMantenimientoBicicleta.cs</DependentUpon>

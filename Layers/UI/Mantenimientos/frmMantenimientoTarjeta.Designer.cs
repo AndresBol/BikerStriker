@@ -28,29 +28,29 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMantenimientoTarjeta));
             this.dgvTarjetas = new System.Windows.Forms.DataGridView();
             this.lblSubtitulo = new System.Windows.Forms.Label();
-            this.lblNumeroSerie = new System.Windows.Forms.Label();
-            this.lblModelo = new System.Windows.Forms.Label();
-            this.txtNumeroSerie = new System.Windows.Forms.TextBox();
+            this.lblNumero = new System.Windows.Forms.Label();
+            this.lblTipoTarjeta = new System.Windows.Forms.Label();
+            this.txtNumero = new System.Windows.Forms.TextBox();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
-            this.cmbModelo = new System.Windows.Forms.ComboBox();
+            this.cmbTipoTarjeta = new System.Windows.Forms.ComboBox();
             this.pnlBotom = new System.Windows.Forms.Panel();
             this.pnlRight = new System.Windows.Forms.Panel();
+            this.lblFechaVencimiento = new System.Windows.Forms.Label();
             this.pnlLeft = new System.Windows.Forms.Panel();
-            this.lblColor = new System.Windows.Forms.Label();
-            this.colorDialog = new System.Windows.Forms.ColorDialog();
-            this.pnlColor = new System.Windows.Forms.Panel();
             this.lblCliente = new System.Windows.Forms.Label();
             this.cmbCliente = new System.Windows.Forms.ComboBox();
-            this.btnColor = new System.Windows.Forms.Button();
+            this.dtpFechaVencimiento = new System.Windows.Forms.DateTimePicker();
+            this.lblCodigoSeguridad = new System.Windows.Forms.Label();
+            this.nudCodigoSeguridad = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTarjetas)).BeginInit();
             this.pnlBotom.SuspendLayout();
             this.pnlRight.SuspendLayout();
             this.pnlLeft.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudCodigoSeguridad)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvTarjetas
@@ -75,34 +75,34 @@
             this.lblSubtitulo.Font = new System.Drawing.Font("Microsoft YaHei", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSubtitulo.Location = new System.Drawing.Point(12, 0);
             this.lblSubtitulo.Name = "lblSubtitulo";
-            this.lblSubtitulo.Size = new System.Drawing.Size(221, 26);
+            this.lblSubtitulo.Size = new System.Drawing.Size(207, 26);
             this.lblSubtitulo.TabIndex = 1;
             this.lblSubtitulo.Text = "Tarjeta seleccionada";
             // 
-            // lblNumeroSerie
+            // lblNumero
             // 
-            this.lblNumeroSerie.AutoSize = true;
-            this.lblNumeroSerie.Location = new System.Drawing.Point(14, 45);
-            this.lblNumeroSerie.Name = "lblNumeroSerie";
-            this.lblNumeroSerie.Size = new System.Drawing.Size(84, 13);
-            this.lblNumeroSerie.TabIndex = 2;
-            this.lblNumeroSerie.Text = "Numero de serie";
+            this.lblNumero.AutoSize = true;
+            this.lblNumero.Location = new System.Drawing.Point(14, 45);
+            this.lblNumero.Name = "lblNumero";
+            this.lblNumero.Size = new System.Drawing.Size(44, 13);
+            this.lblNumero.TabIndex = 2;
+            this.lblNumero.Text = "Numero";
             // 
-            // lblModelo
+            // lblTipoTarjeta
             // 
-            this.lblModelo.AutoSize = true;
-            this.lblModelo.Location = new System.Drawing.Point(16, 74);
-            this.lblModelo.Name = "lblModelo";
-            this.lblModelo.Size = new System.Drawing.Size(42, 13);
-            this.lblModelo.TabIndex = 3;
-            this.lblModelo.Text = "Modelo";
+            this.lblTipoTarjeta.AutoSize = true;
+            this.lblTipoTarjeta.Location = new System.Drawing.Point(16, 74);
+            this.lblTipoTarjeta.Name = "lblTipoTarjeta";
+            this.lblTipoTarjeta.Size = new System.Drawing.Size(75, 13);
+            this.lblTipoTarjeta.TabIndex = 3;
+            this.lblTipoTarjeta.Text = "Tipo de tarjeta";
             // 
-            // txtNumeroSerie
+            // txtNumero
             // 
-            this.txtNumeroSerie.Location = new System.Drawing.Point(116, 42);
-            this.txtNumeroSerie.Name = "txtNumeroSerie";
-            this.txtNumeroSerie.Size = new System.Drawing.Size(223, 20);
-            this.txtNumeroSerie.TabIndex = 4;
+            this.txtNumero.Location = new System.Drawing.Point(116, 42);
+            this.txtNumero.Name = "txtNumero";
+            this.txtNumero.Size = new System.Drawing.Size(223, 20);
+            this.txtNumero.TabIndex = 4;
             // 
             // btnGuardar
             // 
@@ -146,14 +146,14 @@
             this.btnAdd.UseVisualStyleBackColor = false;
             this.btnAdd.Click += new System.EventHandler(this.btnCrear_Click);
             // 
-            // cmbModelo
+            // cmbTipoTarjeta
             // 
-            this.cmbModelo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbModelo.FormattingEnabled = true;
-            this.cmbModelo.Location = new System.Drawing.Point(116, 71);
-            this.cmbModelo.Name = "cmbModelo";
-            this.cmbModelo.Size = new System.Drawing.Size(223, 21);
-            this.cmbModelo.TabIndex = 11;
+            this.cmbTipoTarjeta.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbTipoTarjeta.FormattingEnabled = true;
+            this.cmbTipoTarjeta.Location = new System.Drawing.Point(116, 71);
+            this.cmbTipoTarjeta.Name = "cmbTipoTarjeta";
+            this.cmbTipoTarjeta.Size = new System.Drawing.Size(223, 21);
+            this.cmbTipoTarjeta.TabIndex = 11;
             // 
             // pnlBotom
             // 
@@ -167,9 +167,10 @@
             // 
             // pnlRight
             // 
-            this.pnlRight.Controls.Add(this.btnColor);
-            this.pnlRight.Controls.Add(this.pnlColor);
-            this.pnlRight.Controls.Add(this.lblColor);
+            this.pnlRight.Controls.Add(this.nudCodigoSeguridad);
+            this.pnlRight.Controls.Add(this.lblCodigoSeguridad);
+            this.pnlRight.Controls.Add(this.dtpFechaVencimiento);
+            this.pnlRight.Controls.Add(this.lblFechaVencimiento);
             this.pnlRight.Controls.Add(this.btnEliminar);
             this.pnlRight.Controls.Add(this.btnGuardar);
             this.pnlRight.Dock = System.Windows.Forms.DockStyle.Right;
@@ -178,37 +179,30 @@
             this.pnlRight.Size = new System.Drawing.Size(363, 208);
             this.pnlRight.TabIndex = 1;
             // 
+            // lblFechaVencimiento
+            // 
+            this.lblFechaVencimiento.AutoSize = true;
+            this.lblFechaVencimiento.Location = new System.Drawing.Point(3, 45);
+            this.lblFechaVencimiento.Name = "lblFechaVencimiento";
+            this.lblFechaVencimiento.Size = new System.Drawing.Size(112, 13);
+            this.lblFechaVencimiento.TabIndex = 8;
+            this.lblFechaVencimiento.Text = "Fecha de vencimiento";
+            // 
             // pnlLeft
             // 
             this.pnlLeft.Controls.Add(this.lblCliente);
             this.pnlLeft.Controls.Add(this.cmbCliente);
-            this.pnlLeft.Controls.Add(this.lblModelo);
+            this.pnlLeft.Controls.Add(this.lblTipoTarjeta);
             this.pnlLeft.Controls.Add(this.btnAdd);
             this.pnlLeft.Controls.Add(this.lblSubtitulo);
-            this.pnlLeft.Controls.Add(this.cmbModelo);
-            this.pnlLeft.Controls.Add(this.lblNumeroSerie);
-            this.pnlLeft.Controls.Add(this.txtNumeroSerie);
+            this.pnlLeft.Controls.Add(this.cmbTipoTarjeta);
+            this.pnlLeft.Controls.Add(this.lblNumero);
+            this.pnlLeft.Controls.Add(this.txtNumero);
             this.pnlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlLeft.Location = new System.Drawing.Point(0, 0);
             this.pnlLeft.Name = "pnlLeft";
             this.pnlLeft.Size = new System.Drawing.Size(354, 208);
             this.pnlLeft.TabIndex = 0;
-            // 
-            // lblColor
-            // 
-            this.lblColor.AutoSize = true;
-            this.lblColor.Location = new System.Drawing.Point(19, 45);
-            this.lblColor.Name = "lblColor";
-            this.lblColor.Size = new System.Drawing.Size(31, 13);
-            this.lblColor.TabIndex = 8;
-            this.lblColor.Text = "Color";
-            // 
-            // pnlColor
-            // 
-            this.pnlColor.Location = new System.Drawing.Point(74, 42);
-            this.pnlColor.Name = "pnlColor";
-            this.pnlColor.Size = new System.Drawing.Size(183, 72);
-            this.pnlColor.TabIndex = 9;
             // 
             // lblCliente
             // 
@@ -228,17 +222,39 @@
             this.cmbCliente.Size = new System.Drawing.Size(223, 21);
             this.cmbCliente.TabIndex = 13;
             // 
-            // btnColor
+            // dtpFechaVencimiento
             // 
-            this.btnColor.Image = ((System.Drawing.Image)(resources.GetObject("btnColor.Image")));
-            this.btnColor.Location = new System.Drawing.Point(263, 42);
-            this.btnColor.Name = "btnColor";
-            this.btnColor.Size = new System.Drawing.Size(88, 72);
-            this.btnColor.TabIndex = 10;
-            this.btnColor.Text = "Seleccionar";
-            this.btnColor.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnColor.UseVisualStyleBackColor = true;
-            this.btnColor.Click += new System.EventHandler(this.btnColor_Click);
+            this.dtpFechaVencimiento.Location = new System.Drawing.Point(121, 42);
+            this.dtpFechaVencimiento.Name = "dtpFechaVencimiento";
+            this.dtpFechaVencimiento.Size = new System.Drawing.Size(230, 20);
+            this.dtpFechaVencimiento.TabIndex = 14;
+            // 
+            // lblCodigoSeguridad
+            // 
+            this.lblCodigoSeguridad.AutoSize = true;
+            this.lblCodigoSeguridad.Location = new System.Drawing.Point(3, 74);
+            this.lblCodigoSeguridad.Name = "lblCodigoSeguridad";
+            this.lblCodigoSeguridad.Size = new System.Drawing.Size(104, 13);
+            this.lblCodigoSeguridad.TabIndex = 15;
+            this.lblCodigoSeguridad.Text = "Código de seguridad";
+            // 
+            // nudCodigoSeguridad
+            // 
+            this.nudCodigoSeguridad.Location = new System.Drawing.Point(121, 72);
+            this.nudCodigoSeguridad.Maximum = new decimal(new int[] {
+            -1,
+            -1,
+            -1,
+            0});
+            this.nudCodigoSeguridad.Name = "nudCodigoSeguridad";
+            this.nudCodigoSeguridad.Size = new System.Drawing.Size(230, 20);
+            this.nudCodigoSeguridad.TabIndex = 19;
+            this.nudCodigoSeguridad.ThousandsSeparator = true;
+            this.nudCodigoSeguridad.Value = new decimal(new int[] {
+            111,
+            0,
+            0,
+            0});
             // 
             // frmMantenimientoTarjeta
             // 
@@ -259,6 +275,7 @@
             this.pnlRight.PerformLayout();
             this.pnlLeft.ResumeLayout(false);
             this.pnlLeft.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudCodigoSeguridad)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -267,21 +284,21 @@
 
         private System.Windows.Forms.DataGridView dgvTarjetas;
         private System.Windows.Forms.Label lblSubtitulo;
-        private System.Windows.Forms.Label lblNumeroSerie;
-        private System.Windows.Forms.Label lblModelo;
-        private System.Windows.Forms.TextBox txtNumeroSerie;
+        private System.Windows.Forms.Label lblNumero;
+        private System.Windows.Forms.Label lblTipoTarjeta;
+        private System.Windows.Forms.TextBox txtNumero;
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnAdd;
-        private System.Windows.Forms.ComboBox cmbModelo;
+        private System.Windows.Forms.ComboBox cmbTipoTarjeta;
         private System.Windows.Forms.Panel pnlBotom;
         private System.Windows.Forms.Panel pnlRight;
         private System.Windows.Forms.Panel pnlLeft;
-        private System.Windows.Forms.Label lblColor;
-        private System.Windows.Forms.ColorDialog colorDialog;
-        private System.Windows.Forms.Panel pnlColor;
-        private System.Windows.Forms.Button btnColor;
+        private System.Windows.Forms.Label lblFechaVencimiento;
         private System.Windows.Forms.Label lblCliente;
         private System.Windows.Forms.ComboBox cmbCliente;
+        private System.Windows.Forms.DateTimePicker dtpFechaVencimiento;
+        private System.Windows.Forms.Label lblCodigoSeguridad;
+        private System.Windows.Forms.NumericUpDown nudCodigoSeguridad;
     }
 }

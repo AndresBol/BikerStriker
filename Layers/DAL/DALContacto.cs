@@ -22,26 +22,26 @@ using BikerStriker.Enums;
 namespace BikerStriker.Layers.DAL
 {
     /// <summary>
-    /// Clase de acceso a datos para el CRUD con la tabla Tarjeta en SqlServer
+    /// Clase de acceso a datos para el CRUD con la tabla Contacto en SqlServer
     /// </summary>
-    public class DALTarjeta : IDALTarjeta
+    public class DALContacto : IDALContacto
     {
         /// <summary>
-        /// Obtiene una lista con todas las Tarjetas almacenadas en la tabla Tarjeta
+        /// Obtiene una lista con todas las Contactos almacenadas en la tabla Contacto
         /// </summary>
-        /// <returns>Retorna un List<Tarjeta></returns>
+        /// <returns>Retorna un List<Contacto></returns>
         /// 
 
         private static readonly ILog _Logger = LogManager.GetLogger("MyControlEventos");
 
-        public List<Tarjeta> GetAllTarjeta()
+        public List<Contacto> GetAllContacto()
         {
             string msg = "";
             IDataReader reader = null;
-            List<Tarjeta> lista = new List<Tarjeta>();
+            List<Contacto> lista = new List<Contacto>();
             SqlCommand command = new SqlCommand();
 
-            string sql = @" select * from Tarjeta where activo = 1";
+            string sql = @" select * from Contacto where activo = 1";
             command.CommandText = sql;
             command.CommandType = CommandType.Text;
 
@@ -55,14 +55,11 @@ namespace BikerStriker.Layers.DAL
 
                     while (reader.Read())
                     {
-                        Tarjeta tarjeta = new Tarjeta();
-                        tarjeta.Id = (int)reader["id"];
-                        tarjeta.Numero = reader["numero"].ToString();
-                        tarjeta.FechaVencimiento = (DateTime)reader["fechaVencimiento"];
-                        tarjeta.CodigoSeguridad = Convert.ToInt16(reader["codigoSeguridad"]);
-                        tarjeta.TipoTarjeta = (TipoTarjeta) Convert.ToInt16(reader["tipoTarjeta"]);
+                        Contacto contacto = new Contacto();
+                        contacto.Id = (int)reader["id"];
+                        contacto.Telefono = reader["telefono"].ToString();
 
-                        lista.Add(tarjeta);
+                        lista.Add(contacto);
                     }
                 }
 
@@ -81,13 +78,13 @@ namespace BikerStriker.Layers.DAL
             }
         }
 
-        public List<Tarjeta> GetAllTarjetaFromCliente(int ClienteId)
+        public List<Contacto> GetAllContactoFromCliente(int ClienteId)
         {
             string msg = "";
             IDataReader reader = null;
-            List<Tarjeta> lista = new List<Tarjeta>();
+            List<Contacto> lista = new List<Contacto>();
 
-            string sql = @" select * from Tarjeta where (id_Cliente = @id and activo = 1)";
+            string sql = @" select * from Contacto where (id_Cliente = @id and activo = 1)";
 
             SqlCommand command = new SqlCommand();
             command.Parameters.AddWithValue("@id", ClienteId);
@@ -104,14 +101,11 @@ namespace BikerStriker.Layers.DAL
 
                     while (reader.Read())
                     {
-                        Tarjeta tarjeta = new Tarjeta();
-                        tarjeta.Id = (int)reader["id"];
-                        tarjeta.Numero = reader["numero"].ToString();
-                        tarjeta.FechaVencimiento = (DateTime)reader["fechaVencimiento"];
-                        tarjeta.CodigoSeguridad = Convert.ToInt16(reader["codigoSeguridad"]);
-                        tarjeta.TipoTarjeta = (TipoTarjeta)Convert.ToInt16(reader["tipoTarjeta"]);
+                        Contacto contacto = new Contacto();
+                        contacto.Id = (int)reader["id"];
+                        contacto.Telefono = reader["telefono"].ToString();
 
-                        lista.Add(tarjeta);
+                        lista.Add(contacto);
                     }
                 }
 
@@ -134,9 +128,9 @@ namespace BikerStriker.Layers.DAL
         {
             string msg = "";
             IDataReader reader = null;
-            List<Tarjeta> lista = new List<Tarjeta>();
+            List<Contacto> lista = new List<Contacto>();
 
-            string sql = @" select id_Cliente from Tarjeta where id = @id";
+            string sql = @" select id_Cliente from Contacto where id = @id";
 
             SqlCommand command = new SqlCommand();
             command.Parameters.AddWithValue("@id", id);
@@ -173,15 +167,12 @@ namespace BikerStriker.Layers.DAL
             }
         }
 
-        public void Insertar(Tarjeta tarjeta, int ClienteId)
+        public void Insertar(Contacto contacto, int ClienteId)
         {
             string msg = "";
-            string sql = @"Insert into Tarjeta values (@numero,@fechaVencimiento,@codigoSeguridad,@tipoTarjeta,@id_Cliente,1)";
+            string sql = @"Insert into Contacto values (@telefono,@id_Cliente,1)";
             SqlCommand command = new SqlCommand();
-            command.Parameters.AddWithValue("@numero", tarjeta.Numero);
-            command.Parameters.AddWithValue("@fechaVencimiento", tarjeta.FechaVencimiento);
-            command.Parameters.AddWithValue("@codigoSeguridad", tarjeta.CodigoSeguridad);
-            command.Parameters.AddWithValue("@tipoTarjeta", tarjeta.TipoTarjeta);
+            command.Parameters.AddWithValue("@telefono", contacto.Telefono);
             command.Parameters.AddWithValue("@id_Cliente", ClienteId);
             command.CommandType = CommandType.Text;
             command.CommandText = sql;
@@ -206,16 +197,13 @@ namespace BikerStriker.Layers.DAL
             }
         }
 
-        public void Actualizar(Tarjeta tarjeta, int ClienteId)
+        public void Actualizar(Contacto contacto, int ClienteId)
         {
             string msg = "";
-            string sql = @"Update  Tarjeta SET numero = @numero, fechaVencimiento = @fechaVencimiento, codigoSeguridad = @codigoSeguridad, tipoTarjeta = @tipoTarjeta, id_Cliente = @id_Cliente  Where (id = @id)";
+            string sql = @"Update  Contacto SET telefono = @telefono, id_Cliente = @id_Cliente  Where (id = @id)";
             SqlCommand command = new SqlCommand();
-            command.Parameters.AddWithValue("@id", tarjeta.Id);
-            command.Parameters.AddWithValue("@numero", tarjeta.Numero);
-            command.Parameters.AddWithValue("@fechaVencimiento", tarjeta.FechaVencimiento);
-            command.Parameters.AddWithValue("@codigoSeguridad", tarjeta.CodigoSeguridad);
-            command.Parameters.AddWithValue("@tipoTarjeta", tarjeta.TipoTarjeta);
+            command.Parameters.AddWithValue("@id", contacto.Id);
+            command.Parameters.AddWithValue("@telefono", contacto.Telefono);
             command.Parameters.AddWithValue("@id_Cliente", ClienteId);
             command.CommandType = CommandType.Text;
             command.CommandText = sql;
@@ -243,7 +231,7 @@ namespace BikerStriker.Layers.DAL
         public void Desactivar(int id)
         {
             string msg = "";
-            string sql = @"Update Tarjeta SET activo = 0 Where id = @id";
+            string sql = @"Update Contacto SET activo = 0 Where id = @id";
             SqlCommand command = new SqlCommand();
             command.Parameters.AddWithValue("@id", id);
             command.CommandType = CommandType.Text;
@@ -269,13 +257,13 @@ namespace BikerStriker.Layers.DAL
             }
         }
 
-        public Tarjeta GetTarjetaByID(int id)
+        public Contacto GetContactoByID(int id)
         {
             string msg = "";
             IDataReader reader = null;
             SqlCommand command = new SqlCommand();
 
-            string sql = @"select * from Tarjeta where id = @id";
+            string sql = @"select * from Contacto where id = @id";
 
             command.Parameters.AddWithValue("@id", id);
             command.CommandText = sql;
@@ -283,7 +271,7 @@ namespace BikerStriker.Layers.DAL
 
             try
             {
-                Tarjeta tarjeta = null;
+                Contacto contacto = null;
                 BLLModelo bllModelo = new BLLModelo();
 
                 using (IDataBase db = FactoryDatabase.CreateDataBase(FactoryConexion.CreateConnection()))
@@ -292,16 +280,13 @@ namespace BikerStriker.Layers.DAL
 
                     while (reader.Read())
                     {
-                        tarjeta = new Tarjeta();
-                        tarjeta.Id = (int)reader["id"];
-                        tarjeta.Numero = reader["numero"].ToString();
-                        tarjeta.FechaVencimiento = (DateTime)reader["fechaVencimiento"];
-                        tarjeta.CodigoSeguridad = Convert.ToInt16(reader["codigoSeguridad"]);
-                        tarjeta.TipoTarjeta = (TipoTarjeta)Convert.ToInt16(reader["tipoTarjeta"]);
+                        contacto = new Contacto();
+                        contacto.Id = (int)reader["id"];
+                        contacto.Telefono = reader["telefono"].ToString();
                     }
                 }
 
-                return tarjeta;
+                return contacto;
             }
             catch (SqlException er)
             {

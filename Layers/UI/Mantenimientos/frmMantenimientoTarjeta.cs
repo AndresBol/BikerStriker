@@ -1,4 +1,5 @@
-﻿using BikerStriker.Interfaces;
+﻿using BikerStriker.Enums;
+using BikerStriker.Interfaces;
 using BikerStriker.Layers.BLL;
 using BikerStriker.Layers.Entities;
 using log4net;
@@ -28,8 +29,7 @@ namespace BikerStriker.Layers.UI.Mantenimientos
 
         private void LlenarCombos()
         {
-            BLLModelo bLLModelo = new BLLModelo();
-            cmbModelo.DataSource = bLLModelo.GetAllModelo();
+            cmbTipoTarjeta.DataSource = Enum.GetValues(typeof(TipoTarjeta));
 
             BLLCliente bllCliente = new BLLCliente();
             cmbCliente.DataSource = bllCliente.GetAllCliente();
@@ -38,10 +38,10 @@ namespace BikerStriker.Layers.UI.Mantenimientos
         private void ActualizarCampos(Tarjeta tarjeta, int ClienteId)
         {
             BLLCliente bllCliente = new BLLCliente();
-
-            //txtNumeroSerie.Text = tarjeta.NumeroSerie;
-            //pnlColor.BackColor = tarjeta.Color;
-            //cmbModelo.SelectedIndex = cmbModelo.FindString(tarjeta.Modelo.ToString());
+            txtNumero.Text = tarjeta.Numero;
+            dtpFechaVencimiento.Value = tarjeta.FechaVencimiento;
+            nudCodigoSeguridad.Value = tarjeta.CodigoSeguridad;
+            cmbTipoTarjeta.SelectedItem = tarjeta.TipoTarjeta;
             cmbCliente.SelectedIndex = cmbCliente.FindString(bllCliente.GetClienteByID(ClienteId).ToString());
         }
 
@@ -51,7 +51,6 @@ namespace BikerStriker.Layers.UI.Mantenimientos
             {
                 IBLLTarjeta bll = new BLLTarjeta();
                 dgvTarjetas.DataSource = bll.GetAllTarjeta();
-                dgvTarjetas.Columns["color"].Visible = false;
             }
             catch (Exception ex)
             {
@@ -68,11 +67,12 @@ namespace BikerStriker.Layers.UI.Mantenimientos
             {
                 IBLLTarjeta bll = new BLLTarjeta();
                 Tarjeta tarjeta = new Tarjeta();
-                //tarjeta.NumeroSerie = txtNumeroSerie.Text;
-                //tarjeta.Color = pnlColor.BackColor;
-                //tarjeta.Modelo = (Modelo) cmbModelo.SelectedItem;
+                tarjeta.Numero = txtNumero.Text;
+                tarjeta.FechaVencimiento = dtpFechaVencimiento.Value;
+                tarjeta.CodigoSeguridad = (short) nudCodigoSeguridad.Value;
+                tarjeta.TipoTarjeta = (TipoTarjeta) cmbTipoTarjeta.SelectedItem;
 
-                if(dgvTarjetas.SelectedRows.Count > 0)
+                if (dgvTarjetas.SelectedRows.Count > 0)
                 {
                     tarjeta.Id = ((Tarjeta)dgvTarjetas.CurrentRow.DataBoundItem).Id;
                 }
@@ -85,7 +85,7 @@ namespace BikerStriker.Layers.UI.Mantenimientos
                 MessageBox.Show($"Ooops: {ex.Message}");
                 throw;
             }
-        }
+        }   
 
         private void dgvTarjetas_SelectionChanged(object sender, EventArgs e)
         {
@@ -112,9 +112,10 @@ namespace BikerStriker.Layers.UI.Mantenimientos
         {
             lblSubtitulo.Text = "Añadir Tarjeta";
             btnEliminar.Visible = false;
-            txtNumeroSerie.Text = "";
-            pnlColor.BackColor = Color.White;
-            cmbModelo.SelectedIndex = 0;
+            txtNumero.Text = "";
+            dtpFechaVencimiento.Value = DateTime.Now;
+            nudCodigoSeguridad.Value = 111;
+            cmbTipoTarjeta.SelectedIndex = 0;
             cmbCliente.SelectedIndex = 0;
             btnAdd.Visible = false;
         }
@@ -123,18 +124,6 @@ namespace BikerStriker.Layers.UI.Mantenimientos
             lblSubtitulo.Text = "Editar Tarjeta";
             btnEliminar.Visible = true;
             btnAdd.Visible = true;
-        }
-
-        private void btnColor_Click(object sender, EventArgs e)
-        {
-            colorDialog.AllowFullOpen = true;
-            colorDialog.Color = pnlColor.BackColor;
-            colorDialog.FullOpen = true;
-            colorDialog.AnyColor = true;
-            if(colorDialog.ShowDialog() == DialogResult.OK)
-            {
-                pnlColor.BackColor = colorDialog.Color;
-            }
         }
     }
 }
