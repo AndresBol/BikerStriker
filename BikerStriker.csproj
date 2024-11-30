@@ -66,6 +66,7 @@
     <Compile Include="Enums\TipoTarjeta.cs" />
     <Compile Include="Enums\TipoUsuario.cs" />
     <Compile Include="Extensions\ExceptionsExtention.cs" />
+    <Compile Include="Interfaces\IBLLContacto.cs" />
     <Compile Include="Interfaces\IBLLTarjeta.cs" />
     <Compile Include="Interfaces\IBLLBicicleta.cs" />
     <Compile Include="Interfaces\IBLLTienda.cs" />
@@ -77,6 +78,7 @@
     <Compile Include="Interfaces\IBLLUsuario.cs" />
     <Compile Include="Interfaces\IBLLModelo.cs" />
     <Compile Include="Interfaces\IBLLMarca.cs" />
+    <Compile Include="Interfaces\IDALContacto.cs" />
     <Compile Include="Interfaces\IDALTarjeta.cs" />
     <Compile Include="Interfaces\IDALBicicleta.cs" />
     <Compile Include="Interfaces\IDALTienda.cs" />
@@ -89,6 +91,7 @@
     <Compile Include="Interfaces\IDALModelo.cs" />
     <Compile Include="Interfaces\IDALMarca.cs" />
     <Compile Include="Layers\BLL\BLLAdministrador.cs" />
+    <Compile Include="Layers\BLL\BLLContacto.cs" />
     <Compile Include="Layers\BLL\BLLTarjeta.cs" />
     <Compile Include="Layers\BLL\BLLBicicleta.cs" />
     <Compile Include="Layers\BLL\BLLTienda.cs" />
@@ -99,6 +102,7 @@
     <Compile Include="Layers\BLL\BLLUsuario.cs" />
     <Compile Include="Layers\BLL\BLLMarca.cs" />
     <Compile Include="Layers\BLL\BLLModelo.cs" />
+    <Compile Include="Layers\DAL\DALContacto.cs" />
     <Compile Include="Layers\DAL\DALTarjeta.cs" />
     <Compile Include="Layers\DAL\DALBicicleta.cs" />
     <Compile Include="Layers\DAL\DALTienda.cs" />
@@ -115,6 +119,7 @@
     <Compile Include="Layers\Entities\Distrito.cs" />
     <Compile Include="Layers\Entities\Dolar.cs" />
     <Compile Include="Layers\Entities\Provincia.cs" />
+    <Compile Include="Layers\Entities\Contacto.cs" />
     <Compile Include="Layers\Entities\Tarjeta.cs" />
     <Compile Include="Layers\Entities\Tienda.cs" />
     <Compile Include="Layers\Entities\Cliente.cs" />
@@ -140,6 +145,12 @@
     </Compile>
     <Compile Include="Layers\UI\frmMenuPrincipal.Designer.cs">
       <DependentUpon>frmMenuPrincipal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Layers\UI\Mantenimientos\frmMantenimientoContacto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Layers\UI\Mantenimientos\frmMantenimientoContacto.Designer.cs">
+      <DependentUpon>frmMantenimientoContacto.cs</DependentUpon>
     </Compile>
     <Compile Include="Layers\UI\Mantenimientos\frmMantenimientoTarjeta.cs">
       <SubType>Form</SubType>
@@ -214,6 +225,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Layers\UI\frmMenuPrincipal.resx">
       <DependentUpon>frmMenuPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Layers\UI\Mantenimientos\frmMantenimientoContacto.resx">
+      <DependentUpon>frmMantenimientoContacto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Layers\UI\Mantenimientos\frmMantenimientoTarjeta.resx">
       <DependentUpon>frmMantenimientoTarjeta.cs</DependentUpon>

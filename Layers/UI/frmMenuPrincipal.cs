@@ -150,5 +150,10 @@ namespace BikerStriker
         {
             OpenChildForm(new frmMantenimientoTarjeta());
         }
+
+        private void btnContactos_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new frmMantenimientoContacto());
+        }
     }
 }

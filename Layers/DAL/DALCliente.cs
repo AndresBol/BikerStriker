@@ -60,6 +60,7 @@ namespace BikerStriker.Layers.DAL
                     {
                         BLLBicicleta bllBicicleta = new BLLBicicleta();
                         BLLTarjeta bllTarjeta = new BLLTarjeta();
+                        BLLContacto bLLContacto = new BLLContacto();
 
                         Cliente cliente = new Cliente();
                         cliente.UsuarioId = (int) reader["user_id"];
@@ -73,6 +74,7 @@ namespace BikerStriker.Layers.DAL
                         cliente.Genero = (TipoGenero) Convert.ToInt16(reader["genero"].ToString());
                         cliente.Bicicletas = bllBicicleta.GetAllBicicletaFromCliente(cliente.ClienteId);
                         cliente.Tarjetas = bllTarjeta.GetAllTarjetaFromCliente(cliente.ClienteId);
+                        cliente.Contactos = bLLContacto.GetAllContactoFromCliente(cliente.ClienteId);
                         lista.Add(cliente);
                     }
                 }
@@ -218,6 +220,10 @@ namespace BikerStriker.Layers.DAL
 
                     while (reader.Read())
                     {
+                        BLLBicicleta bllBicicleta = new BLLBicicleta();
+                        BLLTarjeta bllTarjeta = new BLLTarjeta();
+                        BLLContacto bLLContacto = new BLLContacto();
+
                         Cliente cliente = new Cliente();
                         cliente.UsuarioId = (int)reader["user_id"];
                         cliente.Correo = reader["user_correo"].ToString();
@@ -228,6 +234,9 @@ namespace BikerStriker.Layers.DAL
                         cliente.Identificacion = reader["identificacion"].ToString();
                         cliente.Direccion = reader["direccion"].ToString();
                         cliente.Genero = (TipoGenero) Convert.ToInt16(reader["genero"].ToString());
+                        cliente.Bicicletas = bllBicicleta.GetAllBicicletaFromCliente(cliente.ClienteId);
+                        cliente.Tarjetas = bllTarjeta.GetAllTarjetaFromCliente(cliente.ClienteId);
+                        cliente.Contactos = bLLContacto.GetAllContactoFromCliente(cliente.ClienteId);
                         return cliente;
                     }
                     

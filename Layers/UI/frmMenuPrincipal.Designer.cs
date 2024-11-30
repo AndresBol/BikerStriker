@@ -32,6 +32,7 @@
             this.pnlAsideMenu = new System.Windows.Forms.Panel();
             this.btnOrden = new System.Windows.Forms.Button();
             this.pnlMantenimientos = new System.Windows.Forms.Panel();
+            this.btnTarjetas = new System.Windows.Forms.Button();
             this.btnTiendas = new System.Windows.Forms.Button();
             this.btnProductos = new System.Windows.Forms.Button();
             this.btnCategorias = new System.Windows.Forms.Button();
@@ -49,7 +50,7 @@
             this.imgUserLogo = new System.Windows.Forms.PictureBox();
             this.lblChildFrmTitle = new System.Windows.Forms.Label();
             this.pnlDesktop = new System.Windows.Forms.Panel();
-            this.btnTarjetas = new System.Windows.Forms.Button();
+            this.btnContactos = new System.Windows.Forms.Button();
             this.pnlAsideMenu.SuspendLayout();
             this.pnlMantenimientos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgLogo)).BeginInit();
@@ -80,7 +81,7 @@
             this.btnOrden.Font = new System.Drawing.Font("Sylfaen", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnOrden.ForeColor = System.Drawing.Color.White;
             this.btnOrden.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnOrden.Location = new System.Drawing.Point(0, 541);
+            this.btnOrden.Location = new System.Drawing.Point(0, 581);
             this.btnOrden.Name = "btnOrden";
             this.btnOrden.Size = new System.Drawing.Size(208, 37);
             this.btnOrden.TabIndex = 10;
@@ -92,6 +93,7 @@
             // 
             // pnlMantenimientos
             // 
+            this.pnlMantenimientos.Controls.Add(this.btnContactos);
             this.pnlMantenimientos.Controls.Add(this.btnTarjetas);
             this.pnlMantenimientos.Controls.Add(this.btnTiendas);
             this.pnlMantenimientos.Controls.Add(this.btnProductos);
@@ -105,8 +107,28 @@
             this.pnlMantenimientos.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlMantenimientos.Location = new System.Drawing.Point(0, 162);
             this.pnlMantenimientos.Name = "pnlMantenimientos";
-            this.pnlMantenimientos.Size = new System.Drawing.Size(208, 379);
+            this.pnlMantenimientos.Size = new System.Drawing.Size(208, 419);
             this.pnlMantenimientos.TabIndex = 5;
+            // 
+            // btnTarjetas
+            // 
+            this.btnTarjetas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.btnTarjetas.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnTarjetas.FlatAppearance.BorderSize = 0;
+            this.btnTarjetas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTarjetas.Font = new System.Drawing.Font("Sylfaen", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTarjetas.ForeColor = System.Drawing.Color.White;
+            this.btnTarjetas.Image = ((System.Drawing.Image)(resources.GetObject("btnTarjetas.Image")));
+            this.btnTarjetas.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.btnTarjetas.Location = new System.Drawing.Point(0, 333);
+            this.btnTarjetas.Name = "btnTarjetas";
+            this.btnTarjetas.Size = new System.Drawing.Size(208, 37);
+            this.btnTarjetas.TabIndex = 11;
+            this.btnTarjetas.Text = "Tarjetas";
+            this.btnTarjetas.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnTarjetas.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnTarjetas.UseVisualStyleBackColor = false;
+            this.btnTarjetas.Click += new System.EventHandler(this.btnTarjetas_Click);
             // 
             // btnTiendas
             // 
@@ -335,9 +357,9 @@
             this.pnlUsuario.Controls.Add(this.lblUsuario);
             this.pnlUsuario.Controls.Add(this.imgUserLogo);
             this.pnlUsuario.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pnlUsuario.Location = new System.Drawing.Point(524, 0);
+            this.pnlUsuario.Location = new System.Drawing.Point(591, 0);
             this.pnlUsuario.Name = "pnlUsuario";
-            this.pnlUsuario.Size = new System.Drawing.Size(430, 125);
+            this.pnlUsuario.Size = new System.Drawing.Size(363, 125);
             this.pnlUsuario.TabIndex = 1;
             // 
             // lblUsuario
@@ -345,7 +367,7 @@
             this.lblUsuario.AutoSize = true;
             this.lblUsuario.Font = new System.Drawing.Font("Sylfaen", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUsuario.ForeColor = System.Drawing.Color.White;
-            this.lblUsuario.Location = new System.Drawing.Point(219, 35);
+            this.lblUsuario.Location = new System.Drawing.Point(160, 35);
             this.lblUsuario.Name = "lblUsuario";
             this.lblUsuario.Size = new System.Drawing.Size(140, 48);
             this.lblUsuario.TabIndex = 2;
@@ -356,7 +378,7 @@
             // imgUserLogo
             // 
             this.imgUserLogo.Image = global::BikerStriker.Properties.Resources.user_logo;
-            this.imgUserLogo.Location = new System.Drawing.Point(365, 33);
+            this.imgUserLogo.Location = new System.Drawing.Point(306, 33);
             this.imgUserLogo.Name = "imgUserLogo";
             this.imgUserLogo.Size = new System.Drawing.Size(53, 50);
             this.imgUserLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -383,25 +405,25 @@
             this.pnlDesktop.Size = new System.Drawing.Size(954, 503);
             this.pnlDesktop.TabIndex = 2;
             // 
-            // btnTarjetas
+            // btnContactos
             // 
-            this.btnTarjetas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.btnTarjetas.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnTarjetas.FlatAppearance.BorderSize = 0;
-            this.btnTarjetas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnTarjetas.Font = new System.Drawing.Font("Sylfaen", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTarjetas.ForeColor = System.Drawing.Color.White;
-            this.btnTarjetas.Image = ((System.Drawing.Image)(resources.GetObject("btnTarjetas.Image")));
-            this.btnTarjetas.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnTarjetas.Location = new System.Drawing.Point(0, 333);
-            this.btnTarjetas.Name = "btnTarjetas";
-            this.btnTarjetas.Size = new System.Drawing.Size(208, 37);
-            this.btnTarjetas.TabIndex = 11;
-            this.btnTarjetas.Text = "Tarjetas";
-            this.btnTarjetas.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnTarjetas.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnTarjetas.UseVisualStyleBackColor = false;
-            this.btnTarjetas.Click += new System.EventHandler(this.btnTarjetas_Click);
+            this.btnContactos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.btnContactos.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnContactos.FlatAppearance.BorderSize = 0;
+            this.btnContactos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnContactos.Font = new System.Drawing.Font("Sylfaen", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnContactos.ForeColor = System.Drawing.Color.White;
+            this.btnContactos.Image = ((System.Drawing.Image)(resources.GetObject("btnContactos.Image")));
+            this.btnContactos.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.btnContactos.Location = new System.Drawing.Point(0, 370);
+            this.btnContactos.Name = "btnContactos";
+            this.btnContactos.Size = new System.Drawing.Size(208, 37);
+            this.btnContactos.TabIndex = 12;
+            this.btnContactos.Text = "Contactos";
+            this.btnContactos.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnContactos.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnContactos.UseVisualStyleBackColor = false;
+            this.btnContactos.Click += new System.EventHandler(this.btnContactos_Click);
             // 
             // frmMenuPrincipal
             // 
@@ -450,6 +472,7 @@
         private System.Windows.Forms.Button btnOrden;
         private System.Windows.Forms.PictureBox imgUserLogo;
         private System.Windows.Forms.Button btnTarjetas;
+        private System.Windows.Forms.Button btnContactos;
     }
 }
 
