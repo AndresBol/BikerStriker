@@ -9,6 +9,7 @@ namespace BikerStriker.Enums
     public enum TipoCategoriasMenu
     {
         Mantenimiento,
+        OrdenTrabajo,
         Reporte
     }
 }

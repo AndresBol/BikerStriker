@@ -1,5 +1,6 @@
 ﻿using BikerStriker.Enums;
 using BikerStriker.Layers.UI.Mantenimientos;
+using BikerStriker.Layers.UI.Procesos;
 using BikerStriker.Properties;
 using System;
 using System.Collections.Generic;
@@ -19,6 +20,7 @@ namespace BikerStriker
         public frmMenuPrincipal()
         {
             InitializeComponent();
+            pnlOrdenesTrabajo.Visible = false;
             pnlMantenimientos.Visible = false;
             btnMantenimientos.Visible = Settings.Default.TipoUsuario == TipoUsuario.Administrador;
             lblUsuario.Text = Settings.Default.Nombre;
@@ -60,7 +62,7 @@ namespace BikerStriker
         private void btnMantenimientos_Click(object sender, EventArgs e)
         {
             ToggleVisibilityPanels(TipoCategoriasMenu.Mantenimiento);
-            btnMantenimientos.Image = btnMarcas.Visible ? Properties.Resources.arrow_left : Properties.Resources.arrow_down;
+            btnMantenimientos.Image = pnlMantenimientos.Visible ? Properties.Resources.arrow_left : Properties.Resources.arrow_down;
         }
 
         private void ToggleVisibilityPanels(TipoCategoriasMenu tipo)
@@ -70,11 +72,34 @@ namespace BikerStriker
                 case TipoCategoriasMenu.Mantenimiento:
                     pnlMantenimientos.Visible = !pnlMantenimientos.Visible;
                     break;
+                case TipoCategoriasMenu.OrdenTrabajo:
+                    pnlOrdenesTrabajo.Visible = !pnlOrdenesTrabajo.Visible;
+                    break;
                 case TipoCategoriasMenu.Reporte:
                     break;
             }
         }
 
+        private void lblUsuario_Click(object sender, EventArgs e)
+        {
+            CerrarSesion();
+        }
+
+        private void imgUserLogo_Click(object sender, EventArgs e)
+        {
+            CerrarSesion();
+        }
+
+        private void CerrarSesion()
+        {
+            DialogResult respuesta = MessageBox.Show("¿Desea cerrar la sesión?", "Cerrar sesión", MessageBoxButtons.YesNo);
+
+            if (respuesta == DialogResult.Yes)
+            {
+                System.Diagnostics.Process.Start(Application.ExecutablePath);
+                Application.Exit();
+            }
+        }
         private void btnMarcas_Click(object sender, EventArgs e)
         {
             OpenChildForm(new frmMantenimientoMarca());
@@ -120,32 +145,6 @@ namespace BikerStriker
             OpenChildForm(new frmMantenimientoTienda());
         }
 
-        private void btnOrden_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblUsuario_Click(object sender, EventArgs e)
-        {
-            CerrarSesion();
-        }
-
-        private void imgUserLogo_Click(object sender, EventArgs e)
-        {
-            CerrarSesion();
-        }
-
-        private void CerrarSesion()
-        {
-            DialogResult respuesta = MessageBox.Show("¿Desea cerrar la sesión?", "Cerrar sesión", MessageBoxButtons.YesNo);
-
-            if(respuesta == DialogResult.Yes)
-            {
-                System.Diagnostics.Process.Start(Application.ExecutablePath);
-                Application.Exit();
-            }
-        }
-
         private void btnTarjetas_Click(object sender, EventArgs e)
         {
             OpenChildForm(new frmMantenimientoTarjeta());
@@ -154,6 +153,17 @@ namespace BikerStriker
         private void btnContactos_Click(object sender, EventArgs e)
         {
             OpenChildForm(new frmMantenimientoContacto());
+        }
+
+        private void btnOrdenesTrabajo_Click(object sender, EventArgs e)
+        {
+            ToggleVisibilityPanels(TipoCategoriasMenu.OrdenTrabajo);
+            btnOrdenesTrabajo.Image = pnlOrdenesTrabajo.Visible ? Properties.Resources.arrow_left : Properties.Resources.arrow_down;
+        }
+
+        private void btnNuevaOrden_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new frmNuevaOT());
         }
     }
 }
