@@ -118,6 +118,7 @@
     <Compile Include="Layers\Entities\Canton.cs" />
     <Compile Include="Layers\Entities\Distrito.cs" />
     <Compile Include="Layers\Entities\Dolar.cs" />
+    <Compile Include="Layers\Entities\OrdenFoto.cs" />
     <Compile Include="Layers\Entities\Provincia.cs" />
     <Compile Include="Layers\Entities\Contacto.cs" />
     <Compile Include="Layers\Entities\Tarjeta.cs" />
@@ -341,6 +342,9 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Logo_whiterounded.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

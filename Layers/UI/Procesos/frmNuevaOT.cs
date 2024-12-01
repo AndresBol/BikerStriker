@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BikerStriker.Layers.BLL;
+using BikerStriker.Layers.Entities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +14,156 @@ namespace BikerStriker.Layers.UI.Procesos
 {
     public partial class frmNuevaOT : Form
     {
+        private List<Producto> Servicios;
+        private BindingList<Producto> ServiciosSeleccionados = new BindingList<Producto>();
+        private BindingList<OrdenFoto> Fotografias = new BindingList<OrdenFoto>();
         public frmNuevaOT()
         {
             InitializeComponent();
+            btnEliminarDetalle.Visible = false;
+            btnEliminarFoto.Visible = false;
+            CargarElementos();
+        }
+
+        private async void CargarElementos()
+        {
+            BLLCliente bLLCliente = new BLLCliente();
+            cmbCliente.DataSource = bLLCliente.GetAllCliente();
+
+            dgvFotos.DataSource = Fotografias;
+            dgvFotos.Columns["Id"].Visible = false;
+            dgvFotos.Columns["Foto"].Visible = false;
+
+            dgvOrdenDetalle.DataSource = ServiciosSeleccionados;
+            dgvOrdenDetalle.Columns["Id"].Visible = false;
+            dgvOrdenDetalle.Columns["Descripcion"].Visible = false;
+            dgvOrdenDetalle.Columns["Categoria"].Visible = false;
+            dgvOrdenDetalle.Columns["Cantidad"].Visible = false;
+            dgvOrdenDetalle.Columns["EsServicio"].Visible = false;
+
+            BLLProducto bLLProducto = new BLLProducto();
+            Servicios = await bLLProducto.GetSoloServicio();
+
+            BLLCategoria bLLCategoria = new BLLCategoria();
+            cmbCategoria.DataSource = bLLCategoria.GetAllCategoria();
+        }
+
+        private void ActualizarServicios() 
+        {
+            var ServiciosFiltrados = Servicios
+                       .Where(d => d.Categoria.Id == ((Categoria)cmbCategoria.SelectedItem).Id)
+                       .ToList();
+
+            cmbServicio.DataSource = ServiciosFiltrados;
+        }
+
+        private void ActualizarCamposDetalle(Producto producto)
+        {
+            if(producto != null)
+            {
+                txtCodigo.Text = producto.Codigo;
+                txtNombre.Text = producto.Nombre;
+                txtDescripcion.Text = producto.Descripcion;
+                lblPrecio.Text = $"Precio\n₡ {producto.Precio.ToString("#,##0.00")}\n$ {producto.Dolarizado.ToString("#,##0.00")}";
+            }
+        }
+
+        private void LimpiarCamposDetalle()
+        {
+            txtCodigo.Text = "";
+            txtNombre.Text = "";
+            txtDescripcion.Text = "";
+            lblPrecio.Text = "Precio\n₡\n$";
+            btnEliminarDetalle.Visible = false;
+            cmbServicio.SelectedItem = null;
+        }
+
+        private void cmbCategoria_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ActualizarServicios();
+        }
+
+        private void cmbCliente_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Cliente cliente = (Cliente) cmbCliente.SelectedItem;
+            if (cliente != null)
+            {
+                BLLBicicleta bLLBicicleta = new BLLBicicleta();
+                cmbBicicleta.DataSource = bLLBicicleta.GetAllBicicletaFromCliente(cliente.ClienteId);
+            }
+        }
+
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            Producto servicio = (Producto) cmbServicio.SelectedItem;
+            ServiciosSeleccionados.Add(servicio);
+            Servicios.Remove(servicio);
+            ActualizarServicios();
+            LimpiarCamposDetalle();
+        }
+
+        private void dgvOrdenDetalle_Click(object sender, EventArgs e)
+        {
+            if (dgvOrdenDetalle.SelectedRows.Count > 0)
+            {
+                cmbServicio.SelectedItem = null;
+                btnEliminarDetalle.Visible = true;
+                ActualizarCamposDetalle((Producto)dgvOrdenDetalle.CurrentRow.DataBoundItem);
+            }
+        }
+
+        private void cmbServicio_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            btnEliminarDetalle.Visible = false;
+            ActualizarCamposDetalle((Producto)cmbServicio.SelectedItem);
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            Producto servicio = (Producto)dgvOrdenDetalle.CurrentRow.DataBoundItem;
+
+            DialogResult respuesta = MessageBox.Show($"¿Desea eliminar el servicio: {servicio.Nombre}?", "Eliminar servicio", MessageBoxButtons.YesNo);
+
+            if (respuesta == DialogResult.Yes)
+            {
+                ServiciosSeleccionados.Remove(servicio);
+                Servicios.Add(servicio);
+                LimpiarCamposDetalle();
+                ActualizarServicios();
+            }
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            openFileDialog.Filter = "Solo JPEG | *.jpeg";
+            DialogResult resultado = openFileDialog.ShowDialog();
+            if (resultado == System.Windows.Forms.DialogResult.OK)
+            {
+                Fotografias.Add(new OrdenFoto(openFileDialog.FileName, Image.FromFile(openFileDialog.FileName)));
+            }
+        }
+
+        private void dgvFotos_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dgvFotos.SelectedRows.Count > 0)
+            {
+                imgFoto.Image = ((OrdenFoto)dgvFotos.CurrentRow.DataBoundItem).Foto;
+                btnEliminarFoto.Visible = true;
+            }
+        }
+
+        private void btnEliminarFoto_Click(object sender, EventArgs e)
+        {
+            OrdenFoto foto = (OrdenFoto)dgvFotos.CurrentRow.DataBoundItem;
+            DialogResult respuesta = MessageBox.Show($"¿Desea eliminar la foto con ruta: {foto.Ruta}?", "Eliminar Fotografia", MessageBoxButtons.YesNo);
+
+            if (respuesta == DialogResult.Yes)
+            {
+                Fotografias.Remove(foto);
+                btnEliminarFoto.Visible = false;
+                imgFoto.Image=null;
+                dgvFotos.ClearSelection();
+            }
         }
     }
-}
+}   

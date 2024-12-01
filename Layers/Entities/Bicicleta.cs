@@ -15,5 +15,10 @@ namespace BikerStriker.Layers.Entities
         public Color Color { get; set; }
         public Modelo Modelo { get; set; }
 
+        public override string ToString()
+        {
+            return $"{NumeroSerie} | {Modelo.Nombre}";
+        }
+
     }
 }

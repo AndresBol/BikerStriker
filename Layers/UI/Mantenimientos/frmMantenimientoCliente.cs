@@ -141,7 +141,6 @@ namespace BikerStriker.Layers.UI.Mantenimientos
             txtNombre.Text = "";
             txtApellidos.Text = "";
             cmbGenero.SelectedIndex = 0;
-            //ActualizarProvincias();
             txtCorreo.Text = "";
             txtContrasena.Text = "";
             btnAdd.Visible = false;

@@ -71,21 +71,259 @@ namespace BikerStriker.Layers.DAL
                     while (reader.Read())
                     {
                         Producto producto = new Producto();
-                        producto.Id = (int) reader["id"];
+                        producto.Id = (int)reader["id"];
                         producto.Codigo = reader["codigo"].ToString();
                         producto.Nombre = reader["nombre"].ToString();
                         producto.Precio = Convert.ToDouble(reader["precio"].ToString());
                         producto.Dolarizado = await ObtenerDolarizado(producto.Precio);
                         producto.Descripcion = reader["descripcion"].ToString();
-                        producto.Cantidad = (int) reader["cantidad"];
-                        
+                        producto.Cantidad = (int)reader["cantidad"];
+
                         producto.Categoria = new Categoria
                         {
                             Id = (int)reader["id_Categoria"],
                             Nombre = reader["Categoria_nombre"].ToString(),
                         };
 
-                        producto.EsServicio = (bool) reader["es_Servicio"];
+                        producto.EsServicio = (bool)reader["es_Servicio"];
+
+                        lista.Add(producto);
+                    }
+                }
+
+                return lista;
+            }
+            catch (SqlException er)
+            {
+                _Logger.ErrorFormat("Error {0}", msg.ToExceptionDetail(MethodBase.GetCurrentMethod(), er, command));
+                throw new DatabaseException(msg.ToSqlServerDetailError(er), er);
+            }
+            catch (Exception er)
+            {
+                msg = msg.ToExceptionDetail(er, MethodBase.GetCurrentMethod());
+                _Logger.ErrorFormat("Error {0}", msg.ToString());
+                throw;
+            }
+        }
+
+        public async Task<List<Producto>> GetSoloServicio()
+        {
+            string msg = "";
+            IDataReader reader = null;
+            List<Producto> lista = new List<Producto>();
+            SqlCommand command = new SqlCommand();
+
+            string sql = @"
+            SELECT p.id, p.codigo, p.nombre, p.precio, p.descripcion, p.cantidad, p.id_Categoria, p.es_Servicio, ca.nombre AS Categoria_nombre
+            FROM Producto p
+            LEFT JOIN Categoria ca ON p.id_Categoria = ca.id
+            WHERE p.activo = 1 and p.es_Servicio = 1";
+            command.CommandText = sql;
+            command.CommandType = CommandType.Text;
+
+            try
+            {
+                using (IDataBase db = FactoryDatabase.CreateDataBase(FactoryConexion.CreateConnection()))
+                {
+                    reader = db.ExecuteReader(command);
+
+                    while (reader.Read())
+                    {
+                        Producto producto = new Producto();
+                        producto.Id = (int)reader["id"];
+                        producto.Codigo = reader["codigo"].ToString();
+                        producto.Nombre = reader["nombre"].ToString();
+                        producto.Precio = Convert.ToDouble(reader["precio"].ToString());
+                        producto.Dolarizado = await ObtenerDolarizado(producto.Precio);
+                        producto.Descripcion = reader["descripcion"].ToString();
+                        producto.Cantidad = (int)reader["cantidad"];
+
+                        producto.Categoria = new Categoria
+                        {
+                            Id = (int)reader["id_Categoria"],
+                            Nombre = reader["Categoria_nombre"].ToString(),
+                        };
+
+                        producto.EsServicio = (bool)reader["es_Servicio"];
+
+                        lista.Add(producto);
+                    }
+                }
+
+                return lista;
+            }
+            catch (SqlException er)
+            {
+                _Logger.ErrorFormat("Error {0}", msg.ToExceptionDetail(MethodBase.GetCurrentMethod(), er, command));
+                throw new DatabaseException(msg.ToSqlServerDetailError(er), er);
+            }
+            catch (Exception er)
+            {
+                msg = msg.ToExceptionDetail(er, MethodBase.GetCurrentMethod());
+                _Logger.ErrorFormat("Error {0}", msg.ToString());
+                throw;
+            }
+        }
+
+        public async Task<List<Producto>> GetSoloProducto()
+        {
+            string msg = "";
+            IDataReader reader = null;
+            List<Producto> lista = new List<Producto>();
+            SqlCommand command = new SqlCommand();
+
+            string sql = @"
+            SELECT p.id, p.codigo, p.nombre, p.precio, p.descripcion, p.cantidad, p.id_Categoria, p.es_Servicio, ca.nombre AS Categoria_nombre
+            FROM Producto p
+            LEFT JOIN Categoria ca ON p.id_Categoria = ca.id
+            WHERE p.activo = 1 and p.es_Servicio = 0";
+            command.CommandText = sql;
+            command.CommandType = CommandType.Text;
+
+            try
+            {
+                using (IDataBase db = FactoryDatabase.CreateDataBase(FactoryConexion.CreateConnection()))
+                {
+                    reader = db.ExecuteReader(command);
+
+                    while (reader.Read())
+                    {
+                        Producto producto = new Producto();
+                        producto.Id = (int)reader["id"];
+                        producto.Codigo = reader["codigo"].ToString();
+                        producto.Nombre = reader["nombre"].ToString();
+                        producto.Precio = Convert.ToDouble(reader["precio"].ToString());
+                        producto.Dolarizado = await ObtenerDolarizado(producto.Precio);
+                        producto.Descripcion = reader["descripcion"].ToString();
+                        producto.Cantidad = (int)reader["cantidad"];
+
+                        producto.Categoria = new Categoria
+                        {
+                            Id = (int)reader["id_Categoria"],
+                            Nombre = reader["Categoria_nombre"].ToString(),
+                        };
+
+                        producto.EsServicio = (bool)reader["es_Servicio"];
+
+                        lista.Add(producto);
+                    }
+                }
+
+                return lista;
+            }
+            catch (SqlException er)
+            {
+                _Logger.ErrorFormat("Error {0}", msg.ToExceptionDetail(MethodBase.GetCurrentMethod(), er, command));
+                throw new DatabaseException(msg.ToSqlServerDetailError(er), er);
+            }
+            catch (Exception er)
+            {
+                msg = msg.ToExceptionDetail(er, MethodBase.GetCurrentMethod());
+                _Logger.ErrorFormat("Error {0}", msg.ToString());
+                throw;
+            }
+        }
+
+        public async Task<List<Producto>> GetProductosByCategoria(int CategoriaId)
+        {
+            string msg = "";
+            IDataReader reader = null;
+            List<Producto> lista = new List<Producto>();
+            SqlCommand command = new SqlCommand();
+
+            string sql = @"
+            SELECT p.id, p.codigo, p.nombre, p.precio, p.descripcion, p.cantidad, p.id_Categoria, p.es_Servicio, ca.nombre AS Categoria_nombre
+            FROM Producto p
+            LEFT JOIN Categoria ca ON p.id_Categoria = ca.id
+            WHERE p.activo = 1 and p.es_Servicio = 0 and p.id_Categoria = @id_Categoria";
+            command.Parameters.AddWithValue("@id_Categoria", CategoriaId);
+            command.CommandText = sql;
+            command.CommandType = CommandType.Text;
+
+            try
+            {
+                using (IDataBase db = FactoryDatabase.CreateDataBase(FactoryConexion.CreateConnection()))
+                {
+                    reader = db.ExecuteReader(command);
+
+                    while (reader.Read())
+                    {
+                        Producto producto = new Producto();
+                        producto.Id = (int)reader["id"];
+                        producto.Codigo = reader["codigo"].ToString();
+                        producto.Nombre = reader["nombre"].ToString();
+                        producto.Precio = Convert.ToDouble(reader["precio"].ToString());
+                        producto.Dolarizado = await ObtenerDolarizado(producto.Precio);
+                        producto.Descripcion = reader["descripcion"].ToString();
+                        producto.Cantidad = (int)reader["cantidad"];
+
+                        producto.Categoria = new Categoria
+                        {
+                            Id = (int)reader["id_Categoria"],
+                            Nombre = reader["Categoria_nombre"].ToString(),
+                        };
+
+                        producto.EsServicio = (bool)reader["es_Servicio"];
+
+                        lista.Add(producto);
+                    }
+                }
+
+                return lista;
+            }
+            catch (SqlException er)
+            {
+                _Logger.ErrorFormat("Error {0}", msg.ToExceptionDetail(MethodBase.GetCurrentMethod(), er, command));
+                throw new DatabaseException(msg.ToSqlServerDetailError(er), er);
+            }
+            catch (Exception er)
+            {
+                msg = msg.ToExceptionDetail(er, MethodBase.GetCurrentMethod());
+                _Logger.ErrorFormat("Error {0}", msg.ToString());
+                throw;
+            }
+        }
+
+        public async Task<List<Producto>> GetServiciosByCategoria(int CategoriaId)
+        {
+            string msg = "";
+            IDataReader reader = null;
+            List<Producto> lista = new List<Producto>();
+            SqlCommand command = new SqlCommand();
+
+            string sql = @"
+            SELECT p.id, p.codigo, p.nombre, p.precio, p.descripcion, p.cantidad, p.id_Categoria, p.es_Servicio, ca.nombre AS Categoria_nombre
+            FROM Producto p
+            LEFT JOIN Categoria ca ON p.id_Categoria = ca.id
+            WHERE p.activo = 1 and p.es_Servicio = 1 and p.id_Categoria = @id_Categoria";
+            command.Parameters.AddWithValue("@id_Categoria", CategoriaId);
+            command.CommandText = sql;
+            command.CommandType = CommandType.Text;
+
+            try
+            {
+                using (IDataBase db = FactoryDatabase.CreateDataBase(FactoryConexion.CreateConnection()))
+                {
+                    reader = db.ExecuteReader(command);
+
+                    while (reader.Read())
+                    {
+                        Producto producto = new Producto();
+                        producto.Id = (int)reader["id"];
+                        producto.Codigo = reader["codigo"].ToString();
+                        producto.Nombre = reader["nombre"].ToString();
+                        producto.Precio = Convert.ToDouble(reader["precio"].ToString());
+                        producto.Dolarizado = await ObtenerDolarizado(producto.Precio);
+                        producto.Descripcion = reader["descripcion"].ToString();
+                        producto.Cantidad = (int)reader["cantidad"];
+
+                        producto.Categoria = new Categoria
+                        {
+                            Id = (int)reader["id_Categoria"],
+                            Nombre = reader["Categoria_nombre"].ToString(),
+                        };
+
+                        producto.EsServicio = (bool)reader["es_Servicio"];
 
                         lista.Add(producto);
                     }

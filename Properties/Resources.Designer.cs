@@ -123,6 +123,16 @@ namespace BikerStriker.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Logo_whiterounded {
+            get {
+                object obj = ResourceManager.GetObject("Logo_whiterounded", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap SearchImage_Logo {
             get {
                 object obj = ResourceManager.GetObject("SearchImage_Logo", resourceCulture);
