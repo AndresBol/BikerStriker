@@ -255,5 +255,66 @@ namespace BikerStriker.Layers.DAL
                 throw;
             }
         }
+
+        public Cliente GetClienteByUserID(int id)
+        {
+            string msg = "";
+            IDataReader reader = null;
+
+            string sql = @"
+            SELECT c.id, c.identificacion, c.direccion, c.genero, c.id_Usuario, 
+            u.id AS user_id, u.correo AS user_correo, u.contrasena AS user_contrasena, u.nombre AS user_nombre, u.apellidos AS user_apellidos
+            FROM Cliente c
+            LEFT JOIN Usuario u ON c.id_Usuario = u.id
+            WHERE c.id_Usuario = @id";
+
+            SqlCommand command = new SqlCommand();
+            command.Parameters.AddWithValue("@id", id);
+            command.CommandType = CommandType.Text;
+            command.CommandText = sql;
+
+            try
+            {
+                using (IDataBase db = FactoryDatabase.CreateDataBase(FactoryConexion.CreateConnection()))
+                {
+                    reader = db.ExecuteReader(command);
+
+                    while (reader.Read())
+                    {
+                        BLLBicicleta bllBicicleta = new BLLBicicleta();
+                        BLLTarjeta bllTarjeta = new BLLTarjeta();
+                        BLLContacto bLLContacto = new BLLContacto();
+
+                        Cliente cliente = new Cliente();
+                        cliente.UsuarioId = (int)reader["user_id"];
+                        cliente.Correo = reader["user_correo"].ToString();
+                        cliente.Contraseña = reader["user_contrasena"].ToString();
+                        cliente.Nombre = reader["user_nombre"].ToString();
+                        cliente.Apellidos = reader["user_apellidos"].ToString();
+                        cliente.ClienteId = (int)reader["id"];
+                        cliente.Identificacion = reader["identificacion"].ToString();
+                        cliente.Direccion = reader["direccion"].ToString();
+                        cliente.Genero = (TipoGenero)Convert.ToInt16(reader["genero"].ToString());
+                        cliente.Bicicletas = bllBicicleta.GetAllBicicletaFromCliente(cliente.ClienteId);
+                        cliente.Tarjetas = bllTarjeta.GetAllTarjetaFromCliente(cliente.ClienteId);
+                        cliente.Contactos = bLLContacto.GetAllContactoFromCliente(cliente.ClienteId);
+                        return cliente;
+                    }
+
+                    return null;
+                }
+            }
+            catch (SqlException er)
+            {
+                _Logger.ErrorFormat("Error {0}", msg.ToExceptionDetail(MethodBase.GetCurrentMethod(), er, command));
+                throw new DatabaseException(msg.ToSqlServerDetailError(er), er);
+            }
+            catch (Exception er)
+            {
+                msg = msg.ToExceptionDetail(er, MethodBase.GetCurrentMethod());
+                _Logger.ErrorFormat("Error {0}", msg.ToString());
+                throw;
+            }
+        }
     }
 }

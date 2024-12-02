@@ -11,16 +11,16 @@ namespace BikerStriker.Layers.BLL
 {
     internal class BLLOrdenTrabajo : IBLLOrdenTrabajo
     {
-        public List<OrdenTrabajo> GetAllOrdenTrabajo()
+        public async Task<List<OrdenTrabajo>> GetAllOrdenTrabajo()
         {
             IDALOrdenTrabajo _DALOrdenTrabajo = new DALOrdenTrabajo();
-            return _DALOrdenTrabajo.GetAllOrdenTrabajo();
+            return await _DALOrdenTrabajo.GetAllOrdenTrabajo();
         }
 
-        public List<OrdenTrabajo> GetAllOrdenTrabajoFromCliente(int ClienteId)
+        public async Task<List<OrdenTrabajo>> GetAllOrdenTrabajoFromCliente(int ClienteId)
         {
             var dal = new DALOrdenTrabajo();
-            var existe = dal.GetAllOrdenTrabajoFromCliente(ClienteId);
+            var existe = await dal.GetAllOrdenTrabajoFromCliente(ClienteId);
 
             if (existe != null)
             {
@@ -38,10 +38,16 @@ namespace BikerStriker.Layers.BLL
             dal.Insertar(ordenTrabajo);
         }
 
-        public OrdenTrabajo GetOrdenTrabajoByID(int id)
+        public async Task<OrdenTrabajo> GetOrdenTrabajoByID(int id)
         {
             IDALOrdenTrabajo _DALOrdenTrabajo = new DALOrdenTrabajo();
-            return _DALOrdenTrabajo.GetOrdenTrabajoByID(id);
+            return await _DALOrdenTrabajo.GetOrdenTrabajoByID(id);
+        }
+
+        public int GetIdOrdenTrabajo(OrdenTrabajo ordenTrabajo)
+        {
+            IDALOrdenTrabajo _DALOrdenTrabajo = new DALOrdenTrabajo();
+            return _DALOrdenTrabajo.GetIdOrdenTrabajo(ordenTrabajo);
         }
     }
 }

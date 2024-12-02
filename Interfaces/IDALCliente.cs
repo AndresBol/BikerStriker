@@ -14,5 +14,6 @@ namespace BikerStriker.Interfaces
         void Actualizar(Cliente cliente);
         void Desactivar(int id);
         Cliente GetClienteByID(int id);
+        Cliente GetClienteByUserID(int id);
     }
 }

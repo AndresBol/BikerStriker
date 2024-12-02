@@ -9,9 +9,10 @@ namespace BikerStriker.Interfaces
 {
     internal interface IBLLOrdenTrabajo
     {
-        List<OrdenTrabajo> GetAllOrdenTrabajo();
-        List<OrdenTrabajo> GetAllOrdenTrabajoFromCliente(int ClienteId);
+        Task<List<OrdenTrabajo>> GetAllOrdenTrabajo();
+        Task<List<OrdenTrabajo>> GetAllOrdenTrabajoFromCliente(int ClienteId);
         void Save(OrdenTrabajo ordenTrabajo);
-        OrdenTrabajo GetOrdenTrabajoByID(int id);
+        Task<OrdenTrabajo> GetOrdenTrabajoByID(int id);
+        int GetIdOrdenTrabajo(OrdenTrabajo ordenTrabajo);
     }
 }

@@ -11,13 +11,13 @@ namespace BikerStriker.Layers.BLL
 {
     internal class BLLOrdenDetalle : IBLLOrdenDetalle
     {
-        public List<OrdenDetalle> GetAllOrdenDetalle()
+        public Task<List<OrdenDetalle>> GetAllOrdenDetalle()
         {
             IDALOrdenDetalle _DALOrdenDetalle = new DALOrdenDetalle();
             return _DALOrdenDetalle.GetAllOrdenDetalle();
         }
 
-        public List<OrdenDetalle> GetAllOrdenDetalleById_OrdenTrabajo(int ClienteId)
+        public Task<List<OrdenDetalle>> GetAllOrdenDetalleById_OrdenTrabajo(int ClienteId)
         {
             IDALOrdenDetalle _DALOrdenDetalle = new DALOrdenDetalle();
             return _DALOrdenDetalle.GetAllOrdenDetalleById_OrdenTrabajo(ClienteId);

@@ -22,7 +22,7 @@ namespace BikerStriker
             InitializeComponent();
             pnlOrdenesTrabajo.Visible = false;
             pnlMantenimientos.Visible = false;
-            btnMantenimientos.Visible = Settings.Default.TipoUsuario == TipoUsuario.Administrador;
+            btnMantenimientos.Visible = Settings.Default.Usuario.TipoUsuario == TipoUsuario.Administrador;
             lblUsuario.Text = Settings.Default.Nombre;
             AdjustLabelToLeft(lblUsuario);
         }
@@ -164,6 +164,11 @@ namespace BikerStriker
         private void btnNuevaOrden_Click(object sender, EventArgs e)
         {
             OpenChildForm(new frmNuevaOT());
+        }
+
+        private void BtnVerOrdenes_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new frmOrdenesDeTrabajo());
         }
     }
 }

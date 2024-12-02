@@ -33,7 +33,7 @@ namespace BikerStriker.Layers.DAL
 
         private static readonly ILog _Logger = LogManager.GetLogger("MyControlEventos");
 
-        public List<OrdenTrabajo> GetAllOrdenTrabajo()
+        public async Task<List<OrdenTrabajo>> GetAllOrdenTrabajo()
         {
             string msg = "";
             IDataReader reader = null;
@@ -66,8 +66,8 @@ namespace BikerStriker.Layers.DAL
                         ordenTrabajo.Cliente = bLLCliente.GetClienteByID((int)reader["id_Cliente"]);
                         ordenTrabajo.Bicicleta = ordenTrabajo.Cliente.Bicicletas.FirstOrDefault(b => b.Id == (int)reader["id_Bicicleta"]);
 
-                        ordenTrabajo.OrdenDetalle = bllOrdenDetalle.GetAllOrdenDetalleById_OrdenTrabajo(ordenTrabajo.Id);
-                        ordenTrabajo.ordenFoto = bLLOrdenFoto.GetAllOrdenFotoById_OrdenTrabajo(ordenTrabajo.Id);
+                        ordenTrabajo.OrdenDetalle = await bllOrdenDetalle.GetAllOrdenDetalleById_OrdenTrabajo(ordenTrabajo.Id);
+                        ordenTrabajo.OrdenFoto = bLLOrdenFoto.GetAllOrdenFotoById_OrdenTrabajo(ordenTrabajo.Id);
 
                         lista.Add(ordenTrabajo);
                     }
@@ -88,7 +88,7 @@ namespace BikerStriker.Layers.DAL
             }
         }
 
-        public List<OrdenTrabajo> GetAllOrdenTrabajoFromCliente(int ClienteId)
+        public async Task<List<OrdenTrabajo>> GetAllOrdenTrabajoFromCliente(int ClienteId)
         {
             string msg = "";
             IDataReader reader = null;
@@ -123,8 +123,8 @@ namespace BikerStriker.Layers.DAL
                         ordenTrabajo.Cliente = bLLCliente.GetClienteByID((int)reader["id_Cliente"]);
                         ordenTrabajo.Bicicleta = ordenTrabajo.Cliente.Bicicletas.FirstOrDefault(b => b.Id == (int)reader["id_Bicicleta"]);
 
-                        ordenTrabajo.OrdenDetalle = bllOrdenDetalle.GetAllOrdenDetalleById_OrdenTrabajo(ordenTrabajo.Id);
-                        ordenTrabajo.ordenFoto = bLLOrdenFoto.GetAllOrdenFotoById_OrdenTrabajo(ordenTrabajo.Id);
+                        ordenTrabajo.OrdenDetalle = await bllOrdenDetalle.GetAllOrdenDetalleById_OrdenTrabajo(ordenTrabajo.Id);
+                        ordenTrabajo.OrdenFoto = bLLOrdenFoto.GetAllOrdenFotoById_OrdenTrabajo(ordenTrabajo.Id);
 
                         lista.Add(ordenTrabajo);
                     }
@@ -150,8 +150,8 @@ namespace BikerStriker.Layers.DAL
             string msg = "";
             string sql = @"Insert into OrdenTrabajo values (@fechaInicio,@fechaFinalizacion,@firma,@id_Cliente,@id_Bicicleta)";
             SqlCommand command = new SqlCommand();
-            command.Parameters.AddWithValue("@fechaInicio", ordenTrabajo.FechaInicio);
-            command.Parameters.AddWithValue("@fechaFinalizacion", ordenTrabajo.FechaFinalizacion);
+            command.Parameters.AddWithValue("@fechaInicio", ordenTrabajo.FechaInicio.Date);
+            command.Parameters.AddWithValue("@fechaFinalizacion", ordenTrabajo.FechaFinalizacion.Date);
             command.Parameters.AddWithValue("@firma", ImageSerializer.SerializeImageToString(ordenTrabajo.Firma));
             command.Parameters.AddWithValue("@id_Cliente", ordenTrabajo.Cliente.ClienteId);
             command.Parameters.AddWithValue("@id_Bicicleta", ordenTrabajo.Bicicleta.Id);
@@ -178,7 +178,7 @@ namespace BikerStriker.Layers.DAL
             }
         }
 
-        public OrdenTrabajo GetOrdenTrabajoByID(int id)
+        public async Task<OrdenTrabajo> GetOrdenTrabajoByID(int id)
         {
             string msg = "";
             IDataReader reader = null;
@@ -212,13 +212,58 @@ namespace BikerStriker.Layers.DAL
                         ordenTrabajo.Cliente = bLLCliente.GetClienteByID((int)reader["id_Cliente"]);
                         ordenTrabajo.Bicicleta = ordenTrabajo.Cliente.Bicicletas.FirstOrDefault(b => b.Id == (int)reader["id_Bicicleta"]);
 
-                        ordenTrabajo.OrdenDetalle = bllOrdenDetalle.GetAllOrdenDetalleById_OrdenTrabajo(ordenTrabajo.Id);
-                        ordenTrabajo.ordenFoto = bLLOrdenFoto.GetAllOrdenFotoById_OrdenTrabajo(ordenTrabajo.Id);
+                        ordenTrabajo.OrdenDetalle = await bllOrdenDetalle.GetAllOrdenDetalleById_OrdenTrabajo(ordenTrabajo.Id);
+                        ordenTrabajo.OrdenFoto = bLLOrdenFoto.GetAllOrdenFotoById_OrdenTrabajo(ordenTrabajo.Id);
 
                     }
                 }
 
                 return ordenTrabajo;
+            }
+            catch (SqlException er)
+            {
+                _Logger.ErrorFormat("Error {0}", msg.ToExceptionDetail(MethodBase.GetCurrentMethod(), er, command));
+                throw new DatabaseException(msg.ToSqlServerDetailError(er), er);
+            }
+            catch (Exception er)
+            {
+                msg = msg.ToExceptionDetail(er, MethodBase.GetCurrentMethod());
+                _Logger.ErrorFormat("Error {0}", msg.ToString());
+                throw;
+            }
+        }
+
+        public int GetIdOrdenTrabajo(OrdenTrabajo ordenTrabajo)
+        {
+            string msg = "";
+            IDataReader reader = null;
+            SqlCommand command = new SqlCommand();
+
+            string sql = @"select id from OrdenTrabajo where fechaInicio = @fechaInicio and fechaFinalizacion = @fechaFinalizacion and id_Cliente = @id_Cliente and id_Bicicleta = @id_Bicicleta";
+
+            command.Parameters.AddWithValue("@fechaInicio", ordenTrabajo.FechaInicio.Date);
+            command.Parameters.AddWithValue("@fechaFinalizacion", ordenTrabajo.FechaFinalizacion.Date);
+            command.Parameters.AddWithValue("@id_Cliente", ordenTrabajo.Cliente.ClienteId);
+            command.Parameters.AddWithValue("@id_Bicicleta", ordenTrabajo.Bicicleta.Id);
+
+            command.CommandText = sql;
+            command.CommandType = CommandType.Text;
+
+            try
+            {
+                int id = -1;
+
+                using (IDataBase db = FactoryDatabase.CreateDataBase(FactoryConexion.CreateConnection()))
+                {
+                    reader = db.ExecuteReader(command);
+
+                    while (reader.Read())
+                    {
+                        id = (int)reader["id"];
+                    }
+                }
+
+                return id;
             }
             catch (SqlException er)
             {

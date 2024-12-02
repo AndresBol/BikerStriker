@@ -9,6 +9,7 @@
 //------------------------------------------------------------------------------
 
 using BikerStriker.Enums;
+using BikerStriker.Layers.Entities;
 
 namespace BikerStriker.Properties
 {
@@ -77,15 +78,15 @@ namespace BikerStriker.Properties
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public TipoUsuario TipoUsuario
+        public Usuario Usuario
         {
             get
             {
-                return ((TipoUsuario)(this["TipoUsuario"]));
+                return ((Usuario)(this["Usuario"]));
             }
             set
             {
-                this["TipoUsuario"] = value;
+                this["Usuario"] = value;
             }
         }
     }

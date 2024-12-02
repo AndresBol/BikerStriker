@@ -20,7 +20,7 @@ using BikerStriker.Layers.BLL;
 namespace BikerStriker.Layers.DAL
 {
     /// <summary>
-    /// Clase de acceso a datos para el CRUD con la tabla OrdenDetalle en SqlServer
+    /// Clase de acceso a datos para el CRUD con la tabla OrdenTrabajoDetalle en SqlServer
     /// </summary>
     public class DALOrdenDetalle : IDALOrdenDetalle
     {
@@ -39,7 +39,7 @@ namespace BikerStriker.Layers.DAL
             List<OrdenDetalle> lista = new List<OrdenDetalle>();
             SqlCommand command = new SqlCommand();
 
-            string sql = @" select * from OrdenDetalle";
+            string sql = @" select * from OrdenTrabajoDetalle";
             command.CommandText = sql;
             command.CommandType = CommandType.Text;
 
@@ -82,7 +82,7 @@ namespace BikerStriker.Layers.DAL
             List<OrdenDetalle> lista = new List<OrdenDetalle>();
             SqlCommand command = new SqlCommand();
 
-            string sql = @" select * from OrdenDetalle where id_OrdenTrabajo = @id_OrdenTrabajo";
+            string sql = @" select * from OrdenTrabajoDetalle where id_OrdenTrabajo = @id_OrdenTrabajo";
             command.Parameters.AddWithValue("@id_OrdenTrabajo", id_OrdenTrabajo);
             command.CommandText = sql;
             command.CommandType = CommandType.Text;
@@ -122,7 +122,7 @@ namespace BikerStriker.Layers.DAL
         public void Insertar(OrdenDetalle ordenDetalle, int id_OrdenTrabajo)
         {
             string msg = "";
-            string sql = @"Insert into OrdenDetalle values (@id_Producto,@id_OrdenTrabajo)";
+            string sql = @"Insert into OrdenTrabajoDetalle values (@id_Producto,@id_OrdenTrabajo)";
             SqlCommand command = new SqlCommand();
             command.Parameters.AddWithValue("@id_Producto", ordenDetalle.Servicio.Id);
             command.Parameters.AddWithValue("@id_OrdenTrabajo", id_OrdenTrabajo);
@@ -153,7 +153,7 @@ namespace BikerStriker.Layers.DAL
         {
             string msg = "";
             IDataReader reader = null;
-            string sql = @"Select  *  from  OrdenDetalle   Where id = @id";
+            string sql = @"Select  *  from  OrdenTrabajoDetalle   Where id = @id";
             SqlCommand command = new SqlCommand();
             command.Parameters.AddWithValue("@id", id);
             command.CommandType = CommandType.Text;

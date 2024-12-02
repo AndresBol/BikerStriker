@@ -78,7 +78,7 @@ namespace BikerStriker.Layers.UI
                     Settings.Default.Correo = oUsuario.Correo;
                     Settings.Default.Contrasena = oUsuario.Contraseña;
                     Settings.Default.Nombre = oUsuario.Nombre;
-                    Settings.Default.TipoUsuario = oUsuario.TipoUsuario;
+                    Settings.Default.Usuario = oUsuario;
 
                     // Log de errores
                     _Logger.InfoFormat("Accedió a la aplicación :{0}", Settings.Default.Nombre);

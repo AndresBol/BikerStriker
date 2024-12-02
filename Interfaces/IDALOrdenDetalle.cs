@@ -9,9 +9,9 @@ namespace BikerStriker.Interfaces
 {
     internal interface IDALOrdenDetalle
     {
-        List<OrdenDetalle> GetAllOrdenDetalle();
-        List<OrdenDetalle> GetAllOrdenDetalleById_OrdenTrabajo(int id_OrdenTrabajo);
+        Task<List<OrdenDetalle>> GetAllOrdenDetalle();
+        Task<List<OrdenDetalle>> GetAllOrdenDetalleById_OrdenTrabajo(int id_OrdenTrabajo);
         void Insertar(OrdenDetalle ordenDetalle, int id_OrdenTrabajo);
-        OrdenDetalle GetOrdenDetalleByID(int id);
+        Task<OrdenDetalle> GetOrdenDetalleByID(int id);
     }
 }

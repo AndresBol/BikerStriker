@@ -66,11 +66,13 @@
             this.dgvFotos = new System.Windows.Forms.DataGridView();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.pnlOrdenRight = new System.Windows.Forms.Panel();
-            this.btnLimpiar = new System.Windows.Forms.Button();
-            this.btnGuardar = new System.Windows.Forms.Button();
             this.pnlFirma = new System.Windows.Forms.Panel();
+            this.lblPrecioTotal = new System.Windows.Forms.Label();
+            this.btnGuardar = new System.Windows.Forms.Button();
             this.pnlFirmaLeft = new System.Windows.Forms.Panel();
             this.img_Firma = new System.Windows.Forms.Panel();
+            this.btnLimpiar = new System.Windows.Forms.Button();
+            this.pnlOrdenTrabajoDown = new System.Windows.Forms.Panel();
             this.pnlCampos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgLogoWhite)).BeginInit();
             this.pnlCamposDer.SuspendLayout();
@@ -87,6 +89,7 @@
             this.pnlOrdenRight.SuspendLayout();
             this.pnlFirma.SuspendLayout();
             this.pnlFirmaLeft.SuspendLayout();
+            this.pnlOrdenTrabajoDown.SuspendLayout();
             this.SuspendLayout();
             // 
             // dtpFechaInicio
@@ -254,7 +257,7 @@
             this.btnEliminarDetalle.TabIndex = 8;
             this.btnEliminarDetalle.Text = "Eliminar";
             this.btnEliminarDetalle.UseVisualStyleBackColor = false;
-            this.btnEliminarDetalle.Click += new System.EventHandler(this.btnEliminar_Click);
+            this.btnEliminarDetalle.Click += new System.EventHandler(this.btnEliminarDetalle_Click);
             // 
             // dgvOrdenDetalle
             // 
@@ -399,17 +402,17 @@
             this.pnlFotos.Controls.Add(this.imgFoto);
             this.pnlFotos.Controls.Add(this.pnlFotosIzq);
             this.pnlFotos.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pnlFotos.Location = new System.Drawing.Point(0, 381);
+            this.pnlFotos.Location = new System.Drawing.Point(0, 0);
             this.pnlFotos.Name = "pnlFotos";
             this.pnlFotos.Padding = new System.Windows.Forms.Padding(12);
-            this.pnlFotos.Size = new System.Drawing.Size(409, 209);
+            this.pnlFotos.Size = new System.Drawing.Size(409, 224);
             this.pnlFotos.TabIndex = 21;
             // 
             // pnlFotosBottom
             // 
             this.pnlFotosBottom.Controls.Add(this.btnBuscar);
             this.pnlFotosBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlFotosBottom.Location = new System.Drawing.Point(210, 150);
+            this.pnlFotosBottom.Location = new System.Drawing.Point(210, 165);
             this.pnlFotosBottom.Name = "pnlFotosBottom";
             this.pnlFotosBottom.Size = new System.Drawing.Size(187, 47);
             this.pnlFotosBottom.TabIndex = 25;
@@ -437,7 +440,7 @@
             this.imgFoto.Dock = System.Windows.Forms.DockStyle.Fill;
             this.imgFoto.Location = new System.Drawing.Point(210, 12);
             this.imgFoto.Name = "imgFoto";
-            this.imgFoto.Size = new System.Drawing.Size(187, 185);
+            this.imgFoto.Size = new System.Drawing.Size(187, 200);
             this.imgFoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.imgFoto.TabIndex = 24;
             this.imgFoto.TabStop = false;
@@ -449,7 +452,7 @@
             this.pnlFotosIzq.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlFotosIzq.Location = new System.Drawing.Point(12, 12);
             this.pnlFotosIzq.Name = "pnlFotosIzq";
-            this.pnlFotosIzq.Size = new System.Drawing.Size(198, 185);
+            this.pnlFotosIzq.Size = new System.Drawing.Size(198, 200);
             this.pnlFotosIzq.TabIndex = 21;
             // 
             // btnEliminarFoto
@@ -459,7 +462,7 @@
             this.btnEliminarFoto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEliminarFoto.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEliminarFoto.ForeColor = System.Drawing.Color.White;
-            this.btnEliminarFoto.Location = new System.Drawing.Point(0, 138);
+            this.btnEliminarFoto.Location = new System.Drawing.Point(0, 153);
             this.btnEliminarFoto.Name = "btnEliminarFoto";
             this.btnEliminarFoto.Size = new System.Drawing.Size(198, 47);
             this.btnEliminarFoto.TabIndex = 24;
@@ -479,7 +482,7 @@
             this.dgvFotos.Name = "dgvFotos";
             this.dgvFotos.ReadOnly = true;
             this.dgvFotos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvFotos.Size = new System.Drawing.Size(198, 185);
+            this.dgvFotos.Size = new System.Drawing.Size(198, 200);
             this.dgvFotos.TabIndex = 2;
             this.dgvFotos.SelectionChanged += new System.EventHandler(this.dgvFotos_SelectionChanged);
             // 
@@ -492,26 +495,32 @@
             this.pnlOrdenRight.Controls.Add(this.pnlFirma);
             this.pnlOrdenRight.Controls.Add(this.pnlFirmaLeft);
             this.pnlOrdenRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pnlOrdenRight.Location = new System.Drawing.Point(415, 381);
+            this.pnlOrdenRight.Location = new System.Drawing.Point(415, 0);
             this.pnlOrdenRight.Name = "pnlOrdenRight";
             this.pnlOrdenRight.Padding = new System.Windows.Forms.Padding(12);
-            this.pnlOrdenRight.Size = new System.Drawing.Size(385, 209);
+            this.pnlOrdenRight.Size = new System.Drawing.Size(385, 224);
             this.pnlOrdenRight.TabIndex = 22;
             // 
-            // btnLimpiar
+            // pnlFirma
             // 
-            this.btnLimpiar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(0)))), ((int)(((byte)(37)))));
-            this.btnLimpiar.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.btnLimpiar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLimpiar.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLimpiar.ForeColor = System.Drawing.Color.White;
-            this.btnLimpiar.Location = new System.Drawing.Point(0, 138);
-            this.btnLimpiar.Name = "btnLimpiar";
-            this.btnLimpiar.Size = new System.Drawing.Size(173, 47);
-            this.btnLimpiar.TabIndex = 9;
-            this.btnLimpiar.Text = "Limpiar";
-            this.btnLimpiar.UseVisualStyleBackColor = false;
-            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
+            this.pnlFirma.Controls.Add(this.lblPrecioTotal);
+            this.pnlFirma.Controls.Add(this.btnGuardar);
+            this.pnlFirma.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlFirma.Location = new System.Drawing.Point(185, 12);
+            this.pnlFirma.Name = "pnlFirma";
+            this.pnlFirma.Size = new System.Drawing.Size(188, 200);
+            this.pnlFirma.TabIndex = 10;
+            // 
+            // lblPrecioTotal
+            // 
+            this.lblPrecioTotal.AutoSize = true;
+            this.lblPrecioTotal.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblPrecioTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPrecioTotal.Location = new System.Drawing.Point(0, 0);
+            this.lblPrecioTotal.Name = "lblPrecioTotal";
+            this.lblPrecioTotal.Size = new System.Drawing.Size(104, 20);
+            this.lblPrecioTotal.TabIndex = 22;
+            this.lblPrecioTotal.Text = "Precio Total";
             // 
             // btnGuardar
             // 
@@ -520,22 +529,13 @@
             this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGuardar.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F);
             this.btnGuardar.ForeColor = System.Drawing.Color.White;
-            this.btnGuardar.Location = new System.Drawing.Point(0, 138);
+            this.btnGuardar.Location = new System.Drawing.Point(0, 153);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(188, 47);
             this.btnGuardar.TabIndex = 7;
             this.btnGuardar.Text = "Guardar Orden de Trabajo";
             this.btnGuardar.UseVisualStyleBackColor = false;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
-            // 
-            // pnlFirma
-            // 
-            this.pnlFirma.Controls.Add(this.btnGuardar);
-            this.pnlFirma.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlFirma.Location = new System.Drawing.Point(185, 12);
-            this.pnlFirma.Name = "pnlFirma";
-            this.pnlFirma.Size = new System.Drawing.Size(188, 185);
-            this.pnlFirma.TabIndex = 10;
             // 
             // pnlFirmaLeft
             // 
@@ -544,16 +544,17 @@
             this.pnlFirmaLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlFirmaLeft.Location = new System.Drawing.Point(12, 12);
             this.pnlFirmaLeft.Name = "pnlFirmaLeft";
-            this.pnlFirmaLeft.Size = new System.Drawing.Size(173, 185);
+            this.pnlFirmaLeft.Size = new System.Drawing.Size(173, 200);
             this.pnlFirmaLeft.TabIndex = 8;
             // 
             // img_Firma
             // 
             this.img_Firma.BackColor = System.Drawing.Color.White;
+            this.img_Firma.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.img_Firma.Dock = System.Windows.Forms.DockStyle.Fill;
             this.img_Firma.Location = new System.Drawing.Point(0, 0);
             this.img_Firma.Name = "img_Firma";
-            this.img_Firma.Size = new System.Drawing.Size(173, 138);
+            this.img_Firma.Size = new System.Drawing.Size(173, 153);
             this.img_Firma.TabIndex = 10;
             this.img_Firma.Paint += new System.Windows.Forms.PaintEventHandler(this.img_Firma_Paint);
             this.img_Firma.MouseDown += new System.Windows.Forms.MouseEventHandler(this.img_Firma_MouseDown);
@@ -561,13 +562,37 @@
             this.img_Firma.MouseUp += new System.Windows.Forms.MouseEventHandler(this.img_Firma_MouseUp);
             this.img_Firma.Resize += new System.EventHandler(this.InitializeBitmap);
             // 
+            // btnLimpiar
+            // 
+            this.btnLimpiar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(0)))), ((int)(((byte)(37)))));
+            this.btnLimpiar.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btnLimpiar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLimpiar.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLimpiar.ForeColor = System.Drawing.Color.White;
+            this.btnLimpiar.Location = new System.Drawing.Point(0, 153);
+            this.btnLimpiar.Name = "btnLimpiar";
+            this.btnLimpiar.Size = new System.Drawing.Size(173, 47);
+            this.btnLimpiar.TabIndex = 9;
+            this.btnLimpiar.Text = "Limpiar";
+            this.btnLimpiar.UseVisualStyleBackColor = false;
+            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
+            // 
+            // pnlOrdenTrabajoDown
+            // 
+            this.pnlOrdenTrabajoDown.Controls.Add(this.pnlOrdenRight);
+            this.pnlOrdenTrabajoDown.Controls.Add(this.pnlFotos);
+            this.pnlOrdenTrabajoDown.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pnlOrdenTrabajoDown.Location = new System.Drawing.Point(0, 390);
+            this.pnlOrdenTrabajoDown.Name = "pnlOrdenTrabajoDown";
+            this.pnlOrdenTrabajoDown.Size = new System.Drawing.Size(800, 224);
+            this.pnlOrdenTrabajoDown.TabIndex = 23;
+            // 
             // frmNuevaOT
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 590);
-            this.Controls.Add(this.pnlOrdenRight);
-            this.Controls.Add(this.pnlFotos);
+            this.ClientSize = new System.Drawing.Size(800, 614);
+            this.Controls.Add(this.pnlOrdenTrabajoDown);
             this.Controls.Add(this.pnlDetalle);
             this.Controls.Add(this.pnlCampos);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
@@ -593,7 +618,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvFotos)).EndInit();
             this.pnlOrdenRight.ResumeLayout(false);
             this.pnlFirma.ResumeLayout(false);
+            this.pnlFirma.PerformLayout();
             this.pnlFirmaLeft.ResumeLayout(false);
+            this.pnlOrdenTrabajoDown.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -642,5 +669,7 @@
         private System.Windows.Forms.Panel pnlFirma;
         private System.Windows.Forms.Panel pnlFirmaLeft;
         private System.Windows.Forms.Panel img_Firma;
+        private System.Windows.Forms.Label lblPrecioTotal;
+        private System.Windows.Forms.Panel pnlOrdenTrabajoDown;
     }
 }

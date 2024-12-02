@@ -1,5 +1,8 @@
-﻿using BikerStriker.Layers.BLL;
+﻿using BikerStriker.Enums;
+using BikerStriker.Layers.BLL;
 using BikerStriker.Layers.Entities;
+using BikerStriker.Patrones;
+using BikerStriker.Properties;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -34,7 +37,17 @@ namespace BikerStriker.Layers.UI.Procesos
         private async void CargarElementos()
         {
             BLLCliente bLLCliente = new BLLCliente();
-            cmbCliente.DataSource = bLLCliente.GetAllCliente();
+
+            Usuario uActivo = Settings.Default.Usuario;
+
+            if (uActivo.TipoUsuario == TipoUsuario.Cliente)
+            {
+                cmbCliente.DataSource = new List<Cliente> { bLLCliente.GetClienteByUserID(uActivo.UsuarioId) };
+            }
+            else
+            {
+                cmbCliente.DataSource = bLLCliente.GetAllCliente();
+            }
 
             dgvFotos.DataSource = Fotografias;
             dgvFotos.Columns["Id"].Visible = false;
@@ -106,6 +119,7 @@ namespace BikerStriker.Layers.UI.Procesos
             Servicios.Remove(servicio);
             ActualizarServicios();
             LimpiarCamposDetalle();
+            ActualizarPrecioTotal();
         }
 
         private void dgvOrdenDetalle_Click(object sender, EventArgs e)
@@ -124,7 +138,7 @@ namespace BikerStriker.Layers.UI.Procesos
             ActualizarCamposDetalle((Producto)cmbServicio.SelectedItem);
         }
 
-        private void btnEliminar_Click(object sender, EventArgs e)
+        private void btnEliminarDetalle_Click(object sender, EventArgs e)
         {
             Producto servicio = (Producto)dgvOrdenDetalle.CurrentRow.DataBoundItem;
 
@@ -136,6 +150,7 @@ namespace BikerStriker.Layers.UI.Procesos
                 Servicios.Add(servicio);
                 LimpiarCamposDetalle();
                 ActualizarServicios();
+                ActualizarPrecioTotal();
             }
         }
 
@@ -220,28 +235,68 @@ namespace BikerStriker.Layers.UI.Procesos
             img_Firma.Invalidate();
         }
 
-        private void btnGuardar_Click(object sender, EventArgs e)
-        {
-            if (signatureBitmap != null)
-            {
-                imgFoto.Image = (Image)signatureBitmap.Clone();
-                MessageBox.Show("Signature applied to imgFoto successfully!");
-            }
-            else
-            {
-                MessageBox.Show("No signature to save!");
-            }
-        }
-
         private void img_Firma_Paint(object sender, PaintEventArgs e)
         {
             base.OnPaint(e);
             e.Graphics.DrawImage(signatureBitmap, 0, 0);
         }
 
-        private void GuardarOrdenDeTrabajo()
+        private void ActualizarPrecioTotal()
         {
+            double TotalColones = ServiciosSeleccionados.Sum(p => p.Precio);
+            double TotalDolares = ServiciosSeleccionados.Sum(p => p.Dolarizado);
 
+            lblPrecioTotal.Text = $"Precio Total\n₡ {TotalColones.ToString("#,##0.00")}\n$ {TotalDolares.ToString("#,##0.00")}";
+        }
+
+        private void btnGuardar_Click(object sender, EventArgs e)
+        {
+            if (signatureBitmap != null)
+            {
+                GenerarOrdenDeTrabajo();
+            }
+        }
+
+        private Bitmap CloneBitmapWithWhiteBackground(Bitmap originalBitmap)
+        {
+            // Crear un nuevo Bitmap con las mismas dimensiones que el original
+            Bitmap clonedBitmap = new Bitmap(originalBitmap.Width, originalBitmap.Height);
+
+            // Usar Graphics para dibujar el contenido del original sobre un fondo blanco
+            using (Graphics g = Graphics.FromImage(clonedBitmap))
+            {
+                // Rellenar el fondo con blanco
+                g.Clear(Color.White);
+
+                // Dibujar la imagen original
+                g.DrawImage(originalBitmap, 0, 0);
+            }
+
+            return clonedBitmap;
+        }
+
+        private void GenerarOrdenDeTrabajo()
+        {
+            Cliente cliente = (Cliente)cmbCliente.SelectedItem;
+            Bicicleta bicicleta = (Bicicleta)cmbBicicleta.SelectedItem;
+
+            BikerStrikerOrdenTrabajoFacade ordenTrabajoFacade = new BikerStrikerOrdenTrabajoFacade();
+            OrdenDeTrabajoFactory ordenTrabajoFactory = new OrdenDeTrabajoFactory();
+
+            Image firma = (Image)CloneBitmapWithWhiteBackground(signatureBitmap).Clone();
+
+            OrdenTrabajo ordenTrabajo = ordenTrabajoFactory.CrearOrdenDeTrabajo(dtpFechaInicio.Value, dtpFechaFinalizacion.Value, firma, cliente, bicicleta, ServiciosSeleccionados.ToList(), Fotografias.ToList());
+
+            ordenTrabajoFacade.OrdenTrabajo = ordenTrabajo;
+
+            if (ordenTrabajoFacade.GuardarOrdenTrabajo())
+            {
+                MessageBox.Show($"Se ha generado con exito la Orden de Trabajo #{ordenTrabajoFacade.OrdenTrabajo.Id}", "¡Proceso Exitoso!",MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("NO se ha podido generar la Orden de Trabajo", "¡Proceso Fallido!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }   

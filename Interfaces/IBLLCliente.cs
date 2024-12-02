@@ -11,6 +11,7 @@ namespace BikerStriker.Interfaces
     {
         List<Cliente> GetAllCliente();
         Cliente GetClienteByID(int id);
+        Cliente GetClienteByUserID(int id);
         void Save(Cliente cliente);
         void Remove(int id);
     }

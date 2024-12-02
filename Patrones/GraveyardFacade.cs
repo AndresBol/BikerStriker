@@ -1,19 +1,11 @@
-﻿using GraveyardManagement.Enums;
-using GraveyardManagement.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Xsl;
-using System.Xml;
-using System.Windows.Forms;
+﻿using System;
 
-namespace GraveyardManagement.Clases
+
+namespace BikerStriker.Patrones
 {
     internal class GraveyardFacade
     {
-        public List<ServicioAdicional> Servicios {  get; set; }
+        /*public List<ServicioAdicional> Servicios {  get; set; }
         public short TamanoNicho {  get; set; }
         public Nichos TipoNicho {  get; set; }
         public IUbicacion Ubicacion { get; set; }
@@ -108,6 +100,6 @@ namespace GraveyardManagement.Clases
             myXslTrans.Load(rutaXslt);
             // Transforma el archivo xml aun archivo HTML
             myXslTrans.Transform(rutaXML, rutaHtml);
-        }
+        }*/
     }
 }

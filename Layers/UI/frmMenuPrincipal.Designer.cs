@@ -30,6 +30,10 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMenuPrincipal));
             this.pnlAsideMenu = new System.Windows.Forms.Panel();
+            this.pnlOrdenesTrabajo = new System.Windows.Forms.Panel();
+            this.BtnVerOrdenes = new System.Windows.Forms.Button();
+            this.btnNuevaOrden = new System.Windows.Forms.Button();
+            this.btnOrdenesTrabajo = new System.Windows.Forms.Button();
             this.pnlMantenimientos = new System.Windows.Forms.Panel();
             this.btnContactos = new System.Windows.Forms.Button();
             this.btnTarjetas = new System.Windows.Forms.Button();
@@ -50,17 +54,13 @@
             this.imgUserLogo = new System.Windows.Forms.PictureBox();
             this.lblChildFrmTitle = new System.Windows.Forms.Label();
             this.pnlDesktop = new System.Windows.Forms.Panel();
-            this.btnOrdenesTrabajo = new System.Windows.Forms.Button();
-            this.pnlOrdenesTrabajo = new System.Windows.Forms.Panel();
-            this.btnNuevaOrden = new System.Windows.Forms.Button();
-            this.BtnVerOrden = new System.Windows.Forms.Button();
             this.pnlAsideMenu.SuspendLayout();
+            this.pnlOrdenesTrabajo.SuspendLayout();
             this.pnlMantenimientos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgLogo)).BeginInit();
             this.pnlHeader.SuspendLayout();
             this.pnlUsuario.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgUserLogo)).BeginInit();
-            this.pnlOrdenesTrabajo.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlAsideMenu
@@ -76,6 +76,75 @@
             this.pnlAsideMenu.Name = "pnlAsideMenu";
             this.pnlAsideMenu.Size = new System.Drawing.Size(240, 760);
             this.pnlAsideMenu.TabIndex = 0;
+            // 
+            // pnlOrdenesTrabajo
+            // 
+            this.pnlOrdenesTrabajo.Controls.Add(this.BtnVerOrdenes);
+            this.pnlOrdenesTrabajo.Controls.Add(this.btnNuevaOrden);
+            this.pnlOrdenesTrabajo.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlOrdenesTrabajo.Location = new System.Drawing.Point(0, 612);
+            this.pnlOrdenesTrabajo.Name = "pnlOrdenesTrabajo";
+            this.pnlOrdenesTrabajo.Size = new System.Drawing.Size(240, 86);
+            this.pnlOrdenesTrabajo.TabIndex = 7;
+            // 
+            // BtnVerOrdenes
+            // 
+            this.BtnVerOrdenes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.BtnVerOrdenes.Dock = System.Windows.Forms.DockStyle.Top;
+            this.BtnVerOrdenes.FlatAppearance.BorderSize = 0;
+            this.BtnVerOrdenes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnVerOrdenes.Font = new System.Drawing.Font("Sylfaen", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnVerOrdenes.ForeColor = System.Drawing.Color.White;
+            this.BtnVerOrdenes.Image = ((System.Drawing.Image)(resources.GetObject("BtnVerOrdenes.Image")));
+            this.BtnVerOrdenes.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.BtnVerOrdenes.Location = new System.Drawing.Point(0, 37);
+            this.BtnVerOrdenes.Name = "BtnVerOrdenes";
+            this.BtnVerOrdenes.Size = new System.Drawing.Size(240, 37);
+            this.BtnVerOrdenes.TabIndex = 14;
+            this.BtnVerOrdenes.Text = "Ver Órdenes";
+            this.BtnVerOrdenes.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.BtnVerOrdenes.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.BtnVerOrdenes.UseVisualStyleBackColor = false;
+            this.BtnVerOrdenes.Click += new System.EventHandler(this.BtnVerOrdenes_Click);
+            // 
+            // btnNuevaOrden
+            // 
+            this.btnNuevaOrden.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.btnNuevaOrden.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnNuevaOrden.FlatAppearance.BorderSize = 0;
+            this.btnNuevaOrden.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNuevaOrden.Font = new System.Drawing.Font("Sylfaen", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNuevaOrden.ForeColor = System.Drawing.Color.White;
+            this.btnNuevaOrden.Image = ((System.Drawing.Image)(resources.GetObject("btnNuevaOrden.Image")));
+            this.btnNuevaOrden.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.btnNuevaOrden.Location = new System.Drawing.Point(0, 0);
+            this.btnNuevaOrden.Name = "btnNuevaOrden";
+            this.btnNuevaOrden.Size = new System.Drawing.Size(240, 37);
+            this.btnNuevaOrden.TabIndex = 13;
+            this.btnNuevaOrden.Text = "Nueva Orden";
+            this.btnNuevaOrden.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnNuevaOrden.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnNuevaOrden.UseVisualStyleBackColor = false;
+            this.btnNuevaOrden.Click += new System.EventHandler(this.btnNuevaOrden_Click);
+            // 
+            // btnOrdenesTrabajo
+            // 
+            this.btnOrdenesTrabajo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnOrdenesTrabajo.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnOrdenesTrabajo.FlatAppearance.BorderSize = 0;
+            this.btnOrdenesTrabajo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnOrdenesTrabajo.Font = new System.Drawing.Font("Sylfaen", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnOrdenesTrabajo.ForeColor = System.Drawing.Color.White;
+            this.btnOrdenesTrabajo.Image = global::BikerStriker.Properties.Resources.arrow_down;
+            this.btnOrdenesTrabajo.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnOrdenesTrabajo.Location = new System.Drawing.Point(0, 575);
+            this.btnOrdenesTrabajo.Name = "btnOrdenesTrabajo";
+            this.btnOrdenesTrabajo.Size = new System.Drawing.Size(240, 37);
+            this.btnOrdenesTrabajo.TabIndex = 6;
+            this.btnOrdenesTrabajo.Text = "Órdenes de Trabajo";
+            this.btnOrdenesTrabajo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnOrdenesTrabajo.UseVisualStyleBackColor = false;
+            this.btnOrdenesTrabajo.Click += new System.EventHandler(this.btnOrdenesTrabajo_Click);
             // 
             // pnlMantenimientos
             // 
@@ -411,74 +480,6 @@
             this.pnlDesktop.Size = new System.Drawing.Size(948, 635);
             this.pnlDesktop.TabIndex = 2;
             // 
-            // btnOrdenesTrabajo
-            // 
-            this.btnOrdenesTrabajo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.btnOrdenesTrabajo.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnOrdenesTrabajo.FlatAppearance.BorderSize = 0;
-            this.btnOrdenesTrabajo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnOrdenesTrabajo.Font = new System.Drawing.Font("Sylfaen", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnOrdenesTrabajo.ForeColor = System.Drawing.Color.White;
-            this.btnOrdenesTrabajo.Image = global::BikerStriker.Properties.Resources.arrow_down;
-            this.btnOrdenesTrabajo.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnOrdenesTrabajo.Location = new System.Drawing.Point(0, 575);
-            this.btnOrdenesTrabajo.Name = "btnOrdenesTrabajo";
-            this.btnOrdenesTrabajo.Size = new System.Drawing.Size(240, 37);
-            this.btnOrdenesTrabajo.TabIndex = 6;
-            this.btnOrdenesTrabajo.Text = "Órdenes de Trabajo";
-            this.btnOrdenesTrabajo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnOrdenesTrabajo.UseVisualStyleBackColor = false;
-            this.btnOrdenesTrabajo.Click += new System.EventHandler(this.btnOrdenesTrabajo_Click);
-            // 
-            // pnlOrdenesTrabajo
-            // 
-            this.pnlOrdenesTrabajo.Controls.Add(this.BtnVerOrden);
-            this.pnlOrdenesTrabajo.Controls.Add(this.btnNuevaOrden);
-            this.pnlOrdenesTrabajo.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlOrdenesTrabajo.Location = new System.Drawing.Point(0, 612);
-            this.pnlOrdenesTrabajo.Name = "pnlOrdenesTrabajo";
-            this.pnlOrdenesTrabajo.Size = new System.Drawing.Size(240, 86);
-            this.pnlOrdenesTrabajo.TabIndex = 7;
-            // 
-            // btnNuevaOrden
-            // 
-            this.btnNuevaOrden.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.btnNuevaOrden.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnNuevaOrden.FlatAppearance.BorderSize = 0;
-            this.btnNuevaOrden.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNuevaOrden.Font = new System.Drawing.Font("Sylfaen", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNuevaOrden.ForeColor = System.Drawing.Color.White;
-            this.btnNuevaOrden.Image = ((System.Drawing.Image)(resources.GetObject("btnNuevaOrden.Image")));
-            this.btnNuevaOrden.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnNuevaOrden.Location = new System.Drawing.Point(0, 0);
-            this.btnNuevaOrden.Name = "btnNuevaOrden";
-            this.btnNuevaOrden.Size = new System.Drawing.Size(240, 37);
-            this.btnNuevaOrden.TabIndex = 13;
-            this.btnNuevaOrden.Text = "Nueva Orden";
-            this.btnNuevaOrden.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnNuevaOrden.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnNuevaOrden.UseVisualStyleBackColor = false;
-            this.btnNuevaOrden.Click += new System.EventHandler(this.btnNuevaOrden_Click);
-            // 
-            // BtnVerOrden
-            // 
-            this.BtnVerOrden.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.BtnVerOrden.Dock = System.Windows.Forms.DockStyle.Top;
-            this.BtnVerOrden.FlatAppearance.BorderSize = 0;
-            this.BtnVerOrden.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnVerOrden.Font = new System.Drawing.Font("Sylfaen", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnVerOrden.ForeColor = System.Drawing.Color.White;
-            this.BtnVerOrden.Image = ((System.Drawing.Image)(resources.GetObject("BtnVerOrden.Image")));
-            this.BtnVerOrden.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.BtnVerOrden.Location = new System.Drawing.Point(0, 37);
-            this.BtnVerOrden.Name = "BtnVerOrden";
-            this.BtnVerOrden.Size = new System.Drawing.Size(240, 37);
-            this.BtnVerOrden.TabIndex = 14;
-            this.BtnVerOrden.Text = "Ver Orden";
-            this.BtnVerOrden.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.BtnVerOrden.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.BtnVerOrden.UseVisualStyleBackColor = false;
-            // 
             // frmMenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -492,6 +493,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Menú Principal";
             this.pnlAsideMenu.ResumeLayout(false);
+            this.pnlOrdenesTrabajo.ResumeLayout(false);
             this.pnlMantenimientos.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.imgLogo)).EndInit();
             this.pnlHeader.ResumeLayout(false);
@@ -499,7 +501,6 @@
             this.pnlUsuario.ResumeLayout(false);
             this.pnlUsuario.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgUserLogo)).EndInit();
-            this.pnlOrdenesTrabajo.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -529,7 +530,7 @@
         private System.Windows.Forms.Button btnContactos;
         private System.Windows.Forms.Button btnOrdenesTrabajo;
         private System.Windows.Forms.Panel pnlOrdenesTrabajo;
-        private System.Windows.Forms.Button BtnVerOrden;
+        private System.Windows.Forms.Button BtnVerOrdenes;
         private System.Windows.Forms.Button btnNuevaOrden;
     }
 }

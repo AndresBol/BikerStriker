@@ -228,13 +228,19 @@
     <Compile Include="Layers\UI\Mantenimientos\frmMantenimientoMarca.Designer.cs">
       <DependentUpon>frmMantenimientoMarca.cs</DependentUpon>
     </Compile>
+    <Compile Include="Layers\UI\Mantenimientos\frmOrdenesDeTrabajo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Layers\UI\Mantenimientos\frmOrdenesDeTrabajo.Designer.cs">
+      <DependentUpon>frmOrdenesDeTrabajo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Layers\UI\Procesos\frmNuevaOT.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Layers\UI\Procesos\frmNuevaOT.Designer.cs">
       <DependentUpon>frmNuevaOT.cs</DependentUpon>
     </Compile>
-    <Compile Include="Patrones\BikerStrikerFacade.cs" />
+    <Compile Include="Patrones\BikerStrikerOrdenTrabajoFacade.cs" />
     <Compile Include="Patrones\GraveyardFacade.cs" />
     <Compile Include="Patrones\OrdenDeTrabajoFactory.cs" />
     <Compile Include="Program.cs" />
@@ -283,6 +289,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Layers\UI\Mantenimientos\frmMantenimientoMarca.resx">
       <DependentUpon>frmMantenimientoMarca.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Layers\UI\Mantenimientos\frmOrdenesDeTrabajo.resx">
+      <DependentUpon>frmOrdenesDeTrabajo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Layers\UI\Procesos\frmNuevaOT.resx">
       <DependentUpon>frmNuevaOT.cs</DependentUpon>
