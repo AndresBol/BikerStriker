@@ -66,7 +66,10 @@
     <Compile Include="Enums\TipoTarjeta.cs" />
     <Compile Include="Enums\TipoUsuario.cs" />
     <Compile Include="Extensions\ExceptionsExtention.cs" />
+    <Compile Include="Interfaces\IBLLOrdenTrabajo.cs" />
     <Compile Include="Interfaces\IBLLContacto.cs" />
+    <Compile Include="Interfaces\IBLLOrdenDetalle.cs" />
+    <Compile Include="Interfaces\IBLLOrdenFoto.cs" />
     <Compile Include="Interfaces\IBLLTarjeta.cs" />
     <Compile Include="Interfaces\IBLLBicicleta.cs" />
     <Compile Include="Interfaces\IBLLTienda.cs" />
@@ -78,7 +81,10 @@
     <Compile Include="Interfaces\IBLLUsuario.cs" />
     <Compile Include="Interfaces\IBLLModelo.cs" />
     <Compile Include="Interfaces\IBLLMarca.cs" />
+    <Compile Include="Interfaces\IDALOrdenTrabajo.cs" />
     <Compile Include="Interfaces\IDALContacto.cs" />
+    <Compile Include="Interfaces\IDALOrdenDetalle.cs" />
+    <Compile Include="Interfaces\IDALOrdenFoto.cs" />
     <Compile Include="Interfaces\IDALTarjeta.cs" />
     <Compile Include="Interfaces\IDALBicicleta.cs" />
     <Compile Include="Interfaces\IDALTienda.cs" />
@@ -91,7 +97,10 @@
     <Compile Include="Interfaces\IDALModelo.cs" />
     <Compile Include="Interfaces\IDALMarca.cs" />
     <Compile Include="Layers\BLL\BLLAdministrador.cs" />
+    <Compile Include="Layers\BLL\BLLOrdenTrabajo.cs" />
     <Compile Include="Layers\BLL\BLLContacto.cs" />
+    <Compile Include="Layers\BLL\BLLOrdenDetalle.cs" />
+    <Compile Include="Layers\BLL\BLLOrdenFoto.cs" />
     <Compile Include="Layers\BLL\BLLTarjeta.cs" />
     <Compile Include="Layers\BLL\BLLBicicleta.cs" />
     <Compile Include="Layers\BLL\BLLTienda.cs" />
@@ -102,6 +111,9 @@
     <Compile Include="Layers\BLL\BLLUsuario.cs" />
     <Compile Include="Layers\BLL\BLLMarca.cs" />
     <Compile Include="Layers\BLL\BLLModelo.cs" />
+    <Compile Include="Layers\DAL\DALOrdenDetalle.cs" />
+    <Compile Include="Layers\DAL\DALOrdenFoto.cs" />
+    <Compile Include="Layers\DAL\DALOrdenTrabajo.cs" />
     <Compile Include="Layers\DAL\DALContacto.cs" />
     <Compile Include="Layers\DAL\DALTarjeta.cs" />
     <Compile Include="Layers\DAL\DALBicicleta.cs" />
@@ -118,6 +130,9 @@
     <Compile Include="Layers\Entities\Canton.cs" />
     <Compile Include="Layers\Entities\Distrito.cs" />
     <Compile Include="Layers\Entities\Dolar.cs" />
+    <Compile Include="Layers\Entities\Factura.cs" />
+    <Compile Include="Layers\Entities\OrdenTrabajo.cs" />
+    <Compile Include="Layers\Entities\OrdenDetalle.cs" />
     <Compile Include="Layers\Entities\OrdenFoto.cs" />
     <Compile Include="Layers\Entities\Provincia.cs" />
     <Compile Include="Layers\Entities\Contacto.cs" />
@@ -219,6 +234,9 @@
     <Compile Include="Layers\UI\Procesos\frmNuevaOT.Designer.cs">
       <DependentUpon>frmNuevaOT.cs</DependentUpon>
     </Compile>
+    <Compile Include="Patrones\BikerStrikerFacade.cs" />
+    <Compile Include="Patrones\GraveyardFacade.cs" />
+    <Compile Include="Patrones\OrdenDeTrabajoFactory.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Util\BancoCentralApiHelper.cs" />

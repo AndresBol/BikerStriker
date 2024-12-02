@@ -16,6 +16,6 @@ namespace BikerStriker.Layers.Entities
         public Cliente Cliente { get; set; }
         public Bicicleta Bicicleta { get; set; }
         public List<OrdenDetalle> OrdenDetalle { get; set; }
-        public List<OrdenFoto> ordenFoto { get; set; }
+        public List<OrdenFoto> OrdenFoto { get; set; }
     }
 }
