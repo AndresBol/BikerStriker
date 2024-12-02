@@ -9,6 +9,7 @@ namespace BikerStriker.Layers.Entities
 {
     public class OrdenFoto
     {
+        public OrdenFoto() { }
         public OrdenFoto(string ruta, Image foto) { 
             this.Ruta = ruta;
             this.Foto = foto;

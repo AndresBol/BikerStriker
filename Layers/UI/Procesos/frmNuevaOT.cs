@@ -17,12 +17,18 @@ namespace BikerStriker.Layers.UI.Procesos
         private List<Producto> Servicios;
         private BindingList<Producto> ServiciosSeleccionados = new BindingList<Producto>();
         private BindingList<OrdenFoto> Fotografias = new BindingList<OrdenFoto>();
+
+        private Bitmap signatureBitmap;
+        private bool isDrawing = false;
+        private Point lastPoint;
         public frmNuevaOT()
         {
             InitializeComponent();
             btnEliminarDetalle.Visible = false;
             btnEliminarFoto.Visible = false;
             CargarElementos();
+
+            InitializeBitmap(null,null);
         }
 
         private async void CargarElementos()
@@ -164,6 +170,78 @@ namespace BikerStriker.Layers.UI.Procesos
                 imgFoto.Image=null;
                 dgvFotos.ClearSelection();
             }
+        }
+
+        private void InitializeBitmap(object sender, EventArgs e)
+        {
+            if (signatureBitmap != null)
+                signatureBitmap.Dispose();
+
+            signatureBitmap = new Bitmap(img_Firma.ClientSize.Width, img_Firma.ClientSize.Height);
+            img_Firma.Invalidate();
+        }
+
+        private void img_Firma_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                isDrawing = false;
+            }
+        }
+
+        private void img_Firma_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (isDrawing)
+            {
+                using (Graphics g = Graphics.FromImage(signatureBitmap))
+                {
+                    g.DrawLine(Pens.Black, lastPoint, e.Location);
+                }
+                lastPoint = e.Location;
+                img_Firma.Invalidate();
+            }
+        }
+
+        private void img_Firma_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                isDrawing = true;
+                lastPoint = e.Location;
+            }
+        }
+
+        private void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            using (Graphics g = Graphics.FromImage(signatureBitmap))
+            {
+                g.Clear(Color.White);
+            }
+            img_Firma.Invalidate();
+        }
+
+        private void btnGuardar_Click(object sender, EventArgs e)
+        {
+            if (signatureBitmap != null)
+            {
+                imgFoto.Image = (Image)signatureBitmap.Clone();
+                MessageBox.Show("Signature applied to imgFoto successfully!");
+            }
+            else
+            {
+                MessageBox.Show("No signature to save!");
+            }
+        }
+
+        private void img_Firma_Paint(object sender, PaintEventArgs e)
+        {
+            base.OnPaint(e);
+            e.Graphics.DrawImage(signatureBitmap, 0, 0);
+        }
+
+        private void GuardarOrdenDeTrabajo()
+        {
+
         }
     }
 }   

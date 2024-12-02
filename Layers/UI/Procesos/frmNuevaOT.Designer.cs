@@ -58,15 +58,19 @@
             this.cmbServicio = new System.Windows.Forms.ComboBox();
             this.lblServicio = new System.Windows.Forms.Label();
             this.pnlFotos = new System.Windows.Forms.Panel();
+            this.pnlFotosBottom = new System.Windows.Forms.Panel();
+            this.btnBuscar = new System.Windows.Forms.Button();
             this.imgFoto = new System.Windows.Forms.PictureBox();
             this.pnlFotosIzq = new System.Windows.Forms.Panel();
-            this.dgvFotos = new System.Windows.Forms.DataGridView();
-            this.btnBuscar = new System.Windows.Forms.Button();
-            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.pnlFotosBottom = new System.Windows.Forms.Panel();
             this.btnEliminarFoto = new System.Windows.Forms.Button();
-            this.pnlOrdenDown = new System.Windows.Forms.Panel();
+            this.dgvFotos = new System.Windows.Forms.DataGridView();
+            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.pnlOrdenRight = new System.Windows.Forms.Panel();
+            this.btnLimpiar = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
+            this.pnlFirma = new System.Windows.Forms.Panel();
+            this.pnlFirmaLeft = new System.Windows.Forms.Panel();
+            this.img_Firma = new System.Windows.Forms.Panel();
             this.pnlCampos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgLogoWhite)).BeginInit();
             this.pnlCamposDer.SuspendLayout();
@@ -76,11 +80,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvOrdenDetalle)).BeginInit();
             this.pnlCamposDetalle.SuspendLayout();
             this.pnlFotos.SuspendLayout();
+            this.pnlFotosBottom.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgFoto)).BeginInit();
             this.pnlFotosIzq.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFotos)).BeginInit();
-            this.pnlFotosBottom.SuspendLayout();
-            this.pnlOrdenDown.SuspendLayout();
+            this.pnlOrdenRight.SuspendLayout();
+            this.pnlFirma.SuspendLayout();
+            this.pnlFirmaLeft.SuspendLayout();
             this.SuspendLayout();
             // 
             // dtpFechaInicio
@@ -399,6 +405,32 @@
             this.pnlFotos.Size = new System.Drawing.Size(409, 209);
             this.pnlFotos.TabIndex = 21;
             // 
+            // pnlFotosBottom
+            // 
+            this.pnlFotosBottom.Controls.Add(this.btnBuscar);
+            this.pnlFotosBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pnlFotosBottom.Location = new System.Drawing.Point(210, 150);
+            this.pnlFotosBottom.Name = "pnlFotosBottom";
+            this.pnlFotosBottom.Size = new System.Drawing.Size(187, 47);
+            this.pnlFotosBottom.TabIndex = 25;
+            // 
+            // btnBuscar
+            // 
+            this.btnBuscar.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.btnBuscar.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnBuscar.Image = ((System.Drawing.Image)(resources.GetObject("btnBuscar.Image")));
+            this.btnBuscar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnBuscar.Location = new System.Drawing.Point(0, 0);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Padding = new System.Windows.Forms.Padding(10);
+            this.btnBuscar.Size = new System.Drawing.Size(187, 47);
+            this.btnBuscar.TabIndex = 23;
+            this.btnBuscar.Text = "Añadir Imagen";
+            this.btnBuscar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            // 
             // imgFoto
             // 
             this.imgFoto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -420,6 +452,21 @@
             this.pnlFotosIzq.Size = new System.Drawing.Size(198, 185);
             this.pnlFotosIzq.TabIndex = 21;
             // 
+            // btnEliminarFoto
+            // 
+            this.btnEliminarFoto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(0)))), ((int)(((byte)(37)))));
+            this.btnEliminarFoto.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btnEliminarFoto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEliminarFoto.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEliminarFoto.ForeColor = System.Drawing.Color.White;
+            this.btnEliminarFoto.Location = new System.Drawing.Point(0, 138);
+            this.btnEliminarFoto.Name = "btnEliminarFoto";
+            this.btnEliminarFoto.Size = new System.Drawing.Size(198, 47);
+            this.btnEliminarFoto.TabIndex = 24;
+            this.btnEliminarFoto.Text = "Eliminar";
+            this.btnEliminarFoto.UseVisualStyleBackColor = false;
+            this.btnEliminarFoto.Click += new System.EventHandler(this.btnEliminarFoto_Click);
+            // 
             // dgvFotos
             // 
             this.dgvFotos.AllowUserToAddRows = false;
@@ -436,60 +483,35 @@
             this.dgvFotos.TabIndex = 2;
             this.dgvFotos.SelectionChanged += new System.EventHandler(this.dgvFotos_SelectionChanged);
             // 
-            // btnBuscar
-            // 
-            this.btnBuscar.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            this.btnBuscar.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnBuscar.Image = ((System.Drawing.Image)(resources.GetObject("btnBuscar.Image")));
-            this.btnBuscar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnBuscar.Location = new System.Drawing.Point(0, 0);
-            this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Padding = new System.Windows.Forms.Padding(10);
-            this.btnBuscar.Size = new System.Drawing.Size(187, 47);
-            this.btnBuscar.TabIndex = 23;
-            this.btnBuscar.Text = "Añadir Imagen";
-            this.btnBuscar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnBuscar.UseVisualStyleBackColor = true;
-            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
-            // 
             // openFileDialog
             // 
             this.openFileDialog.FileName = "openFileDialog";
             // 
-            // pnlFotosBottom
+            // pnlOrdenRight
             // 
-            this.pnlFotosBottom.Controls.Add(this.btnBuscar);
-            this.pnlFotosBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlFotosBottom.Location = new System.Drawing.Point(210, 150);
-            this.pnlFotosBottom.Name = "pnlFotosBottom";
-            this.pnlFotosBottom.Size = new System.Drawing.Size(187, 47);
-            this.pnlFotosBottom.TabIndex = 25;
+            this.pnlOrdenRight.Controls.Add(this.pnlFirma);
+            this.pnlOrdenRight.Controls.Add(this.pnlFirmaLeft);
+            this.pnlOrdenRight.Dock = System.Windows.Forms.DockStyle.Right;
+            this.pnlOrdenRight.Location = new System.Drawing.Point(415, 381);
+            this.pnlOrdenRight.Name = "pnlOrdenRight";
+            this.pnlOrdenRight.Padding = new System.Windows.Forms.Padding(12);
+            this.pnlOrdenRight.Size = new System.Drawing.Size(385, 209);
+            this.pnlOrdenRight.TabIndex = 22;
             // 
-            // btnEliminarFoto
+            // btnLimpiar
             // 
-            this.btnEliminarFoto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(0)))), ((int)(((byte)(37)))));
-            this.btnEliminarFoto.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.btnEliminarFoto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEliminarFoto.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEliminarFoto.ForeColor = System.Drawing.Color.White;
-            this.btnEliminarFoto.Location = new System.Drawing.Point(0, 138);
-            this.btnEliminarFoto.Name = "btnEliminarFoto";
-            this.btnEliminarFoto.Size = new System.Drawing.Size(198, 47);
-            this.btnEliminarFoto.TabIndex = 24;
-            this.btnEliminarFoto.Text = "Eliminar";
-            this.btnEliminarFoto.UseVisualStyleBackColor = false;
-            this.btnEliminarFoto.Click += new System.EventHandler(this.btnEliminarFoto_Click);
-            // 
-            // pnlOrdenDown
-            // 
-            this.pnlOrdenDown.Controls.Add(this.btnGuardar);
-            this.pnlOrdenDown.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pnlOrdenDown.Location = new System.Drawing.Point(415, 381);
-            this.pnlOrdenDown.Name = "pnlOrdenDown";
-            this.pnlOrdenDown.Padding = new System.Windows.Forms.Padding(12);
-            this.pnlOrdenDown.Size = new System.Drawing.Size(385, 209);
-            this.pnlOrdenDown.TabIndex = 22;
+            this.btnLimpiar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(0)))), ((int)(((byte)(37)))));
+            this.btnLimpiar.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btnLimpiar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLimpiar.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLimpiar.ForeColor = System.Drawing.Color.White;
+            this.btnLimpiar.Location = new System.Drawing.Point(0, 138);
+            this.btnLimpiar.Name = "btnLimpiar";
+            this.btnLimpiar.Size = new System.Drawing.Size(173, 47);
+            this.btnLimpiar.TabIndex = 9;
+            this.btnLimpiar.Text = "Limpiar";
+            this.btnLimpiar.UseVisualStyleBackColor = false;
+            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
             // btnGuardar
             // 
@@ -498,19 +520,53 @@
             this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGuardar.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F);
             this.btnGuardar.ForeColor = System.Drawing.Color.White;
-            this.btnGuardar.Location = new System.Drawing.Point(12, 150);
+            this.btnGuardar.Location = new System.Drawing.Point(0, 138);
             this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(361, 47);
+            this.btnGuardar.Size = new System.Drawing.Size(188, 47);
             this.btnGuardar.TabIndex = 7;
             this.btnGuardar.Text = "Guardar Orden de Trabajo";
             this.btnGuardar.UseVisualStyleBackColor = false;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
+            // 
+            // pnlFirma
+            // 
+            this.pnlFirma.Controls.Add(this.btnGuardar);
+            this.pnlFirma.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlFirma.Location = new System.Drawing.Point(185, 12);
+            this.pnlFirma.Name = "pnlFirma";
+            this.pnlFirma.Size = new System.Drawing.Size(188, 185);
+            this.pnlFirma.TabIndex = 10;
+            // 
+            // pnlFirmaLeft
+            // 
+            this.pnlFirmaLeft.Controls.Add(this.img_Firma);
+            this.pnlFirmaLeft.Controls.Add(this.btnLimpiar);
+            this.pnlFirmaLeft.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pnlFirmaLeft.Location = new System.Drawing.Point(12, 12);
+            this.pnlFirmaLeft.Name = "pnlFirmaLeft";
+            this.pnlFirmaLeft.Size = new System.Drawing.Size(173, 185);
+            this.pnlFirmaLeft.TabIndex = 8;
+            // 
+            // img_Firma
+            // 
+            this.img_Firma.BackColor = System.Drawing.Color.White;
+            this.img_Firma.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.img_Firma.Location = new System.Drawing.Point(0, 0);
+            this.img_Firma.Name = "img_Firma";
+            this.img_Firma.Size = new System.Drawing.Size(173, 138);
+            this.img_Firma.TabIndex = 10;
+            this.img_Firma.Paint += new System.Windows.Forms.PaintEventHandler(this.img_Firma_Paint);
+            this.img_Firma.MouseDown += new System.Windows.Forms.MouseEventHandler(this.img_Firma_MouseDown);
+            this.img_Firma.MouseMove += new System.Windows.Forms.MouseEventHandler(this.img_Firma_MouseMove);
+            this.img_Firma.MouseUp += new System.Windows.Forms.MouseEventHandler(this.img_Firma_MouseUp);
+            this.img_Firma.Resize += new System.EventHandler(this.InitializeBitmap);
             // 
             // frmNuevaOT
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 590);
-            this.Controls.Add(this.pnlOrdenDown);
+            this.Controls.Add(this.pnlOrdenRight);
             this.Controls.Add(this.pnlFotos);
             this.Controls.Add(this.pnlDetalle);
             this.Controls.Add(this.pnlCampos);
@@ -531,11 +587,13 @@
             this.pnlCamposDetalle.ResumeLayout(false);
             this.pnlCamposDetalle.PerformLayout();
             this.pnlFotos.ResumeLayout(false);
+            this.pnlFotosBottom.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.imgFoto)).EndInit();
             this.pnlFotosIzq.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvFotos)).EndInit();
-            this.pnlFotosBottom.ResumeLayout(false);
-            this.pnlOrdenDown.ResumeLayout(false);
+            this.pnlOrdenRight.ResumeLayout(false);
+            this.pnlFirma.ResumeLayout(false);
+            this.pnlFirmaLeft.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -578,7 +636,11 @@
         private System.Windows.Forms.OpenFileDialog openFileDialog;
         private System.Windows.Forms.Panel pnlFotosBottom;
         private System.Windows.Forms.Button btnEliminarFoto;
-        private System.Windows.Forms.Panel pnlOrdenDown;
+        private System.Windows.Forms.Panel pnlOrdenRight;
         private System.Windows.Forms.Button btnGuardar;
+        private System.Windows.Forms.Button btnLimpiar;
+        private System.Windows.Forms.Panel pnlFirma;
+        private System.Windows.Forms.Panel pnlFirmaLeft;
+        private System.Windows.Forms.Panel img_Firma;
     }
 }
