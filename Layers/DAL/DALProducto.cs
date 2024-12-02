@@ -106,7 +106,7 @@ namespace BikerStriker.Layers.DAL
             }
         }
 
-        public async Task<List<Producto>> GetSoloServicio()
+        public async Task<List<Producto>> GetSoloServicios()
         {
             string msg = "";
             IDataReader reader = null;
@@ -165,7 +165,7 @@ namespace BikerStriker.Layers.DAL
             }
         }
 
-        public async Task<List<Producto>> GetSoloProducto()
+        public async Task<List<Producto>> GetSoloProductos()
         {
             string msg = "";
             IDataReader reader = null;

@@ -9,6 +9,7 @@ namespace BikerStriker.Layers.Entities
 {
     public class OrdenDetalle
     {
+        public OrdenDetalle() { }
         public OrdenDetalle(Producto servicio) { 
             this.Servicio = servicio;
         }

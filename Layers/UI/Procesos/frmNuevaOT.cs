@@ -48,7 +48,7 @@ namespace BikerStriker.Layers.UI.Procesos
             dgvOrdenDetalle.Columns["EsServicio"].Visible = false;
 
             BLLProducto bLLProducto = new BLLProducto();
-            Servicios = await bLLProducto.GetSoloServicio();
+            Servicios = await bLLProducto.GetSoloServicios();
 
             BLLCategoria bLLCategoria = new BLLCategoria();
             cmbCategoria.DataSource = bLLCategoria.GetAllCategoria();

@@ -17,16 +17,16 @@ namespace BikerStriker.Layers.BLL
             return await _DALProducto.GetAllProducto();
         }
 
-        public async Task<List<Producto>> GetSoloServicio()
+        public async Task<List<Producto>> GetSoloServicios()
         {
             IDALProducto _DALProducto = new DALProducto();
-            return await _DALProducto.GetSoloServicio();
+            return await _DALProducto.GetSoloServicios();
         }
 
-        public async Task<List<Producto>> GetSoloProducto()
+        public async Task<List<Producto>> GetSoloProductos()
         {
             IDALProducto _DALProducto = new DALProducto();
-            return await _DALProducto.GetSoloProducto();
+            return await _DALProducto.GetSoloProductos();
         }
 
         public async Task<List<Producto>> GetProductosByCategoria(int CategoriaId)
@@ -69,6 +69,12 @@ namespace BikerStriker.Layers.BLL
             {
                 throw new ApplicationException($"La Producto con id {id} no existe!");
             }
+        }
+
+        public async Task<Producto> GetProductoByID(int id)
+        {
+            IDALProducto _DALProducto = new DALProducto();
+            return await _DALProducto.GetProductoByID(id);
         }
     }
 }

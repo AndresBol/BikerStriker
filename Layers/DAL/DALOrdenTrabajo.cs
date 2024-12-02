@@ -40,7 +40,7 @@ namespace BikerStriker.Layers.DAL
             List<OrdenTrabajo> lista = new List<OrdenTrabajo>();
             SqlCommand command = new SqlCommand();
 
-            string sql = @" select * from OrdenTrabajo where activo = 1";
+            string sql = @" select * from OrdenTrabajo";
             command.CommandText = sql;
             command.CommandType = CommandType.Text;
 
@@ -55,6 +55,8 @@ namespace BikerStriker.Layers.DAL
                     while (reader.Read())
                     {
                         BLLCliente bLLCliente = new BLLCliente();
+                        BLLOrdenDetalle bllOrdenDetalle = new BLLOrdenDetalle();
+                        BLLOrdenFoto bLLOrdenFoto = new BLLOrdenFoto();
 
                         OrdenTrabajo ordenTrabajo = new OrdenTrabajo();
                         ordenTrabajo.Id = (int)reader["id"];
@@ -63,6 +65,9 @@ namespace BikerStriker.Layers.DAL
                         ordenTrabajo.Firma = ImageSerializer.DeserializeImageFromString((byte[])reader["firma"]);
                         ordenTrabajo.Cliente = bLLCliente.GetClienteByID((int)reader["id_Cliente"]);
                         ordenTrabajo.Bicicleta = ordenTrabajo.Cliente.Bicicletas.FirstOrDefault(b => b.Id == (int)reader["id_Bicicleta"]);
+
+                        ordenTrabajo.OrdenDetalle = bllOrdenDetalle.GetAllOrdenDetalleById_OrdenTrabajo(ordenTrabajo.Id);
+                        ordenTrabajo.ordenFoto = bLLOrdenFoto.GetAllOrdenFotoById_OrdenTrabajo(ordenTrabajo.Id);
 
                         lista.Add(ordenTrabajo);
                     }
