@@ -22,7 +22,7 @@ namespace BikerStriker.Layers.BLL
             var dal = new DALModelo();
             var existe = dal.GetModeloByID(modelo.Id);
 
-            if (existe.Marca != null)
+            if (existe != null)
             {
                 dal.Actualizar(modelo);
             }
