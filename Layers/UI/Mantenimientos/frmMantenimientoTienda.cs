@@ -31,6 +31,7 @@ namespace BikerStriker.Layers.UI.Mantenimientos
             txtNombre.Text = tienda.Nombre;
             txtTelefono.Text = tienda.Telefono;
             txtDireccion.Text = tienda.Direccion;
+            nudImpuestoVenta.Value = (decimal) tienda.ImpuestoVenta;
         }
 
         private void ActualizarTabla()
@@ -60,6 +61,7 @@ namespace BikerStriker.Layers.UI.Mantenimientos
                 tienda.Nombre = txtNombre.Text;
                 tienda.Telefono = txtTelefono.Text;
                 tienda.Direccion = txtDireccion.Text;
+                tienda.ImpuestoVenta = (double) nudImpuestoVenta.Value;
 
                 if(dgvTiendas.SelectedRows.Count > 0)
                 {
@@ -104,6 +106,7 @@ namespace BikerStriker.Layers.UI.Mantenimientos
             txtNombre.Text = "";
             txtTelefono.Text = "";
             txtDireccion.Text = "";
+            nudImpuestoVenta.Value = 1;
         }
         private void EditarTiendaComponentes()
         {

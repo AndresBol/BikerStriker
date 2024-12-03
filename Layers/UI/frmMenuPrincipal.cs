@@ -21,6 +21,7 @@ namespace BikerStriker
         {
             InitializeComponent();
             pnlOrdenesTrabajo.Visible = false;
+            pnlFacturas.Visible = false;
             pnlMantenimientos.Visible = false;
             btnMantenimientos.Visible = Settings.Default.Usuario.TipoUsuario == TipoUsuario.Administrador;
             lblUsuario.Text = Settings.Default.Nombre;
@@ -74,6 +75,9 @@ namespace BikerStriker
                     break;
                 case TipoCategoriasMenu.OrdenTrabajo:
                     pnlOrdenesTrabajo.Visible = !pnlOrdenesTrabajo.Visible;
+                    break;
+                case TipoCategoriasMenu.Factura:
+                    pnlFacturas.Visible = !pnlFacturas.Visible;
                     break;
                 case TipoCategoriasMenu.Reporte:
                     break;
@@ -170,5 +174,16 @@ namespace BikerStriker
         {
             OpenChildForm(new frmOrdenesDeTrabajo());
         }
+        private void btnFacturas_Click(object sender, EventArgs e)
+        {
+            ToggleVisibilityPanels(TipoCategoriasMenu.Factura);
+            btnFacturas.Image = pnlFacturas.Visible ? Properties.Resources.arrow_left : Properties.Resources.arrow_down;
+        }
+
+        private void btnNuevaFactura_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new frmNuevaFactura());
+        }
+        
     }
 }

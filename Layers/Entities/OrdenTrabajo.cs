@@ -17,5 +17,10 @@ namespace BikerStriker.Layers.Entities
         public Bicicleta Bicicleta { get; set; }
         public List<OrdenDetalle> OrdenDetalle { get; set; }
         public List<OrdenFoto> OrdenFoto { get; set; }
+
+        public override string ToString()
+        {
+            return $"Orden #{Id}";
+        }
     }
 }

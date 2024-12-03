@@ -11,6 +11,8 @@ namespace BikerStriker.Interfaces
     {
         Task<List<OrdenTrabajo>> GetAllOrdenTrabajo();
         Task<List<OrdenTrabajo>> GetAllOrdenTrabajoFromCliente(int ClienteId);
+        Task<List<OrdenTrabajo>> GetAllPendingOrdenTrabajoFromCliente(int ClienteId);
+        void ActualizarPago(int id);
         void Insertar(OrdenTrabajo ordenTrabajo);
         Task<OrdenTrabajo> GetOrdenTrabajoByID(int id);
         int GetIdOrdenTrabajo(OrdenTrabajo ordenTrabajo);

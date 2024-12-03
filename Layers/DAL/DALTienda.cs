@@ -56,6 +56,7 @@ namespace BikerStriker.Layers.DAL
                         tienda.Nombre = reader["nombre"].ToString();
                         tienda.Telefono = reader["telefono"].ToString();
                         tienda.Direccion = reader["direccion"].ToString();
+                        tienda.ImpuestoVenta = Convert.ToDouble(reader["impuestoVenta"].ToString());
                         lista.Add(tienda);
                     }
                 }
@@ -78,12 +79,13 @@ namespace BikerStriker.Layers.DAL
         public void Insertar(Tienda tienda)
         {
             string msg = "";
-            string sql = @"Insert into Tienda values (@cedulaJuridica,@nombre,@telefono,@direccion,1)";
+            string sql = @"Insert into Tienda values (@cedulaJuridica,@nombre,@telefono,@direccion,@impuestoVenta,1)";
             SqlCommand command = new SqlCommand();
             command.Parameters.AddWithValue("@cedulaJuridica", tienda.CedulaJuridica);
             command.Parameters.AddWithValue("@nombre", tienda.Nombre);
             command.Parameters.AddWithValue("@telefono", tienda.Telefono);
             command.Parameters.AddWithValue("@direccion", tienda.Direccion);
+            command.Parameters.AddWithValue("@impuestoVenta", tienda.ImpuestoVenta);
             command.CommandType = CommandType.Text;
             command.CommandText = sql;
 
@@ -110,13 +112,14 @@ namespace BikerStriker.Layers.DAL
         public void Actualizar(Tienda tienda)
         {
             string msg = "";
-            string sql = @"Update  Tienda SET cedulaJuridica = @cedulaJuridica, nombre = @nombre, telefono = @telefono, direccion = @direccion  Where (id = @id)";
+            string sql = @"Update  Tienda SET cedulaJuridica = @cedulaJuridica, nombre = @nombre, telefono = @telefono, direccion = @direccion, impuestoVenta = @impuestoVenta  Where (id = @id)";
             SqlCommand command = new SqlCommand();
             command.Parameters.AddWithValue("@id", tienda.Id);
             command.Parameters.AddWithValue("@cedulaJuridica", tienda.CedulaJuridica);
             command.Parameters.AddWithValue("@nombre", tienda.Nombre);
             command.Parameters.AddWithValue("@telefono", tienda.Telefono);
             command.Parameters.AddWithValue("@direccion", tienda.Direccion);
+            command.Parameters.AddWithValue("@impuestoVenta", tienda.ImpuestoVenta);
             command.CommandType = CommandType.Text;
             command.CommandText = sql;
 
@@ -193,6 +196,7 @@ namespace BikerStriker.Layers.DAL
                         tienda.Nombre = reader["nombre"].ToString();
                         tienda.Telefono = reader["telefono"].ToString();
                         tienda.Direccion = reader["direccion"].ToString();
+                        tienda.ImpuestoVenta = Convert.ToDouble(reader["impuestoVenta"].ToString());
 
                         return tienda;
                     }

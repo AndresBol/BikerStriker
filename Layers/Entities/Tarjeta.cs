@@ -14,5 +14,10 @@ namespace BikerStriker.Layers.Entities
         public DateTime FechaVencimiento { get; set; }
         public short CodigoSeguridad { get; set; }
         public TipoTarjeta TipoTarjeta { get; set; }
+
+        public override string ToString()
+        {
+            return $"{TipoTarjeta} | {Numero}";
+        }
     }
 }

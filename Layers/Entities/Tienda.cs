@@ -14,6 +14,7 @@ namespace BikerStriker.Layers.Entities
         public string Nombre { get; set; }
         public string Telefono { get; set; }
         public string Direccion { get; set; }
+        public double ImpuestoVenta { get; set; }
 
         public override string ToString()
         {

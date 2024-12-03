@@ -31,6 +31,25 @@ namespace BikerStriker.Layers.BLL
                 throw new ApplicationException($"El cliente con {ClienteId} no tiene ordenTrabajos!");
             }
         }
+        public async Task<List<OrdenTrabajo>> GetAllPendingOrdenTrabajoFromCliente(int ClienteId)
+        {
+            var dal = new DALOrdenTrabajo();
+            var existe = await dal.GetAllOrdenTrabajoFromCliente(ClienteId);
+
+            if (existe != null)
+            {
+                return existe;
+            }
+            else
+            {
+                throw new ApplicationException($"El cliente con {ClienteId} no tiene ordenTrabajos!");
+            }
+        }
+        public void ActualizarPago(int id)
+        {
+            var dal = new DALOrdenTrabajo();
+            dal.ActualizarPago(id);
+        }
 
         public void Save(OrdenTrabajo ordenTrabajo)
         {

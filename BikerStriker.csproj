@@ -128,6 +128,7 @@
     <Compile Include="Enums\TipoUsuario.cs" />
     <Compile Include="Extensions\ExceptionsExtention.cs" />
     <Compile Include="Interfaces\IBLLFacturaDetalle.cs" />
+    <Compile Include="Interfaces\IBLLFactura.cs" />
     <Compile Include="Interfaces\IBLLOrdenTrabajo.cs" />
     <Compile Include="Interfaces\IBLLContacto.cs" />
     <Compile Include="Interfaces\IBLLOrdenDetalle.cs" />
@@ -144,6 +145,7 @@
     <Compile Include="Interfaces\IBLLModelo.cs" />
     <Compile Include="Interfaces\IBLLMarca.cs" />
     <Compile Include="Interfaces\IDALFacturaDetalle.cs" />
+    <Compile Include="Interfaces\IDALFactura.cs" />
     <Compile Include="Interfaces\IDALOrdenTrabajo.cs" />
     <Compile Include="Interfaces\IDALContacto.cs" />
     <Compile Include="Interfaces\IDALOrdenDetalle.cs" />
@@ -161,6 +163,7 @@
     <Compile Include="Interfaces\IDALMarca.cs" />
     <Compile Include="Layers\BLL\BLLAdministrador.cs" />
     <Compile Include="Layers\BLL\BLLFacturaDetalle.cs" />
+    <Compile Include="Layers\BLL\BLLFactura.cs" />
     <Compile Include="Layers\BLL\BLLOrdenTrabajo.cs" />
     <Compile Include="Layers\BLL\BLLContacto.cs" />
     <Compile Include="Layers\BLL\BLLOrdenDetalle.cs" />
@@ -302,6 +305,12 @@
     <Compile Include="Layers\UI\Mantenimientos\frmOrdenesDeTrabajo.Designer.cs">
       <DependentUpon>frmOrdenesDeTrabajo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Layers\UI\Procesos\frmNuevaFactura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Layers\UI\Procesos\frmNuevaFactura.Designer.cs">
+      <DependentUpon>frmNuevaFactura.cs</DependentUpon>
+    </Compile>
     <Compile Include="Layers\UI\Procesos\frmNuevaOT.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -363,6 +372,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Layers\UI\Mantenimientos\frmOrdenesDeTrabajo.resx">
       <DependentUpon>frmOrdenesDeTrabajo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Layers\UI\Procesos\frmNuevaFactura.resx">
+      <DependentUpon>frmNuevaFactura.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Layers\UI\Procesos\frmNuevaOT.resx">
       <DependentUpon>frmNuevaOT.cs</DependentUpon>

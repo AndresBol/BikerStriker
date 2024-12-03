@@ -10,6 +10,7 @@ namespace BikerStriker.Enums
     {
         Mantenimiento,
         OrdenTrabajo,
-        Reporte
+        Reporte,
+        Factura
     }
 }

@@ -44,10 +44,13 @@
             this.pnlLeft = new System.Windows.Forms.Panel();
             this.lblCedulaJuridica = new System.Windows.Forms.Label();
             this.txtCedulaJuridica = new System.Windows.Forms.TextBox();
+            this.lblImpuestoVenta = new System.Windows.Forms.Label();
+            this.nudImpuestoVenta = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTiendas)).BeginInit();
             this.pnlBotom.SuspendLayout();
             this.pnlRight.SuspendLayout();
             this.pnlLeft.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudImpuestoVenta)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvTiendas
@@ -87,9 +90,9 @@
             // 
             // txtNombre
             // 
-            this.txtNombre.Location = new System.Drawing.Point(108, 66);
+            this.txtNombre.Location = new System.Drawing.Point(140, 66);
             this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(290, 20);
+            this.txtNombre.Size = new System.Drawing.Size(258, 20);
             this.txtNombre.TabIndex = 4;
             // 
             // btnGuardar
@@ -173,7 +176,7 @@
             this.txtDireccion.Multiline = true;
             this.txtDireccion.Name = "txtDireccion";
             this.txtDireccion.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtDireccion.Size = new System.Drawing.Size(251, 41);
+            this.txtDireccion.Size = new System.Drawing.Size(251, 43);
             this.txtDireccion.TabIndex = 16;
             // 
             // lblTelefono
@@ -194,6 +197,8 @@
             // 
             // pnlLeft
             // 
+            this.pnlLeft.Controls.Add(this.nudImpuestoVenta);
+            this.pnlLeft.Controls.Add(this.lblImpuestoVenta);
             this.pnlLeft.Controls.Add(this.lblCedulaJuridica);
             this.pnlLeft.Controls.Add(this.txtCedulaJuridica);
             this.pnlLeft.Controls.Add(this.btnAdd);
@@ -217,10 +222,42 @@
             // 
             // txtCedulaJuridica
             // 
-            this.txtCedulaJuridica.Location = new System.Drawing.Point(108, 40);
+            this.txtCedulaJuridica.Location = new System.Drawing.Point(140, 40);
             this.txtCedulaJuridica.Name = "txtCedulaJuridica";
-            this.txtCedulaJuridica.Size = new System.Drawing.Size(290, 20);
+            this.txtCedulaJuridica.Size = new System.Drawing.Size(258, 20);
             this.txtCedulaJuridica.TabIndex = 12;
+            // 
+            // lblImpuestoVenta
+            // 
+            this.lblImpuestoVenta.AutoSize = true;
+            this.lblImpuestoVenta.Location = new System.Drawing.Point(12, 94);
+            this.lblImpuestoVenta.Name = "lblImpuestoVenta";
+            this.lblImpuestoVenta.Size = new System.Drawing.Size(106, 13);
+            this.lblImpuestoVenta.TabIndex = 13;
+            this.lblImpuestoVenta.Text = "Impuesto de venta %";
+            // 
+            // nudImpuestoVenta
+            // 
+            this.nudImpuestoVenta.DecimalPlaces = 2;
+            this.nudImpuestoVenta.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            65536});
+            this.nudImpuestoVenta.Location = new System.Drawing.Point(140, 92);
+            this.nudImpuestoVenta.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nudImpuestoVenta.Name = "nudImpuestoVenta";
+            this.nudImpuestoVenta.Size = new System.Drawing.Size(255, 20);
+            this.nudImpuestoVenta.TabIndex = 14;
+            this.nudImpuestoVenta.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // frmMantenimientoTienda
             // 
@@ -241,6 +278,7 @@
             this.pnlRight.PerformLayout();
             this.pnlLeft.ResumeLayout(false);
             this.pnlLeft.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudImpuestoVenta)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -263,5 +301,7 @@
         private System.Windows.Forms.TextBox txtTelefono;
         private System.Windows.Forms.Label lblDireccion;
         private System.Windows.Forms.TextBox txtDireccion;
+        private System.Windows.Forms.NumericUpDown nudImpuestoVenta;
+        private System.Windows.Forms.Label lblImpuestoVenta;
     }
 }
