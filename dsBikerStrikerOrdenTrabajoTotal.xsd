@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsBikerStrikerOrdenTrabajoTotal" targetNamespace="http://tempuri.org/dsBikerStrikerOrdenTrabajoTotal.xsd" xmlns:mstns="http://tempuri.org/dsBikerStrikerOrdenTrabajoTotal.xsd" xmlns="http://tempuri.org/dsBikerStrikerOrdenTrabajoTotal.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="SqlServer" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="SqlServer (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.BikerStriker.Properties.Settings.GlobalReference.Default.SqlServer" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="OrdenTrabajoTotalTableAdapter" GeneratorDataComponentClassName="OrdenTrabajoTotalTableAdapter" Name="OrdenTrabajoTotal" UserDataComponentName="OrdenTrabajoTotalTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="SqlServer (Settings)" DbObjectName="BikerStriker.dbo.OrdenTrabajoTotal" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT id, fechaInicio, fechaFinalizacion, firma, id_Cliente, id_Bicicleta, clienteIdentificacion, clienteUsuarioID, usuarioNombre, usuarioApellidos, bicicletaNumeroSerie, bicicletaColor, modeloNombre, marcaNombre, marcaLogo, productoCodigo, productoNombre, productoPrecio, ordenFoto FROM dbo.OrdenTrabajoTotal</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="id" DataSetColumn="id" />
+              <Mapping SourceColumn="fechaInicio" DataSetColumn="fechaInicio" />
+              <Mapping SourceColumn="fechaFinalizacion" DataSetColumn="fechaFinalizacion" />
+              <Mapping SourceColumn="firma" DataSetColumn="firma" />
+              <Mapping SourceColumn="id_Cliente" DataSetColumn="id_Cliente" />
+              <Mapping SourceColumn="id_Bicicleta" DataSetColumn="id_Bicicleta" />
+              <Mapping SourceColumn="clienteIdentificacion" DataSetColumn="clienteIdentificacion" />
+              <Mapping SourceColumn="clienteUsuarioID" DataSetColumn="clienteUsuarioID" />
+              <Mapping SourceColumn="usuarioNombre" DataSetColumn="usuarioNombre" />
+              <Mapping SourceColumn="usuarioApellidos" DataSetColumn="usuarioApellidos" />
+              <Mapping SourceColumn="bicicletaNumeroSerie" DataSetColumn="bicicletaNumeroSerie" />
+              <Mapping SourceColumn="bicicletaColor" DataSetColumn="bicicletaColor" />
+              <Mapping SourceColumn="modeloNombre" DataSetColumn="modeloNombre" />
+              <Mapping SourceColumn="marcaNombre" DataSetColumn="marcaNombre" />
+              <Mapping SourceColumn="marcaLogo" DataSetColumn="marcaLogo" />
+              <Mapping SourceColumn="productoCodigo" DataSetColumn="productoCodigo" />
+              <Mapping SourceColumn="productoNombre" DataSetColumn="productoNombre" />
+              <Mapping SourceColumn="productoPrecio" DataSetColumn="productoPrecio" />
+              <Mapping SourceColumn="ordenFoto" DataSetColumn="ordenFoto" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsBikerStrikerOrdenTrabajoTotal" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_UserDSName="dsBikerStrikerOrdenTrabajoTotal" msprop:Generator_DataSetName="dsBikerStrikerOrdenTrabajoTotal">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="OrdenTrabajoTotal" msprop:Generator_RowEvHandlerName="OrdenTrabajoTotalRowChangeEventHandler" msprop:Generator_RowDeletedName="OrdenTrabajoTotalRowDeleted" msprop:Generator_RowDeletingName="OrdenTrabajoTotalRowDeleting" msprop:Generator_RowEvArgName="OrdenTrabajoTotalRowChangeEvent" msprop:Generator_TablePropName="OrdenTrabajoTotal" msprop:Generator_RowChangedName="OrdenTrabajoTotalRowChanged" msprop:Generator_RowChangingName="OrdenTrabajoTotalRowChanging" msprop:Generator_TableClassName="OrdenTrabajoTotalDataTable" msprop:Generator_RowClassName="OrdenTrabajoTotalRow" msprop:Generator_TableVarName="tableOrdenTrabajoTotal" msprop:Generator_UserTableName="OrdenTrabajoTotal">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="id" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_UserColumnName="id" type="xs:int" />
+              <xs:element name="fechaInicio" msprop:Generator_ColumnPropNameInRow="fechaInicio" msprop:Generator_ColumnPropNameInTable="fechaInicioColumn" msprop:Generator_ColumnVarNameInTable="columnfechaInicio" msprop:Generator_UserColumnName="fechaInicio" type="xs:dateTime" />
+              <xs:element name="fechaFinalizacion" msprop:Generator_ColumnPropNameInRow="fechaFinalizacion" msprop:Generator_ColumnPropNameInTable="fechaFinalizacionColumn" msprop:Generator_ColumnVarNameInTable="columnfechaFinalizacion" msprop:Generator_UserColumnName="fechaFinalizacion" type="xs:dateTime" />
+              <xs:element name="firma" msprop:Generator_ColumnPropNameInRow="firma" msprop:Generator_ColumnPropNameInTable="firmaColumn" msprop:Generator_ColumnVarNameInTable="columnfirma" msprop:Generator_UserColumnName="firma" type="xs:base64Binary" />
+              <xs:element name="id_Cliente" msprop:Generator_ColumnPropNameInRow="id_Cliente" msprop:Generator_ColumnPropNameInTable="id_ClienteColumn" msprop:Generator_ColumnVarNameInTable="columnid_Cliente" msprop:Generator_UserColumnName="id_Cliente" type="xs:int" />
+              <xs:element name="id_Bicicleta" msprop:Generator_ColumnPropNameInRow="id_Bicicleta" msprop:Generator_ColumnPropNameInTable="id_BicicletaColumn" msprop:Generator_ColumnVarNameInTable="columnid_Bicicleta" msprop:Generator_UserColumnName="id_Bicicleta" type="xs:int" />
+              <xs:element name="clienteIdentificacion" msprop:Generator_ColumnPropNameInRow="clienteIdentificacion" msprop:Generator_ColumnPropNameInTable="clienteIdentificacionColumn" msprop:Generator_ColumnVarNameInTable="columnclienteIdentificacion" msprop:Generator_UserColumnName="clienteIdentificacion">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="clienteUsuarioID" msprop:Generator_ColumnPropNameInRow="clienteUsuarioID" msprop:Generator_ColumnPropNameInTable="clienteUsuarioIDColumn" msprop:Generator_ColumnVarNameInTable="columnclienteUsuarioID" msprop:Generator_UserColumnName="clienteUsuarioID" type="xs:int" />
+              <xs:element name="usuarioNombre" msprop:Generator_ColumnPropNameInRow="usuarioNombre" msprop:Generator_ColumnPropNameInTable="usuarioNombreColumn" msprop:Generator_ColumnVarNameInTable="columnusuarioNombre" msprop:Generator_UserColumnName="usuarioNombre">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="usuarioApellidos" msprop:Generator_ColumnPropNameInRow="usuarioApellidos" msprop:Generator_ColumnPropNameInTable="usuarioApellidosColumn" msprop:Generator_ColumnVarNameInTable="columnusuarioApellidos" msprop:Generator_UserColumnName="usuarioApellidos">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="bicicletaNumeroSerie" msprop:Generator_ColumnPropNameInRow="bicicletaNumeroSerie" msprop:Generator_ColumnPropNameInTable="bicicletaNumeroSerieColumn" msprop:Generator_ColumnVarNameInTable="columnbicicletaNumeroSerie" msprop:Generator_UserColumnName="bicicletaNumeroSerie">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="bicicletaColor" msprop:Generator_ColumnPropNameInRow="bicicletaColor" msprop:Generator_ColumnPropNameInTable="bicicletaColorColumn" msprop:Generator_ColumnVarNameInTable="columnbicicletaColor" msprop:Generator_UserColumnName="bicicletaColor">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="7" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="modeloNombre" msprop:Generator_ColumnPropNameInRow="modeloNombre" msprop:Generator_ColumnPropNameInTable="modeloNombreColumn" msprop:Generator_ColumnVarNameInTable="columnmodeloNombre" msprop:Generator_UserColumnName="modeloNombre">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="marcaNombre" msprop:Generator_ColumnPropNameInRow="marcaNombre" msprop:Generator_ColumnPropNameInTable="marcaNombreColumn" msprop:Generator_ColumnVarNameInTable="columnmarcaNombre" msprop:Generator_UserColumnName="marcaNombre">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="marcaLogo" msprop:Generator_ColumnPropNameInRow="marcaLogo" msprop:Generator_ColumnPropNameInTable="marcaLogoColumn" msprop:Generator_ColumnVarNameInTable="columnmarcaLogo" msprop:Generator_UserColumnName="marcaLogo" type="xs:base64Binary" minOccurs="0" />
+              <xs:element name="productoCodigo" msprop:Generator_ColumnPropNameInRow="productoCodigo" msprop:Generator_ColumnPropNameInTable="productoCodigoColumn" msprop:Generator_ColumnVarNameInTable="columnproductoCodigo" msprop:Generator_UserColumnName="productoCodigo" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="productoNombre" msprop:Generator_ColumnPropNameInRow="productoNombre" msprop:Generator_ColumnPropNameInTable="productoNombreColumn" msprop:Generator_ColumnVarNameInTable="columnproductoNombre" msprop:Generator_UserColumnName="productoNombre" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="productoPrecio" msprop:Generator_ColumnPropNameInRow="productoPrecio" msprop:Generator_ColumnPropNameInTable="productoPrecioColumn" msprop:Generator_ColumnVarNameInTable="columnproductoPrecio" msprop:Generator_UserColumnName="productoPrecio" type="xs:decimal" minOccurs="0" />
+              <xs:element name="ordenFoto" msprop:Generator_ColumnPropNameInRow="ordenFoto" msprop:Generator_ColumnPropNameInTable="ordenFotoColumn" msprop:Generator_ColumnVarNameInTable="columnordenFoto" msprop:Generator_UserColumnName="ordenFoto" type="xs:base64Binary" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:OrdenTrabajoTotal" />
+      <xs:field xpath="mstns:id" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>
