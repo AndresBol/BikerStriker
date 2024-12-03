@@ -11,10 +11,11 @@ namespace BikerStriker.Layers.Entities
     public class Factura
     {
         public int Id { get; set; }
-        public XmlDocument XML_Factura { get; set; }
         public OrdenTrabajo OrdenTrabajo { get; set; }
         public Cliente Cliente { get; set; }
         public Tarjeta Tarjeta { get; set; }
-        public List<Producto> Productos { get; set; }
+        public double TotalColones { get; set; }
+        public double TotalDolares { get; set; }
+        public List<FacturaDetalle> FacturaDetalle { get; set; }
     }
 }
