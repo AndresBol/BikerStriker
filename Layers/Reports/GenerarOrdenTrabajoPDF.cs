@@ -11,12 +11,13 @@ using System.Drawing;
 using System.Reflection;
 using System.Data.Common;
 using BikerStriker.Tools;
+using BikerStriker.Util;
 
 namespace BikerStriker.Layers.Reports
 {
     public class GenerarOrdenTrabajoPDF
     {
-        public void ObtenerPDF(OrdenTrabajo ordenTrabajo)
+        public byte[] ObtenerPDF(OrdenTrabajo ordenTrabajo)
         {
             QuestPDF.Settings.License = LicenseType.Community;
 
@@ -31,7 +32,7 @@ namespace BikerStriker.Layers.Reports
                 return container.BorderBottom(1).BorderColor(Colors.Grey.Lighten2).PaddingVertical(5);
             }
 
-            Document.Create(container =>
+            return Document.Create(container =>
             {
                 container.Page(page =>
                 {
@@ -100,17 +101,20 @@ namespace BikerStriker.Layers.Reports
                                 $"\n$ {TotalDolares.ToString("#,##0.00")}").SemiBold();
                         });
 
-                    page.Footer()
-                        .AlignRight().Column(x =>
+                    page.Footer().Row(w =>
+                    {
+                        w.AutoItem().AlignBottom().Width(100).Image(ImageSerializer.SerializeImageToString(QRCodeGeneratorUtility.GenerateQRCodeFromInteger(ordenTrabajo.Id)));
+                        w.RelativeItem().AlignRight().Column(x =>
                         {
                             x.Item().Width(100).Image(ImageSerializer.SerializeImageToString(ordenTrabajo.Firma));
-                            x.Item().Text(ordenTrabajo.Cliente.Identificacion+"\n");
+                            x.Item().Text(ordenTrabajo.Cliente.Identificacion + "\n");
                             x.Item().Text(y =>
                             {
                                 y.Span("Pagína ");
                                 y.CurrentPageNumber();
                             });
                         });
+                    });
                 });
                 container.Page(page =>
                 {
@@ -151,8 +155,10 @@ namespace BikerStriker.Layers.Reports
                             });
                         });
 
-                    page.Footer()
-                        .AlignRight().Column(x =>
+                    page.Footer().Row(w =>
+                    {
+                        w.AutoItem().AlignBottom().Width(100).Image(ImageSerializer.SerializeImageToString(QRCodeGeneratorUtility.GenerateQRCodeFromInteger(ordenTrabajo.Id)));
+                        w.RelativeItem().AlignRight().Column(x =>
                         {
                             x.Item().Width(100).Image(ImageSerializer.SerializeImageToString(ordenTrabajo.Firma));
                             x.Item().Text(ordenTrabajo.Cliente.Identificacion + "\n");
@@ -162,9 +168,10 @@ namespace BikerStriker.Layers.Reports
                                 y.CurrentPageNumber();
                             });
                         });
+                    });
                 });
             })
-        .GeneratePdf("C:\\Users\\Andrés Bolaños\\Desktop\\Reportes\\report.pdf");
+        .GeneratePdf();
         }
     }
 }

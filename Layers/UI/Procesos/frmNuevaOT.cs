@@ -292,6 +292,15 @@ namespace BikerStriker.Layers.UI.Procesos
             if (ordenTrabajoFacade.GuardarOrdenTrabajo())
             {
                 MessageBox.Show($"Se ha generado con exito la Orden de Trabajo #{ordenTrabajoFacade.OrdenTrabajo.Id}", "¡Proceso Exitoso!",MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                if (ordenTrabajoFacade.EnviarOrdenTrabajoEmail())
+                {
+                    MessageBox.Show($"Se ha enviado con exito la Orden de Trabajo #{ordenTrabajoFacade.OrdenTrabajo.Id} al correo {ordenTrabajoFacade.OrdenTrabajo.Cliente.Correo}", "¡Proceso Exitoso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("NO se ha podido enviar por correo la Orden de Trabajo", "¡Proceso Fallido!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             else
             {

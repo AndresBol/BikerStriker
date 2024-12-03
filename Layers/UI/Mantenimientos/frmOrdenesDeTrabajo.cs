@@ -81,17 +81,15 @@ namespace BikerStriker.Layers.UI.Mantenimientos
             BikerStrikerOrdenTrabajoFacade ordenTrabajoFacade = new BikerStrikerOrdenTrabajoFacade();
             ordenTrabajoFacade.OrdenTrabajo = (OrdenTrabajo)dgvOrdenesTrabajo.CurrentRow.DataBoundItem;
 
-            GenerarOrdenTrabajoPDF generadorPDF = new GenerarOrdenTrabajoPDF();
-            generadorPDF.ObtenerPDF(ordenTrabajoFacade.OrdenTrabajo);
 
-            /*if (ordenTrabajoFacade.EnviarOrdenTrabajoEmail())
+            if (ordenTrabajoFacade.EnviarOrdenTrabajoEmail())
             {
                 MessageBox.Show($"Se ha enviado con exito la Orden de Trabajo #{ordenTrabajoFacade.OrdenTrabajo.Id} al correo {ordenTrabajoFacade.OrdenTrabajo.Cliente.Correo}", "¡Proceso Exitoso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
                 MessageBox.Show("NO se ha podido enviar por correo la Orden de Trabajo", "¡Proceso Fallido!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }*/
+            }
         }
     }
 }   
