@@ -173,6 +173,7 @@
     <Compile Include="Layers\Persistencia\FactoryConexion.cs" />
     <Compile Include="Layers\Persistencia\FactoryDataBase.cs" />
     <Compile Include="Layers\Persistencia\IDataBase.cs" />
+    <Compile Include="Layers\Reports\GenerarOrdenTrabajoPDF.cs" />
     <Compile Include="Layers\UI\frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -268,6 +269,7 @@
     <Compile Include="Patrones\OrdenDeTrabajoFactory.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Settings.cs" />
     <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="Util\BancoCentralApiHelper.cs" />
     <Compile Include="Util\CR_DirectorioApiHelper.cs" />
@@ -347,7 +349,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Layers\Reports\" />
     <Folder Include="Layers\UI\Filtros\" />
   </ItemGroup>
   <ItemGroup>

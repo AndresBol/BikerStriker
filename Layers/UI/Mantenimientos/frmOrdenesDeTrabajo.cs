@@ -1,6 +1,7 @@
 ﻿using BikerStriker.Enums;
 using BikerStriker.Layers.BLL;
 using BikerStriker.Layers.Entities;
+using BikerStriker.Layers.Reports;
 using BikerStriker.Patrones;
 using BikerStriker.Properties;
 using System;
@@ -78,7 +79,10 @@ namespace BikerStriker.Layers.UI.Mantenimientos
         private void btnEnviarCorreo_Click(object sender, EventArgs e)
         {
             BikerStrikerOrdenTrabajoFacade ordenTrabajoFacade = new BikerStrikerOrdenTrabajoFacade();
-            ordenTrabajoFacade.OrdenTrabajo = (OrdenTrabajo) dgvOrdenesTrabajo.CurrentRow.DataBoundItem;
+            ordenTrabajoFacade.OrdenTrabajo = (OrdenTrabajo)dgvOrdenesTrabajo.CurrentRow.DataBoundItem;
+
+            GenerarOrdenTrabajoPDF generadorPDF = new GenerarOrdenTrabajoPDF();
+            generadorPDF.ObtenerPDF(ordenTrabajoFacade.OrdenTrabajo);
 
             if (ordenTrabajoFacade.EnviarOrdenTrabajoEmail())
             {
