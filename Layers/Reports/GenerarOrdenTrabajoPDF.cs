@@ -16,7 +16,7 @@ namespace BikerStriker.Layers.Reports
 {
     public class GenerarOrdenTrabajoPDF
     {
-        public byte[] ObtenerPDF(OrdenTrabajo ordenTrabajo)
+        public void ObtenerPDF(OrdenTrabajo ordenTrabajo)
         {
             QuestPDF.Settings.License = LicenseType.Community;
 
@@ -31,12 +31,11 @@ namespace BikerStriker.Layers.Reports
                 return container.BorderBottom(1).BorderColor(Colors.Grey.Lighten2).PaddingVertical(5);
             }
 
-            return Document.Create(container =>
+            Document.Create(container =>
             {
                 container.Page(page =>
                 {
-                    //page.ContinuousSize(PageSizes.A4.Width);
-                    page.Size(PageSizes.A4);
+                    page.ContinuousSize(PageSizes.A4.Width);
                     page.Margin(2, Unit.Centimetre);
                     page.PageColor(Colors.White);
                     page.DefaultTextStyle(x => x.FontSize(12));
@@ -102,11 +101,15 @@ namespace BikerStriker.Layers.Reports
                         });
 
                     page.Footer()
-                        .AlignRight()
-                        .Text(x =>
+                        .AlignRight().Column(x =>
                         {
-                            x.Span("Pagína ");
-                            x.CurrentPageNumber();
+                            x.Item().Width(100).Image(ImageSerializer.SerializeImageToString(ordenTrabajo.Firma));
+                            x.Item().Text(ordenTrabajo.Cliente.Identificacion+"\n");
+                            x.Item().Text(y =>
+                            {
+                                y.Span("Pagína ");
+                                y.CurrentPageNumber();
+                            });
                         });
                 });
                 container.Page(page =>
@@ -149,15 +152,19 @@ namespace BikerStriker.Layers.Reports
                         });
 
                     page.Footer()
-                        .AlignRight()
-                        .Text(x =>
+                        .AlignRight().Column(x =>
                         {
-                            x.Span("Pagína ");
-                            x.CurrentPageNumber();
+                            x.Item().Width(100).Image(ImageSerializer.SerializeImageToString(ordenTrabajo.Firma));
+                            x.Item().Text(ordenTrabajo.Cliente.Identificacion + "\n");
+                            x.Item().Text(y =>
+                            {
+                                y.Span("Pagína ");
+                                y.CurrentPageNumber();
+                            });
                         });
                 });
             })
-        .GeneratePdf();
+        .GeneratePdf("C:\\Users\\Andrés Bolaños\\Desktop\\Reportes\\report.pdf");
         }
     }
 }

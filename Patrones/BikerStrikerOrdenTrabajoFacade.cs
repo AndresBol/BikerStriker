@@ -44,7 +44,7 @@ namespace BikerStriker.Patrones
             return null;
         }
 
-        public void GenerarPDF() 
+        private void GenerarPDF() 
         { 
         
         }
