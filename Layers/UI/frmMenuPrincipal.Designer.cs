@@ -30,6 +30,9 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMenuPrincipal));
             this.pnlAsideMenu = new System.Windows.Forms.Panel();
+            this.pnlFacturas = new System.Windows.Forms.Panel();
+            this.btnNuevaFactura = new System.Windows.Forms.Button();
+            this.btnFacturas = new System.Windows.Forms.Button();
             this.pnlOrdenesTrabajo = new System.Windows.Forms.Panel();
             this.BtnVerOrdenes = new System.Windows.Forms.Button();
             this.btnNuevaOrden = new System.Windows.Forms.Button();
@@ -54,18 +57,14 @@
             this.imgUserLogo = new System.Windows.Forms.PictureBox();
             this.lblChildFrmTitle = new System.Windows.Forms.Label();
             this.pnlDesktop = new System.Windows.Forms.Panel();
-            this.btnFacturas = new System.Windows.Forms.Button();
-            this.pnlFacturas = new System.Windows.Forms.Panel();
-            this.btnVerFacturas = new System.Windows.Forms.Button();
-            this.btnNuevaFactura = new System.Windows.Forms.Button();
             this.pnlAsideMenu.SuspendLayout();
+            this.pnlFacturas.SuspendLayout();
             this.pnlOrdenesTrabajo.SuspendLayout();
             this.pnlMantenimientos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgLogo)).BeginInit();
             this.pnlHeader.SuspendLayout();
             this.pnlUsuario.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgUserLogo)).BeginInit();
-            this.pnlFacturas.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlAsideMenu
@@ -84,14 +83,62 @@
             this.pnlAsideMenu.Size = new System.Drawing.Size(240, 815);
             this.pnlAsideMenu.TabIndex = 0;
             // 
+            // pnlFacturas
+            // 
+            this.pnlFacturas.Controls.Add(this.btnNuevaFactura);
+            this.pnlFacturas.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlFacturas.Location = new System.Drawing.Point(0, 721);
+            this.pnlFacturas.Name = "pnlFacturas";
+            this.pnlFacturas.Size = new System.Drawing.Size(240, 39);
+            this.pnlFacturas.TabIndex = 9;
+            // 
+            // btnNuevaFactura
+            // 
+            this.btnNuevaFactura.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.btnNuevaFactura.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnNuevaFactura.FlatAppearance.BorderSize = 0;
+            this.btnNuevaFactura.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNuevaFactura.Font = new System.Drawing.Font("Sylfaen", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNuevaFactura.ForeColor = System.Drawing.Color.White;
+            this.btnNuevaFactura.Image = ((System.Drawing.Image)(resources.GetObject("btnNuevaFactura.Image")));
+            this.btnNuevaFactura.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.btnNuevaFactura.Location = new System.Drawing.Point(0, 0);
+            this.btnNuevaFactura.Name = "btnNuevaFactura";
+            this.btnNuevaFactura.Size = new System.Drawing.Size(240, 37);
+            this.btnNuevaFactura.TabIndex = 13;
+            this.btnNuevaFactura.Text = "Nueva Factura";
+            this.btnNuevaFactura.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnNuevaFactura.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnNuevaFactura.UseVisualStyleBackColor = false;
+            this.btnNuevaFactura.Click += new System.EventHandler(this.btnNuevaFactura_Click);
+            // 
+            // btnFacturas
+            // 
+            this.btnFacturas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnFacturas.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnFacturas.FlatAppearance.BorderSize = 0;
+            this.btnFacturas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFacturas.Font = new System.Drawing.Font("Sylfaen", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFacturas.ForeColor = System.Drawing.Color.White;
+            this.btnFacturas.Image = global::BikerStriker.Properties.Resources.arrow_down;
+            this.btnFacturas.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnFacturas.Location = new System.Drawing.Point(0, 684);
+            this.btnFacturas.Name = "btnFacturas";
+            this.btnFacturas.Size = new System.Drawing.Size(240, 37);
+            this.btnFacturas.TabIndex = 8;
+            this.btnFacturas.Text = "Facturas";
+            this.btnFacturas.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnFacturas.UseVisualStyleBackColor = false;
+            this.btnFacturas.Click += new System.EventHandler(this.btnFacturas_Click);
+            // 
             // pnlOrdenesTrabajo
             // 
             this.pnlOrdenesTrabajo.Controls.Add(this.BtnVerOrdenes);
             this.pnlOrdenesTrabajo.Controls.Add(this.btnNuevaOrden);
             this.pnlOrdenesTrabajo.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlOrdenesTrabajo.Location = new System.Drawing.Point(0, 612);
+            this.pnlOrdenesTrabajo.Location = new System.Drawing.Point(0, 606);
             this.pnlOrdenesTrabajo.Name = "pnlOrdenesTrabajo";
-            this.pnlOrdenesTrabajo.Size = new System.Drawing.Size(240, 82);
+            this.pnlOrdenesTrabajo.Size = new System.Drawing.Size(240, 78);
             this.pnlOrdenesTrabajo.TabIndex = 7;
             // 
             // BtnVerOrdenes
@@ -106,7 +153,7 @@
             this.BtnVerOrdenes.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.BtnVerOrdenes.Location = new System.Drawing.Point(0, 37);
             this.BtnVerOrdenes.Name = "BtnVerOrdenes";
-            this.BtnVerOrdenes.Size = new System.Drawing.Size(240, 37);
+            this.BtnVerOrdenes.Size = new System.Drawing.Size(240, 41);
             this.BtnVerOrdenes.TabIndex = 14;
             this.BtnVerOrdenes.Text = "Ver Órdenes";
             this.BtnVerOrdenes.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -144,7 +191,7 @@
             this.btnOrdenesTrabajo.ForeColor = System.Drawing.Color.White;
             this.btnOrdenesTrabajo.Image = global::BikerStriker.Properties.Resources.arrow_down;
             this.btnOrdenesTrabajo.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnOrdenesTrabajo.Location = new System.Drawing.Point(0, 575);
+            this.btnOrdenesTrabajo.Location = new System.Drawing.Point(0, 569);
             this.btnOrdenesTrabajo.Name = "btnOrdenesTrabajo";
             this.btnOrdenesTrabajo.Size = new System.Drawing.Size(240, 37);
             this.btnOrdenesTrabajo.TabIndex = 6;
@@ -169,7 +216,7 @@
             this.pnlMantenimientos.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlMantenimientos.Location = new System.Drawing.Point(0, 162);
             this.pnlMantenimientos.Name = "pnlMantenimientos";
-            this.pnlMantenimientos.Size = new System.Drawing.Size(240, 413);
+            this.pnlMantenimientos.Size = new System.Drawing.Size(240, 407);
             this.pnlMantenimientos.TabIndex = 5;
             // 
             // btnContactos
@@ -487,74 +534,6 @@
             this.pnlDesktop.Size = new System.Drawing.Size(948, 690);
             this.pnlDesktop.TabIndex = 2;
             // 
-            // btnFacturas
-            // 
-            this.btnFacturas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.btnFacturas.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnFacturas.FlatAppearance.BorderSize = 0;
-            this.btnFacturas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFacturas.Font = new System.Drawing.Font("Sylfaen", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFacturas.ForeColor = System.Drawing.Color.White;
-            this.btnFacturas.Image = global::BikerStriker.Properties.Resources.arrow_down;
-            this.btnFacturas.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnFacturas.Location = new System.Drawing.Point(0, 694);
-            this.btnFacturas.Name = "btnFacturas";
-            this.btnFacturas.Size = new System.Drawing.Size(240, 37);
-            this.btnFacturas.TabIndex = 8;
-            this.btnFacturas.Text = "Facturas";
-            this.btnFacturas.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnFacturas.UseVisualStyleBackColor = false;
-            this.btnFacturas.Click += new System.EventHandler(this.btnFacturas_Click);
-            // 
-            // pnlFacturas
-            // 
-            this.pnlFacturas.Controls.Add(this.btnVerFacturas);
-            this.pnlFacturas.Controls.Add(this.btnNuevaFactura);
-            this.pnlFacturas.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlFacturas.Location = new System.Drawing.Point(0, 731);
-            this.pnlFacturas.Name = "pnlFacturas";
-            this.pnlFacturas.Size = new System.Drawing.Size(240, 82);
-            this.pnlFacturas.TabIndex = 9;
-            // 
-            // btnVerFacturas
-            // 
-            this.btnVerFacturas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.btnVerFacturas.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnVerFacturas.FlatAppearance.BorderSize = 0;
-            this.btnVerFacturas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnVerFacturas.Font = new System.Drawing.Font("Sylfaen", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVerFacturas.ForeColor = System.Drawing.Color.White;
-            this.btnVerFacturas.Image = ((System.Drawing.Image)(resources.GetObject("btnVerFacturas.Image")));
-            this.btnVerFacturas.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnVerFacturas.Location = new System.Drawing.Point(0, 37);
-            this.btnVerFacturas.Name = "btnVerFacturas";
-            this.btnVerFacturas.Size = new System.Drawing.Size(240, 37);
-            this.btnVerFacturas.TabIndex = 14;
-            this.btnVerFacturas.Text = "Ver Facturas";
-            this.btnVerFacturas.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnVerFacturas.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnVerFacturas.UseVisualStyleBackColor = false;
-            // 
-            // btnNuevaFactura
-            // 
-            this.btnNuevaFactura.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.btnNuevaFactura.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnNuevaFactura.FlatAppearance.BorderSize = 0;
-            this.btnNuevaFactura.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNuevaFactura.Font = new System.Drawing.Font("Sylfaen", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNuevaFactura.ForeColor = System.Drawing.Color.White;
-            this.btnNuevaFactura.Image = ((System.Drawing.Image)(resources.GetObject("btnNuevaFactura.Image")));
-            this.btnNuevaFactura.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnNuevaFactura.Location = new System.Drawing.Point(0, 0);
-            this.btnNuevaFactura.Name = "btnNuevaFactura";
-            this.btnNuevaFactura.Size = new System.Drawing.Size(240, 37);
-            this.btnNuevaFactura.TabIndex = 13;
-            this.btnNuevaFactura.Text = "Nueva Factura";
-            this.btnNuevaFactura.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnNuevaFactura.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnNuevaFactura.UseVisualStyleBackColor = false;
-            this.btnNuevaFactura.Click += new System.EventHandler(this.btnNuevaFactura_Click);
-            // 
             // frmMenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -568,6 +547,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Menú Principal";
             this.pnlAsideMenu.ResumeLayout(false);
+            this.pnlFacturas.ResumeLayout(false);
             this.pnlOrdenesTrabajo.ResumeLayout(false);
             this.pnlMantenimientos.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.imgLogo)).EndInit();
@@ -576,7 +556,6 @@
             this.pnlUsuario.ResumeLayout(false);
             this.pnlUsuario.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgUserLogo)).EndInit();
-            this.pnlFacturas.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -609,7 +588,6 @@
         private System.Windows.Forms.Button BtnVerOrdenes;
         private System.Windows.Forms.Button btnNuevaOrden;
         private System.Windows.Forms.Panel pnlFacturas;
-        private System.Windows.Forms.Button btnVerFacturas;
         private System.Windows.Forms.Button btnNuevaFactura;
         private System.Windows.Forms.Button btnFacturas;
     }
