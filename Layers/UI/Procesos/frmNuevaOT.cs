@@ -114,12 +114,20 @@ namespace BikerStriker.Layers.UI.Procesos
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            Producto servicio = (Producto) cmbServicio.SelectedItem;
-            ServiciosSeleccionados.Add(servicio);
-            Servicios.Remove(servicio);
-            ActualizarServicios();
-            LimpiarCamposDetalle();
-            ActualizarPrecioTotal();
+            if(cmbServicio.SelectedItem != null)
+            {
+                Producto servicio = (Producto)cmbServicio.SelectedItem;
+                ServiciosSeleccionados.Add(servicio);
+                Servicios.Remove(servicio);
+                ActualizarServicios();
+                LimpiarCamposDetalle();
+                ActualizarPrecioTotal();
+            }
+            else
+            {
+                MessageBox.Show("Porfavor escoja algún servicio.");
+            }
+            
         }
 
         private void dgvOrdenDetalle_Click(object sender, EventArgs e)
@@ -249,9 +257,35 @@ namespace BikerStriker.Layers.UI.Procesos
             lblPrecioTotal.Text = $"Precio Total\n₡ {TotalColones.ToString("#,##0.00")}\n$ {TotalDolares.ToString("#,##0.00")}";
         }
 
+        private bool Validaciones()
+        {
+            if (signatureBitmap == null)
+            {
+                MessageBox.Show("Porfavor escoja algún servicio.");
+                return false;
+            }
+            if(cmbCliente.SelectedItem == null)
+            {
+                MessageBox.Show("Porfavor escoja algún cliente.");
+                return false;
+            }
+            if (cmbBicicleta.SelectedItem == null)
+            {
+                MessageBox.Show("Porfavor escoja una bicicleta.");
+                return false;
+            }
+            if(ServiciosSeleccionados.ToList().Count <= 0)
+            {
+                MessageBox.Show("Porfavor escoja algún servicio.");
+                return false;
+            }
+
+            return true;
+        }
+
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            if (signatureBitmap != null)
+            if (Validaciones())
             {
                 GenerarOrdenDeTrabajo();
             }

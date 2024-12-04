@@ -106,20 +106,28 @@ namespace BikerStriker.Layers.UI.Procesos
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            Producto producto = (Producto) cmbProducto.SelectedItem;
-            if(producto.Cantidad > 0)
+            if (cmbProducto.SelectedItem != null)
             {
-                FacturaDetalle.Add(new FacturaDetalle(producto, (int)nudCantidad.Value));
-                Productos.Remove(producto);
-                ActualizarProductos();
-                LimpiarCamposDetalle();
-                ActualizarPrecioTotal();
+                Producto producto = (Producto)cmbProducto.SelectedItem;
+                if (producto.Cantidad > 0)
+                {
+                    FacturaDetalle.Add(new FacturaDetalle(producto, (int)nudCantidad.Value));
+                    Productos.Remove(producto);
+                    ActualizarProductos();
+                    LimpiarCamposDetalle();
+                    ActualizarPrecioTotal();
+                }
+                else
+                {
+                    MessageBox.Show($"No es posible comprar {producto}. No tenemos más existencias de este producto.", "¡Lo sentimos!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
             else
             {
-                MessageBox.Show($"No es posible comprar {producto}. No tenemos más existencias de este producto.", "¡Lo sentimos!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Porfavor escoja algún producto.");
             }
-            
+
+
         }
 
         private void dgvOrdenDetalle_Click(object sender, EventArgs e)
@@ -162,10 +170,34 @@ namespace BikerStriker.Layers.UI.Procesos
 
             lblPrecioTotal.Text = $"Precio Total\n₡ {TotalColones.ToString("#,##0.00")}    Impuesto de Venta: ₡ {(TotalColones * IVA).ToString("#,##0.00")}\n$ {TotalDolares.ToString("#,##0.00")}    Impuesto de Venta: $ {(TotalDolares * IVA).ToString("#,##0.00")}";
         }
+        private bool Validaciones()
+        {
+            if (cmbCliente.SelectedItem == null)
+            {
+                MessageBox.Show("Porfavor escoja algún cliente.");
+                return false;
+            }
+            if (cmbTarjeta.SelectedItem == null)
+            {
+                MessageBox.Show("Porfavor escoja una tarjeta.");
+                return false;
+            }
+            if (FacturaDetalle.ToList().Count <= 0)
+            {
+                MessageBox.Show("Porfavor escoja algún producto.");
+                return false;
+            }
+
+            return true;
+        }
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            GenerarFactura();
+            if (Validaciones())
+            {
+                GenerarFactura();
+            }
+            
         }
 
         private void GenerarFactura()
