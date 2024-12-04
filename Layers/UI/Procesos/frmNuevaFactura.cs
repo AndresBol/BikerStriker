@@ -107,11 +107,19 @@ namespace BikerStriker.Layers.UI.Procesos
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             Producto producto = (Producto) cmbProducto.SelectedItem;
-            FacturaDetalle.Add(new FacturaDetalle(producto, (int) nudCantidad.Value));
-            Productos.Remove(producto);
-            ActualizarProductos();
-            LimpiarCamposDetalle();
-            ActualizarPrecioTotal();
+            if(producto.Cantidad > 0)
+            {
+                FacturaDetalle.Add(new FacturaDetalle(producto, (int)nudCantidad.Value));
+                Productos.Remove(producto);
+                ActualizarProductos();
+                LimpiarCamposDetalle();
+                ActualizarPrecioTotal();
+            }
+            else
+            {
+                MessageBox.Show($"No es posible comprar {producto}. No tenemos más existencias de este producto.", "¡Lo sentimos!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            
         }
 
         private void dgvOrdenDetalle_Click(object sender, EventArgs e)
@@ -142,49 +150,58 @@ namespace BikerStriker.Layers.UI.Procesos
 
         private void ActualizarPrecioTotal()
         {
-            double TotalColones = FacturaDetalle.Sum(p => p.Producto.Precio);
-            double TotalDolares = FacturaDetalle.Sum(p => p.Producto.Dolarizado);
+            BLLTienda bllTienda = new BLLTienda();
+            Tienda tienda = bllTienda.GetAllTienda()[0];
 
-            lblPrecioTotal.Text = $"Precio Total\n₡ {TotalColones.ToString("#,##0.00")}\n$ {TotalDolares.ToString("#,##0.00")}";
+            OrdenTrabajo ordenTrabajo = (OrdenTrabajo) cmbOrdenTrabajo.SelectedItem;
+
+            double IVA = tienda.ImpuestoVenta / 100;
+
+            double TotalColones = FacturaDetalle.Sum(p => p.Producto.Precio * p.Cantidad) + ((ordenTrabajo != null) ? ordenTrabajo.OrdenDetalle.Sum(p => p.Servicio.Precio) : 0);
+            double TotalDolares = FacturaDetalle.Sum(p => p.Producto.Dolarizado * p.Cantidad) + ((ordenTrabajo != null) ? ordenTrabajo.OrdenDetalle.Sum(p => p.Servicio.Dolarizado) : 0);
+
+            lblPrecioTotal.Text = $"Precio Total\n₡ {TotalColones.ToString("#,##0.00")}    Impuesto de Venta: ₡ {(TotalColones * IVA).ToString("#,##0.00")}\n$ {TotalDolares.ToString("#,##0.00")}    Impuesto de Venta: $ {(TotalDolares * IVA).ToString("#,##0.00")}";
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            GenerarOrdenDeTrabajo();
+            GenerarFactura();
         }
 
-        private void GenerarOrdenDeTrabajo()
+        private void GenerarFactura()
         {
-            /*
             Cliente cliente = (Cliente)cmbCliente.SelectedItem;
             Tarjeta tarjeta = (Tarjeta)cmbTarjeta.SelectedItem;
+            OrdenTrabajo ordenTrabajo = (OrdenTrabajo)cmbOrdenTrabajo.SelectedItem;
+
+            double TotalColones = FacturaDetalle.Sum(p => p.Producto.Precio * p.Cantidad) + ((ordenTrabajo != null) ? ordenTrabajo.OrdenDetalle.Sum(p => p.Servicio.Precio) : 0);
+            double TotalDolares = FacturaDetalle.Sum(p => p.Producto.Dolarizado * p.Cantidad) + ((ordenTrabajo != null) ? ordenTrabajo.OrdenDetalle.Sum(p => p.Servicio.Dolarizado) : 0);
 
             BikerStrikerFacturaFacade facturaFacade = new BikerStrikerFacturaFacade();
-            OrdenDeTrabajoFactory facturaFactory = new OrdenDeTrabajoFactory();
+            FacturaFactory facturaFactory = new FacturaFactory();
 
-            Image firma = (Image)CloneBitmapWithWhiteBackground(signatureBitmap).Clone();
-
-            Factura factura = facturaFactory.CrearOrdenDeTrabajo(dtpFechaInicio.Value, dtpFechaFinalizacion.Value, firma, cliente, tarjeta, ProductosSeleccionados.ToList(), Fotografias.ToList());
+            Factura factura = facturaFactory.CrearFactura(cliente, tarjeta, TotalColones, TotalDolares, ordenTrabajo, FacturaDetalle.ToList());
 
             facturaFacade.Factura = factura;
 
             if (facturaFacade.GuardarFactura())
             {
-                MessageBox.Show($"Se ha generado con exito la Orden de Trabajo #{facturaFacade.Factura.Id}", "¡Proceso Exitoso!",MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show($"Se ha generado con exito la Factura #{facturaFacade.Factura.Id}", "¡Proceso Exitoso!",MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 if (facturaFacade.EnviarFacturaEmail())
                 {
-                    MessageBox.Show($"Se ha enviado con exito la Orden de Trabajo #{facturaFacade.Factura.Id} al correo {facturaFacade.Factura.Cliente.Correo}", "¡Proceso Exitoso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    facturaFacade.AjusteFactura();
+                    MessageBox.Show($"Se ha enviado con exito la Factura #{facturaFacade.Factura.Id} al correo {facturaFacade.Factura.Cliente.Correo}", "¡Proceso Exitoso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
-                    MessageBox.Show("NO se ha podido enviar por correo la Orden de Trabajo", "¡Proceso Fallido!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("NO se ha podido enviar por correo la Factura", "¡Proceso Fallido!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
             {
-                MessageBox.Show("NO se ha podido generar la Orden de Trabajo", "¡Proceso Fallido!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }*/
+                MessageBox.Show("NO se ha podido generar la Factura", "¡Proceso Fallido!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void nudCantidad_ValueChanged(object sender, EventArgs e)
@@ -192,7 +209,24 @@ namespace BikerStriker.Layers.UI.Procesos
             if (dgvFacturaDetalle.SelectedRows.Count > 0)
             {
                 FacturaDetalle fDetalle = (FacturaDetalle)dgvFacturaDetalle.CurrentRow.DataBoundItem;
-                FacturaDetalle[FacturaDetalle.IndexOf(fDetalle)].Cantidad = (int)nudCantidad.Value;
+
+                int cantidad = (int)nudCantidad.Value;
+                int cantidadAlmacen = fDetalle.Producto.Cantidad;
+
+                if (cantidadAlmacen >= cantidad) 
+                {
+                    fDetalle.Cantidad = cantidad;
+                    FacturaDetalle[FacturaDetalle.IndexOf(fDetalle)] = fDetalle;
+                }
+                else
+                {
+                    MessageBox.Show($"No es posible comprar {cantidad} {fDetalle.Producto}. Cantidad en almacen: {cantidadAlmacen}.","¡Lo sentimos!",MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    nudCantidad.Value = cantidadAlmacen;
+                }
+
+                
+
+                ActualizarPrecioTotal();
             }
         }
     }

@@ -125,6 +125,18 @@ namespace BikerStriker.Layers.UI.Mantenimientos
             btnAdd.Visible = true;
         }
 
+        Color EnsureColorIsHex(Color color)
+        {
+            if (color.IsNamedColor)
+            {
+                return Color.FromArgb(color.ToArgb());
+            }
+            else
+            {
+                return color;
+            }
+        }
+
         private void btnColor_Click(object sender, EventArgs e)
         {
             colorDialog.AllowFullOpen = true;
@@ -133,7 +145,7 @@ namespace BikerStriker.Layers.UI.Mantenimientos
             colorDialog.AnyColor = true;
             if(colorDialog.ShowDialog() == DialogResult.OK)
             {
-                pnlColor.BackColor = colorDialog.Color;
+                pnlColor.BackColor = EnsureColorIsHex(colorDialog.Color);
             }
         }
     }

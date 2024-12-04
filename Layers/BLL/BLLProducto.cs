@@ -41,12 +41,12 @@ namespace BikerStriker.Layers.BLL
             return await _DALProducto.GetServiciosByCategoria(CategoriaId);
         }
 
-        public void Save(Producto producto)
+        public async void Save(Producto producto)
         {
             var dal = new DALProducto();
-            var existe = dal.GetProductoByID(producto.Id);
+            var existe = await dal.GetProductoByID(producto.Id);
 
-            if (existe.Result != null)
+            if (existe != null)
             {
                 dal.Actualizar(producto);
             }

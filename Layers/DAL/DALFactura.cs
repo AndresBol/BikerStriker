@@ -148,8 +148,8 @@ namespace BikerStriker.Layers.DAL
             string msg = "";
             string sql = @"Insert into Factura values (@XML_Factura,@id_OrdenTrabajo,@id_Cliente,@id_Tarjeta,@totalColones,@totalDolares)";
             SqlCommand command = new SqlCommand();
-            command.Parameters.AddWithValue("@XML_Factura", XML_Factura);
-            command.Parameters.AddWithValue("@id_OrdenTrabajo", factura.OrdenTrabajo.Id);
+            command.Parameters.AddWithValue("@XML_Factura", XML_Factura.OuterXml);
+            command.Parameters.AddWithValue("@id_OrdenTrabajo", (factura.OrdenTrabajo != null) ? (int?)factura.OrdenTrabajo.Id : (object)DBNull.Value);
             command.Parameters.AddWithValue("@id_Cliente", factura.Cliente.ClienteId);
             command.Parameters.AddWithValue("@id_Tarjeta", factura.Tarjeta.Id);
             command.Parameters.AddWithValue("@totalColones", factura.TotalColones);

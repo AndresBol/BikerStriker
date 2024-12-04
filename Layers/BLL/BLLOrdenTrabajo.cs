@@ -34,7 +34,7 @@ namespace BikerStriker.Layers.BLL
         public async Task<List<OrdenTrabajo>> GetAllPendingOrdenTrabajoFromCliente(int ClienteId)
         {
             var dal = new DALOrdenTrabajo();
-            var existe = await dal.GetAllOrdenTrabajoFromCliente(ClienteId);
+            var existe = await dal.GetAllPendingOrdenTrabajoFromCliente(ClienteId);
 
             if (existe != null)
             {

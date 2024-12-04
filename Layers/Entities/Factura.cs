@@ -10,6 +10,13 @@ namespace BikerStriker.Layers.Entities
 {
     public class Factura
     {
+        public Factura() { }
+        public Factura(Cliente cliente, Tarjeta tarjeta, double totalColones, double totalDolares) {
+            this.Cliente = cliente;
+            this.Tarjeta = tarjeta;
+            this.TotalColones = totalColones;
+            this.TotalDolares = totalDolares;
+        }
         public int Id { get; set; }
         public OrdenTrabajo OrdenTrabajo { get; set; }
         public Cliente Cliente { get; set; }

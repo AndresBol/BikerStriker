@@ -220,6 +220,7 @@
     <Compile Include="Layers\Persistencia\FactoryConexion.cs" />
     <Compile Include="Layers\Persistencia\FactoryDataBase.cs" />
     <Compile Include="Layers\Persistencia\IDataBase.cs" />
+    <Compile Include="Layers\Reports\GenerarFacturaPDF.cs" />
     <Compile Include="Layers\Reports\GenerarOrdenTrabajoPDF.cs" />
     <Compile Include="Layers\UI\frmLogin.cs">
       <SubType>Form</SubType>
@@ -317,8 +318,9 @@
     <Compile Include="Layers\UI\Procesos\frmNuevaOT.Designer.cs">
       <DependentUpon>frmNuevaOT.cs</DependentUpon>
     </Compile>
+    <Compile Include="Patrones\BikerStrikerFacturaFacade.cs" />
     <Compile Include="Patrones\BikerStrikerOrdenTrabajoFacade.cs" />
-    <Compile Include="Patrones\GraveyardFacade.cs" />
+    <Compile Include="Patrones\FacturaFactory.cs" />
     <Compile Include="Patrones\OrdenDeTrabajoFactory.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
