@@ -45,28 +45,41 @@ namespace BikerStriker.Layers.UI.Mantenimientos
             }
         }
 
+        private bool Validaciones()
+        {
+            if (txtNombre.Text == "")
+            {
+                MessageBox.Show("Porfavor digite un nombre");
+                return false;
+            }
+            return true;
+        }
+
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-
-            try
+            if (Validaciones())
             {
-                IBLLCategoria bll = new BLLCategoria();
-                Categoria categoria = new Categoria();
-                categoria.Nombre = txtNombre.Text;
-
-                if(dgvCategorias.SelectedRows.Count > 0)
+                try
                 {
-                    categoria.Id = ((Categoria)dgvCategorias.CurrentRow.DataBoundItem).Id;
-                }
+                    IBLLCategoria bll = new BLLCategoria();
+                    Categoria categoria = new Categoria();
+                    categoria.Nombre = txtNombre.Text;
 
-                bll.Save(categoria);
-                ActualizarTabla();
+                    if (dgvCategorias.SelectedRows.Count > 0)
+                    {
+                        categoria.Id = ((Categoria)dgvCategorias.CurrentRow.DataBoundItem).Id;
+                    }
+
+                    bll.Save(categoria);
+                    ActualizarTabla();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Ooops: {ex.Message}");
+                    throw;
+                }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Ooops: {ex.Message}");
-                throw;
-            }
+            
         }
 
         private void dgvCategorias_SelectionChanged(object sender, EventArgs e)
