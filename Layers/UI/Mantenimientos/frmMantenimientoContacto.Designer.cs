@@ -84,6 +84,7 @@
             // txtTelefono
             // 
             this.txtTelefono.Location = new System.Drawing.Point(58, 46);
+            this.txtTelefono.MaxLength = 14;
             this.txtTelefono.Name = "txtTelefono";
             this.txtTelefono.Size = new System.Drawing.Size(293, 20);
             this.txtTelefono.TabIndex = 4;

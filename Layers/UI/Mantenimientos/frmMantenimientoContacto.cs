@@ -54,28 +54,38 @@ namespace BikerStriker.Layers.UI.Mantenimientos
                 throw;
             }
         }
-
+        private bool Validaciones()
+        {
+            if (txtTelefono.Text == "")
+            {
+                MessageBox.Show("Porfavor digite un Telefono");
+                return false;
+            }
+            return true;
+        }
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-
-            try
+            if (Validaciones())
             {
-                IBLLContacto bll = new BLLContacto();
-                Contacto contacto = new Contacto();
-                contacto.Telefono = txtTelefono.Text;
-
-                if (dgvContactos.SelectedRows.Count > 0)
+                try
                 {
-                    contacto.Id = ((Contacto)dgvContactos.CurrentRow.DataBoundItem).Id;
-                }
+                    IBLLContacto bll = new BLLContacto();
+                    Contacto contacto = new Contacto();
+                    contacto.Telefono = txtTelefono.Text;
 
-                bll.Save(contacto, ((Cliente) cmbCliente.SelectedItem).ClienteId);
-                ActualizarTabla();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Ooops: {ex.Message}");
-                throw;
+                    if (dgvContactos.SelectedRows.Count > 0)
+                    {
+                        contacto.Id = ((Contacto)dgvContactos.CurrentRow.DataBoundItem).Id;
+                    }
+
+                    bll.Save(contacto, ((Cliente)cmbCliente.SelectedItem).ClienteId);
+                    ActualizarTabla();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Ooops: {ex.Message}");
+                    throw;
+                }
             }
         }   
 

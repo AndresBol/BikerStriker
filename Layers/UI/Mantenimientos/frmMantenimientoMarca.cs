@@ -59,28 +59,45 @@ namespace BikerStriker.Layers.UI.Mantenimientos
             }
         }
 
+        private bool Validaciones()
+        {
+            if (txtNombre.Text == "")
+            {
+                MessageBox.Show("Porfavor digite un nombre");
+                return false;
+            }
+            if(imgLogo.Image == null)
+            {
+                MessageBox.Show("Porfavor digite un logo");
+                return false;
+            }
+            return true;
+        }
+
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-
-            try
+            if (Validaciones())
             {
-                IBLLMarca bll = new BLLMarca();
-                Marca marca = new Marca();
-                marca.Nombre = txtNombre.Text;
-                marca.Logo = imgLogo.Image;
-
-                if(dgvMarcas.SelectedRows.Count > 0)
+                try
                 {
-                    marca.Id = ((Marca)dgvMarcas.CurrentRow.DataBoundItem).Id;
-                }
+                    IBLLMarca bll = new BLLMarca();
+                    Marca marca = new Marca();
+                    marca.Nombre = txtNombre.Text;
+                    marca.Logo = imgLogo.Image;
 
-                bll.Save(marca);
-                ActualizarTabla();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Ooops: {ex.Message}");
-                throw;
+                    if (dgvMarcas.SelectedRows.Count > 0)
+                    {
+                        marca.Id = ((Marca)dgvMarcas.CurrentRow.DataBoundItem).Id;
+                    }
+
+                    bll.Save(marca);
+                    ActualizarTabla();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Ooops: {ex.Message}");
+                    throw;
+                }
             }
         }
 

@@ -14,6 +14,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static QRCoder.SvgQRCode;
 
 namespace BikerStriker.Layers.UI.Mantenimientos
 {
@@ -57,35 +58,57 @@ namespace BikerStriker.Layers.UI.Mantenimientos
                 throw;
             }
         }
+        private bool Validaciones()
+        {
+            if (txtCodigo.Text == "")
+            {
+                MessageBox.Show("Porfavor digite un codigo");
+                return false;
+            }
+            if (txtNombre.Text == "")
+            {
+                MessageBox.Show("Porfavor digite un nombre");
+                return false;
+            }
+            if (txtDescripcion.Text == "")
+            {
+                MessageBox.Show("Porfavor digite una descripcion");
+                return false;
+            }
 
+            return true;
+        }
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-
-            try
+            if (Validaciones())
             {
-                IBLLProducto bll = new BLLProducto();
-                Producto producto = new Producto();
-                producto.Codigo = txtCodigo.Text;
-                producto.Nombre = txtNombre.Text;
-                producto.Precio = (double) nudPrecio.Value;
-                producto.Descripcion = txtDescripcion.Text;
-                producto.Cantidad = (int) nudCantidad.Value;
-                producto.Categoria = (Categoria) cmbCategoria.SelectedItem;
-                producto.EsServicio = chkServicio.Checked;
-
-                if(dgvProductos.SelectedRows.Count > 0)
+                try
                 {
-                    producto.Id = ((Producto)dgvProductos.CurrentRow.DataBoundItem).Id;
-                }
+                    IBLLProducto bll = new BLLProducto();
+                    Producto producto = new Producto();
+                    producto.Codigo = txtCodigo.Text;
+                    producto.Nombre = txtNombre.Text;
+                    producto.Precio = (double)nudPrecio.Value;
+                    producto.Descripcion = txtDescripcion.Text;
+                    producto.Cantidad = (int)nudCantidad.Value;
+                    producto.Categoria = (Categoria)cmbCategoria.SelectedItem;
+                    producto.EsServicio = chkServicio.Checked;
 
-                bll.Save(producto);
-                ActualizarTabla();
+                    if (dgvProductos.SelectedRows.Count > 0)
+                    {
+                        producto.Id = ((Producto)dgvProductos.CurrentRow.DataBoundItem).Id;
+                    }
+
+                    bll.Save(producto);
+                    ActualizarTabla();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Ooops: {ex.Message}");
+                    throw;
+                }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Ooops: {ex.Message}");
-                throw;
-            }
+            
         }
 
         private void dgvProductos_SelectionChanged(object sender, EventArgs e)

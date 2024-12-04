@@ -65,38 +65,80 @@ namespace BikerStriker.Layers.UI.Mantenimientos
                 imgFotografia.Image = Image.FromFile(openFileDialog.FileName);
             }
         }
+        private bool Validaciones()
+        {
+            if (txtCodigo.Text == "")
+            {
+                MessageBox.Show("Porfavor digite un codigo");
+                return false;
+            }
+            if (txtCorreo.Text == "")
+            {
+                MessageBox.Show("Porfavor digite un correo");
+                return false;
+            }
 
+            if (!txtCorreo.Text.Contains('@'))
+            {
+                MessageBox.Show("Porfavor digite un correo valido");
+                return false;
+            }
+            if (txtContrasena.Text == "")
+            {
+                MessageBox.Show("Porfavor digite una contraseña");
+                return false;
+            }
+            if (txtNombre.Text == "")
+            {
+                MessageBox.Show("Porfavor digite un Nombre");
+                return false;
+            }
+            if (txtApellidos.Text == "")
+            {
+                MessageBox.Show("Porfavor digite los Apellidos");
+                return false;
+            }
+            if(imgFotografia.Image == null)
+            {
+                MessageBox.Show("Porfavor digite una foto");
+                return false;
+            }
+            return true;
+        }
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-
-            try
+            if (Validaciones())
             {
-                
-                IBLLVendedor bll = new BLLVendedor();
-                Vendedor vendedor = new Vendedor();
-                vendedor.Correo = txtCorreo.Text;
-                vendedor.Contraseña = txtContrasena.Text;
-                vendedor.Fotografia = imgFotografia.Image;
-                vendedor.Codigo = txtCodigo.Text;
-                vendedor.Nombre = txtNombre.Text;
-                vendedor.Apellidos = txtApellidos.Text;
-                vendedor.FechaNacimiento = dtpFechaNacimiento.Value;
-
-                if(dgvVendedores.SelectedRows.Count > 0)
+                try
                 {
-                    Vendedor vVendedor = (Vendedor)dgvVendedores.CurrentRow.DataBoundItem;
-                    vendedor.UsuarioId = vVendedor.UsuarioId;
-                    vendedor.VendedorId = vVendedor.VendedorId;
-                }
 
-                bll.Save(vendedor);
-                ActualizarTabla();
+                    IBLLVendedor bll = new BLLVendedor();
+                    Vendedor vendedor = new Vendedor();
+                    vendedor.Correo = txtCorreo.Text;
+                    vendedor.Contraseña = txtContrasena.Text;
+                    vendedor.Fotografia = imgFotografia.Image;
+                    vendedor.Codigo = txtCodigo.Text;
+                    vendedor.Nombre = txtNombre.Text;
+                    vendedor.Apellidos = txtApellidos.Text;
+                    vendedor.FechaNacimiento = dtpFechaNacimiento.Value;
+
+                    if (dgvVendedores.SelectedRows.Count > 0)
+                    {
+                        Vendedor vVendedor = (Vendedor)dgvVendedores.CurrentRow.DataBoundItem;
+                        vendedor.UsuarioId = vVendedor.UsuarioId;
+                        vendedor.VendedorId = vVendedor.VendedorId;
+                    }
+
+                    bll.Save(vendedor);
+                    ActualizarTabla();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Ooops: {ex.Message}");
+                    throw;
+                }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Ooops: {ex.Message}");
-                throw;
-            }
+            
         }
 
         private void dgvVendedores_SelectionChanged(object sender, EventArgs e)

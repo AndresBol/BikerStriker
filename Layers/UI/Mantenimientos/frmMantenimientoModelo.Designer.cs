@@ -93,6 +93,7 @@
             // txtNombre
             // 
             this.txtNombre.Location = new System.Drawing.Point(102, 42);
+            this.txtNombre.MaxLength = 19;
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(237, 20);
             this.txtNombre.TabIndex = 4;

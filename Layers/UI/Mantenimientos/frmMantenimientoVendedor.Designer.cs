@@ -40,19 +40,19 @@
             this.btnAdd = new System.Windows.Forms.Button();
             this.pnlBotom = new System.Windows.Forms.Panel();
             this.pnlRight = new System.Windows.Forms.Panel();
+            this.dtpFechaNacimiento = new System.Windows.Forms.DateTimePicker();
             this.lblFechaNacimiento = new System.Windows.Forms.Label();
             this.lblCodigo = new System.Windows.Forms.Label();
             this.txtCodigo = new System.Windows.Forms.TextBox();
             this.lblApellidos = new System.Windows.Forms.Label();
             this.txtApellidos = new System.Windows.Forms.TextBox();
             this.pnlLeft = new System.Windows.Forms.Panel();
-            this.lblFotografia = new System.Windows.Forms.Label();
-            this.txtContrasena = new System.Windows.Forms.TextBox();
-            this.lblContrasena = new System.Windows.Forms.Label();
-            this.dtpFechaNacimiento = new System.Windows.Forms.DateTimePicker();
             this.imgFotografia = new System.Windows.Forms.PictureBox();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.txtFotografia = new System.Windows.Forms.TextBox();
+            this.lblFotografia = new System.Windows.Forms.Label();
+            this.txtContrasena = new System.Windows.Forms.TextBox();
+            this.lblContrasena = new System.Windows.Forms.Label();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVendedores)).BeginInit();
             this.pnlBotom.SuspendLayout();
@@ -108,6 +108,7 @@
             // txtNombre
             // 
             this.txtNombre.Location = new System.Drawing.Point(138, 61);
+            this.txtNombre.MaxLength = 29;
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(249, 20);
             this.txtNombre.TabIndex = 4;
@@ -115,6 +116,7 @@
             // txtCorreo
             // 
             this.txtCorreo.Location = new System.Drawing.Point(100, 35);
+            this.txtCorreo.MaxLength = 49;
             this.txtCorreo.Name = "txtCorreo";
             this.txtCorreo.Size = new System.Drawing.Size(251, 20);
             this.txtCorreo.TabIndex = 5;
@@ -189,6 +191,13 @@
             this.pnlRight.Size = new System.Drawing.Size(399, 248);
             this.pnlRight.TabIndex = 1;
             // 
+            // dtpFechaNacimiento
+            // 
+            this.dtpFechaNacimiento.Location = new System.Drawing.Point(138, 116);
+            this.dtpFechaNacimiento.Name = "dtpFechaNacimiento";
+            this.dtpFechaNacimiento.Size = new System.Drawing.Size(249, 20);
+            this.dtpFechaNacimiento.TabIndex = 13;
+            // 
             // lblFechaNacimiento
             // 
             this.lblFechaNacimiento.AutoSize = true;
@@ -210,6 +219,7 @@
             // txtCodigo
             // 
             this.txtCodigo.Location = new System.Drawing.Point(138, 35);
+            this.txtCodigo.MaxLength = 19;
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.Size = new System.Drawing.Size(249, 20);
             this.txtCodigo.TabIndex = 11;
@@ -226,6 +236,7 @@
             // txtApellidos
             // 
             this.txtApellidos.Location = new System.Drawing.Point(138, 87);
+            this.txtApellidos.MaxLength = 29;
             this.txtApellidos.Name = "txtApellidos";
             this.txtApellidos.Size = new System.Drawing.Size(249, 20);
             this.txtApellidos.TabIndex = 9;
@@ -247,38 +258,6 @@
             this.pnlLeft.Name = "pnlLeft";
             this.pnlLeft.Size = new System.Drawing.Size(354, 248);
             this.pnlLeft.TabIndex = 0;
-            // 
-            // lblFotografia
-            // 
-            this.lblFotografia.AutoSize = true;
-            this.lblFotografia.Location = new System.Drawing.Point(18, 94);
-            this.lblFotografia.Name = "lblFotografia";
-            this.lblFotografia.Size = new System.Drawing.Size(56, 13);
-            this.lblFotografia.TabIndex = 11;
-            this.lblFotografia.Text = "Fotografía";
-            // 
-            // txtContrasena
-            // 
-            this.txtContrasena.Location = new System.Drawing.Point(100, 61);
-            this.txtContrasena.Name = "txtContrasena";
-            this.txtContrasena.Size = new System.Drawing.Size(251, 20);
-            this.txtContrasena.TabIndex = 9;
-            // 
-            // lblContrasena
-            // 
-            this.lblContrasena.AutoSize = true;
-            this.lblContrasena.Location = new System.Drawing.Point(18, 64);
-            this.lblContrasena.Name = "lblContrasena";
-            this.lblContrasena.Size = new System.Drawing.Size(61, 13);
-            this.lblContrasena.TabIndex = 8;
-            this.lblContrasena.Text = "Contraseña";
-            // 
-            // dtpFechaNacimiento
-            // 
-            this.dtpFechaNacimiento.Location = new System.Drawing.Point(138, 116);
-            this.dtpFechaNacimiento.Name = "dtpFechaNacimiento";
-            this.dtpFechaNacimiento.Size = new System.Drawing.Size(249, 20);
-            this.dtpFechaNacimiento.TabIndex = 13;
             // 
             // imgFotografia
             // 
@@ -312,6 +291,32 @@
             this.txtFotografia.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
             this.txtFotografia.Size = new System.Drawing.Size(227, 20);
             this.txtFotografia.TabIndex = 12;
+            // 
+            // lblFotografia
+            // 
+            this.lblFotografia.AutoSize = true;
+            this.lblFotografia.Location = new System.Drawing.Point(18, 94);
+            this.lblFotografia.Name = "lblFotografia";
+            this.lblFotografia.Size = new System.Drawing.Size(56, 13);
+            this.lblFotografia.TabIndex = 11;
+            this.lblFotografia.Text = "Fotografía";
+            // 
+            // txtContrasena
+            // 
+            this.txtContrasena.Location = new System.Drawing.Point(100, 61);
+            this.txtContrasena.MaxLength = 19;
+            this.txtContrasena.Name = "txtContrasena";
+            this.txtContrasena.Size = new System.Drawing.Size(251, 20);
+            this.txtContrasena.TabIndex = 9;
+            // 
+            // lblContrasena
+            // 
+            this.lblContrasena.AutoSize = true;
+            this.lblContrasena.Location = new System.Drawing.Point(18, 64);
+            this.lblContrasena.Name = "lblContrasena";
+            this.lblContrasena.Size = new System.Drawing.Size(61, 13);
+            this.lblContrasena.TabIndex = 8;
+            this.lblContrasena.Text = "Contraseña";
             // 
             // openFileDialog
             // 

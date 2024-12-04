@@ -42,10 +42,10 @@
             this.lblTelefono = new System.Windows.Forms.Label();
             this.txtTelefono = new System.Windows.Forms.TextBox();
             this.pnlLeft = new System.Windows.Forms.Panel();
+            this.nudImpuestoVenta = new System.Windows.Forms.NumericUpDown();
+            this.lblImpuestoVenta = new System.Windows.Forms.Label();
             this.lblCedulaJuridica = new System.Windows.Forms.Label();
             this.txtCedulaJuridica = new System.Windows.Forms.TextBox();
-            this.lblImpuestoVenta = new System.Windows.Forms.Label();
-            this.nudImpuestoVenta = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTiendas)).BeginInit();
             this.pnlBotom.SuspendLayout();
             this.pnlRight.SuspendLayout();
@@ -91,6 +91,7 @@
             // txtNombre
             // 
             this.txtNombre.Location = new System.Drawing.Point(140, 66);
+            this.txtNombre.MaxLength = 19;
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(258, 20);
             this.txtNombre.TabIndex = 4;
@@ -173,6 +174,7 @@
             // txtDireccion
             // 
             this.txtDireccion.Location = new System.Drawing.Point(82, 69);
+            this.txtDireccion.MaxLength = 49;
             this.txtDireccion.Multiline = true;
             this.txtDireccion.Name = "txtDireccion";
             this.txtDireccion.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -191,6 +193,7 @@
             // txtTelefono
             // 
             this.txtTelefono.Location = new System.Drawing.Point(82, 40);
+            this.txtTelefono.MaxLength = 10;
             this.txtTelefono.Name = "txtTelefono";
             this.txtTelefono.Size = new System.Drawing.Size(251, 20);
             this.txtTelefono.TabIndex = 14;
@@ -210,31 +213,6 @@
             this.pnlLeft.Name = "pnlLeft";
             this.pnlLeft.Size = new System.Drawing.Size(398, 188);
             this.pnlLeft.TabIndex = 0;
-            // 
-            // lblCedulaJuridica
-            // 
-            this.lblCedulaJuridica.AutoSize = true;
-            this.lblCedulaJuridica.Location = new System.Drawing.Point(12, 43);
-            this.lblCedulaJuridica.Name = "lblCedulaJuridica";
-            this.lblCedulaJuridica.Size = new System.Drawing.Size(79, 13);
-            this.lblCedulaJuridica.TabIndex = 11;
-            this.lblCedulaJuridica.Text = "Cedula Juridica";
-            // 
-            // txtCedulaJuridica
-            // 
-            this.txtCedulaJuridica.Location = new System.Drawing.Point(140, 40);
-            this.txtCedulaJuridica.Name = "txtCedulaJuridica";
-            this.txtCedulaJuridica.Size = new System.Drawing.Size(258, 20);
-            this.txtCedulaJuridica.TabIndex = 12;
-            // 
-            // lblImpuestoVenta
-            // 
-            this.lblImpuestoVenta.AutoSize = true;
-            this.lblImpuestoVenta.Location = new System.Drawing.Point(12, 94);
-            this.lblImpuestoVenta.Name = "lblImpuestoVenta";
-            this.lblImpuestoVenta.Size = new System.Drawing.Size(106, 13);
-            this.lblImpuestoVenta.TabIndex = 13;
-            this.lblImpuestoVenta.Text = "Impuesto de venta %";
             // 
             // nudImpuestoVenta
             // 
@@ -258,6 +236,32 @@
             0,
             0,
             0});
+            // 
+            // lblImpuestoVenta
+            // 
+            this.lblImpuestoVenta.AutoSize = true;
+            this.lblImpuestoVenta.Location = new System.Drawing.Point(12, 94);
+            this.lblImpuestoVenta.Name = "lblImpuestoVenta";
+            this.lblImpuestoVenta.Size = new System.Drawing.Size(106, 13);
+            this.lblImpuestoVenta.TabIndex = 13;
+            this.lblImpuestoVenta.Text = "Impuesto de venta %";
+            // 
+            // lblCedulaJuridica
+            // 
+            this.lblCedulaJuridica.AutoSize = true;
+            this.lblCedulaJuridica.Location = new System.Drawing.Point(12, 43);
+            this.lblCedulaJuridica.Name = "lblCedulaJuridica";
+            this.lblCedulaJuridica.Size = new System.Drawing.Size(79, 13);
+            this.lblCedulaJuridica.TabIndex = 11;
+            this.lblCedulaJuridica.Text = "Cedula Juridica";
+            // 
+            // txtCedulaJuridica
+            // 
+            this.txtCedulaJuridica.Location = new System.Drawing.Point(140, 40);
+            this.txtCedulaJuridica.MaxLength = 12;
+            this.txtCedulaJuridica.Name = "txtCedulaJuridica";
+            this.txtCedulaJuridica.Size = new System.Drawing.Size(258, 20);
+            this.txtCedulaJuridica.TabIndex = 12;
             // 
             // frmMantenimientoTienda
             // 

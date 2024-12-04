@@ -39,18 +39,18 @@
             this.cmbTipoTarjeta = new System.Windows.Forms.ComboBox();
             this.pnlBotom = new System.Windows.Forms.Panel();
             this.pnlRight = new System.Windows.Forms.Panel();
+            this.nudCodigoSeguridad = new System.Windows.Forms.NumericUpDown();
+            this.lblCodigoSeguridad = new System.Windows.Forms.Label();
+            this.dtpFechaVencimiento = new System.Windows.Forms.DateTimePicker();
             this.lblFechaVencimiento = new System.Windows.Forms.Label();
             this.pnlLeft = new System.Windows.Forms.Panel();
             this.lblCliente = new System.Windows.Forms.Label();
             this.cmbCliente = new System.Windows.Forms.ComboBox();
-            this.dtpFechaVencimiento = new System.Windows.Forms.DateTimePicker();
-            this.lblCodigoSeguridad = new System.Windows.Forms.Label();
-            this.nudCodigoSeguridad = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTarjetas)).BeginInit();
             this.pnlBotom.SuspendLayout();
             this.pnlRight.SuspendLayout();
-            this.pnlLeft.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudCodigoSeguridad)).BeginInit();
+            this.pnlLeft.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgvTarjetas
@@ -100,6 +100,7 @@
             // txtNumero
             // 
             this.txtNumero.Location = new System.Drawing.Point(116, 42);
+            this.txtNumero.MaxLength = 19;
             this.txtNumero.Name = "txtNumero";
             this.txtNumero.Size = new System.Drawing.Size(223, 20);
             this.txtNumero.TabIndex = 4;
@@ -179,6 +180,45 @@
             this.pnlRight.Size = new System.Drawing.Size(363, 208);
             this.pnlRight.TabIndex = 1;
             // 
+            // nudCodigoSeguridad
+            // 
+            this.nudCodigoSeguridad.Location = new System.Drawing.Point(121, 72);
+            this.nudCodigoSeguridad.Maximum = new decimal(new int[] {
+            999,
+            0,
+            0,
+            0});
+            this.nudCodigoSeguridad.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.nudCodigoSeguridad.Name = "nudCodigoSeguridad";
+            this.nudCodigoSeguridad.Size = new System.Drawing.Size(230, 20);
+            this.nudCodigoSeguridad.TabIndex = 19;
+            this.nudCodigoSeguridad.ThousandsSeparator = true;
+            this.nudCodigoSeguridad.Value = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            // 
+            // lblCodigoSeguridad
+            // 
+            this.lblCodigoSeguridad.AutoSize = true;
+            this.lblCodigoSeguridad.Location = new System.Drawing.Point(3, 74);
+            this.lblCodigoSeguridad.Name = "lblCodigoSeguridad";
+            this.lblCodigoSeguridad.Size = new System.Drawing.Size(104, 13);
+            this.lblCodigoSeguridad.TabIndex = 15;
+            this.lblCodigoSeguridad.Text = "Código de seguridad";
+            // 
+            // dtpFechaVencimiento
+            // 
+            this.dtpFechaVencimiento.Location = new System.Drawing.Point(121, 42);
+            this.dtpFechaVencimiento.Name = "dtpFechaVencimiento";
+            this.dtpFechaVencimiento.Size = new System.Drawing.Size(230, 20);
+            this.dtpFechaVencimiento.TabIndex = 14;
+            // 
             // lblFechaVencimiento
             // 
             this.lblFechaVencimiento.AutoSize = true;
@@ -222,40 +262,6 @@
             this.cmbCliente.Size = new System.Drawing.Size(223, 21);
             this.cmbCliente.TabIndex = 13;
             // 
-            // dtpFechaVencimiento
-            // 
-            this.dtpFechaVencimiento.Location = new System.Drawing.Point(121, 42);
-            this.dtpFechaVencimiento.Name = "dtpFechaVencimiento";
-            this.dtpFechaVencimiento.Size = new System.Drawing.Size(230, 20);
-            this.dtpFechaVencimiento.TabIndex = 14;
-            // 
-            // lblCodigoSeguridad
-            // 
-            this.lblCodigoSeguridad.AutoSize = true;
-            this.lblCodigoSeguridad.Location = new System.Drawing.Point(3, 74);
-            this.lblCodigoSeguridad.Name = "lblCodigoSeguridad";
-            this.lblCodigoSeguridad.Size = new System.Drawing.Size(104, 13);
-            this.lblCodigoSeguridad.TabIndex = 15;
-            this.lblCodigoSeguridad.Text = "Código de seguridad";
-            // 
-            // nudCodigoSeguridad
-            // 
-            this.nudCodigoSeguridad.Location = new System.Drawing.Point(121, 72);
-            this.nudCodigoSeguridad.Maximum = new decimal(new int[] {
-            -1,
-            -1,
-            -1,
-            0});
-            this.nudCodigoSeguridad.Name = "nudCodigoSeguridad";
-            this.nudCodigoSeguridad.Size = new System.Drawing.Size(230, 20);
-            this.nudCodigoSeguridad.TabIndex = 19;
-            this.nudCodigoSeguridad.ThousandsSeparator = true;
-            this.nudCodigoSeguridad.Value = new decimal(new int[] {
-            111,
-            0,
-            0,
-            0});
-            // 
             // frmMantenimientoTarjeta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -273,9 +279,9 @@
             this.pnlBotom.ResumeLayout(false);
             this.pnlRight.ResumeLayout(false);
             this.pnlRight.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudCodigoSeguridad)).EndInit();
             this.pnlLeft.ResumeLayout(false);
             this.pnlLeft.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudCodigoSeguridad)).EndInit();
             this.ResumeLayout(false);
 
         }

@@ -97,6 +97,7 @@
             // txtNombre
             // 
             this.txtNombre.Location = new System.Drawing.Point(98, 35);
+            this.txtNombre.MaxLength = 29;
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(289, 20);
             this.txtNombre.TabIndex = 4;
@@ -104,6 +105,7 @@
             // txtCorreo
             // 
             this.txtCorreo.Location = new System.Drawing.Point(100, 35);
+            this.txtCorreo.MaxLength = 49;
             this.txtCorreo.Name = "txtCorreo";
             this.txtCorreo.Size = new System.Drawing.Size(251, 20);
             this.txtCorreo.TabIndex = 5;
@@ -186,6 +188,7 @@
             // txtApellidos
             // 
             this.txtApellidos.Location = new System.Drawing.Point(98, 64);
+            this.txtApellidos.MaxLength = 29;
             this.txtApellidos.Name = "txtApellidos";
             this.txtApellidos.Size = new System.Drawing.Size(289, 20);
             this.txtApellidos.TabIndex = 9;
@@ -207,6 +210,7 @@
             // txtContrasena
             // 
             this.txtContrasena.Location = new System.Drawing.Point(100, 61);
+            this.txtContrasena.MaxLength = 19;
             this.txtContrasena.Name = "txtContrasena";
             this.txtContrasena.Size = new System.Drawing.Size(251, 20);
             this.txtContrasena.TabIndex = 9;

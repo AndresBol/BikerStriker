@@ -95,6 +95,7 @@
             // txtDescripcion
             // 
             this.txtDescripcion.Location = new System.Drawing.Point(111, 93);
+            this.txtDescripcion.MaxLength = 79;
             this.txtDescripcion.Multiline = true;
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -276,6 +277,7 @@
             // txtNombre
             // 
             this.txtNombre.Location = new System.Drawing.Point(111, 67);
+            this.txtNombre.MaxLength = 29;
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(287, 20);
             this.txtNombre.TabIndex = 14;
@@ -292,6 +294,7 @@
             // txtCodigo
             // 
             this.txtCodigo.Location = new System.Drawing.Point(111, 41);
+            this.txtCodigo.MaxLength = 49;
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.Size = new System.Drawing.Size(287, 20);
             this.txtCodigo.TabIndex = 12;

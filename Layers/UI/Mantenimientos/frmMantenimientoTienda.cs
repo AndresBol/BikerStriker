@@ -12,6 +12,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static QRCoder.SvgQRCode;
 
 namespace BikerStriker.Layers.UI.Mantenimientos
 {
@@ -50,31 +51,57 @@ namespace BikerStriker.Layers.UI.Mantenimientos
             }
         }
 
+        private bool Validaciones()
+        {
+            if (txtNombre.Text == "")
+            {
+                MessageBox.Show("Porfavor digite un nombre");
+                return false;
+            }
+            if (txtCedulaJuridica.Text == "")
+            {
+                MessageBox.Show("Porfavor digite una cedula juridica");
+                return false;
+            }
+            if (txtTelefono.Text == "")
+            {
+                MessageBox.Show("Porfavor digite un telefono");
+                return false;
+            }
+            if (txtDireccion.Text == "")
+            {
+                MessageBox.Show("Porfavor digite una direccion");
+                return false;
+            }
+            return true;
+        }
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-
-            try
+            if (Validaciones())
             {
-                IBLLTienda bll = new BLLTienda();
-                Tienda tienda = new Tienda();
-                tienda.CedulaJuridica = txtCedulaJuridica.Text;
-                tienda.Nombre = txtNombre.Text;
-                tienda.Telefono = txtTelefono.Text;
-                tienda.Direccion = txtDireccion.Text;
-                tienda.ImpuestoVenta = (double) nudImpuestoVenta.Value;
-
-                if(dgvTiendas.SelectedRows.Count > 0)
+                try
                 {
-                    tienda.Id = ((Tienda)dgvTiendas.CurrentRow.DataBoundItem).Id;
-                }
+                    IBLLTienda bll = new BLLTienda();
+                    Tienda tienda = new Tienda();
+                    tienda.CedulaJuridica = txtCedulaJuridica.Text;
+                    tienda.Nombre = txtNombre.Text;
+                    tienda.Telefono = txtTelefono.Text;
+                    tienda.Direccion = txtDireccion.Text;
+                    tienda.ImpuestoVenta = (double)nudImpuestoVenta.Value;
 
-                bll.Save(tienda);
-                ActualizarTabla();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Ooops: {ex.Message}");
-                throw;
+                    if (dgvTiendas.SelectedRows.Count > 0)
+                    {
+                        tienda.Id = ((Tienda)dgvTiendas.CurrentRow.DataBoundItem).Id;
+                    }
+
+                    bll.Save(tienda);
+                    ActualizarTabla();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Ooops: {ex.Message}");
+                    throw;
+                }
             }
         }
 

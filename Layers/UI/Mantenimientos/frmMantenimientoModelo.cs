@@ -12,6 +12,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static QRCoder.SvgQRCode;
 
 namespace BikerStriker.Layers.UI.Mantenimientos
 {
@@ -52,30 +53,42 @@ namespace BikerStriker.Layers.UI.Mantenimientos
                 throw;
             }
         }
+        private bool Validaciones()
+        {
+            if (txtNombre.Text == "")
+            {
+                MessageBox.Show("Porfavor digite un nombre");
+                return false;
+            }
 
+            return true;
+        }
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-
-            try
+            if (Validaciones())
             {
-                IBLLModelo bll = new BLLModelo();
-                Modelo modelo = new Modelo();
-                modelo.Nombre = txtNombre.Text;
-                modelo.Marca = (Marca) cmbMarca.SelectedItem;
-
-                if(dgvModelos.SelectedRows.Count > 0)
+                try
                 {
-                    modelo.Id = ((Modelo)dgvModelos.CurrentRow.DataBoundItem).Id;
-                }
+                    IBLLModelo bll = new BLLModelo();
+                    Modelo modelo = new Modelo();
+                    modelo.Nombre = txtNombre.Text;
+                    modelo.Marca = (Marca)cmbMarca.SelectedItem;
 
-                bll.Save(modelo);
-                ActualizarTabla();
+                    if (dgvModelos.SelectedRows.Count > 0)
+                    {
+                        modelo.Id = ((Modelo)dgvModelos.CurrentRow.DataBoundItem).Id;
+                    }
+
+                    bll.Save(modelo);
+                    ActualizarTabla();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Ooops: {ex.Message}");
+                    throw;
+                }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Ooops: {ex.Message}");
-                throw;
-            }
+            
         }
 
         private void dgvModelos_SelectionChanged(object sender, EventArgs e)

@@ -13,6 +13,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static QRCoder.SvgQRCode;
 
 namespace BikerStriker.Layers.UI.Mantenimientos
 {
@@ -59,32 +60,44 @@ namespace BikerStriker.Layers.UI.Mantenimientos
                 throw;
             }
         }
+        private bool Validaciones()
+        {
+            if (txtNumero.Text == "")
+            {
+                MessageBox.Show("Porfavor digite un numero de tarjeta");
+                return false;
+            }
 
+            return true;
+        }
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-
-            try
+            if (Validaciones())
             {
-                IBLLTarjeta bll = new BLLTarjeta();
-                Tarjeta tarjeta = new Tarjeta();
-                tarjeta.Numero = txtNumero.Text;
-                tarjeta.FechaVencimiento = dtpFechaVencimiento.Value;
-                tarjeta.CodigoSeguridad = (short) nudCodigoSeguridad.Value;
-                tarjeta.TipoTarjeta = (TipoTarjeta) cmbTipoTarjeta.SelectedItem;
-
-                if (dgvTarjetas.SelectedRows.Count > 0)
+                try
                 {
-                    tarjeta.Id = ((Tarjeta)dgvTarjetas.CurrentRow.DataBoundItem).Id;
-                }
+                    IBLLTarjeta bll = new BLLTarjeta();
+                    Tarjeta tarjeta = new Tarjeta();
+                    tarjeta.Numero = txtNumero.Text;
+                    tarjeta.FechaVencimiento = dtpFechaVencimiento.Value;
+                    tarjeta.CodigoSeguridad = (short)nudCodigoSeguridad.Value;
+                    tarjeta.TipoTarjeta = (TipoTarjeta)cmbTipoTarjeta.SelectedItem;
 
-                bll.Save(tarjeta, ((Cliente) cmbCliente.SelectedItem).ClienteId);
-                ActualizarTabla();
+                    if (dgvTarjetas.SelectedRows.Count > 0)
+                    {
+                        tarjeta.Id = ((Tarjeta)dgvTarjetas.CurrentRow.DataBoundItem).Id;
+                    }
+
+                    bll.Save(tarjeta, ((Cliente)cmbCliente.SelectedItem).ClienteId);
+                    ActualizarTabla();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Ooops: {ex.Message}");
+                    throw;
+                }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Ooops: {ex.Message}");
-                throw;
-            }
+            
         }   
 
         private void dgvTarjetas_SelectionChanged(object sender, EventArgs e)
