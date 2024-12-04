@@ -48,30 +48,64 @@ namespace BikerStriker.Layers.UI.Mantenimientos
             }
         }
 
+        private bool Validaciones()
+        {
+            if (txtCorreo.Text == "")
+            {
+                MessageBox.Show("Porfavor digite un correo");
+                return false;
+            }
+
+            if (!txtCorreo.Text.Contains('@'))
+            {
+                MessageBox.Show("Porfavor digite un correo valido");
+                return false;
+            }
+            if (txtContrasena.Text == "")
+            {
+                MessageBox.Show("Porfavor digite una contraseña");
+                return false;
+            }
+            if (txtNombre.Text == "")
+            {
+                MessageBox.Show("Porfavor digite un Nombre");
+                return false;
+            }
+            if (txtApellidos.Text == "")
+            {
+                MessageBox.Show("Porfavor digite los Apellidos");
+                return false;
+            }
+            return true;
+        }
+
         private void btnGuardar_Click(object sender, EventArgs e)
         {
 
-            try
+            if (Validaciones())
             {
-                IBLLAdministrador bll = new BLLAdministrador();
-                Administrador administrador = new Administrador();
-                administrador.Correo = txtCorreo.Text;
-                administrador.Contraseña = txtContrasena.Text;
-                administrador.Nombre = txtNombre.Text;
-                administrador.Apellidos = txtApellidos.Text;
-
-                if(dgvAdministradores.SelectedRows.Count > 0)
+                try
                 {
-                    administrador.UsuarioId = ((Administrador)dgvAdministradores.CurrentRow.DataBoundItem).UsuarioId;
-                }
+                    IBLLAdministrador bll = new BLLAdministrador();
+                    Administrador administrador = new Administrador();
+                    administrador.Correo = txtCorreo.Text;
+                    administrador.Contraseña = txtContrasena.Text;
+                    administrador.Nombre = txtNombre.Text;
+                    administrador.Apellidos = txtApellidos.Text;
 
-                bll.Save(administrador);
-                ActualizarTabla();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Ooops: {ex.Message}");
-                throw;
+                    if (dgvAdministradores.SelectedRows.Count > 0)
+                    {
+                        administrador.UsuarioId = ((Administrador)dgvAdministradores.CurrentRow.DataBoundItem).UsuarioId;
+                    }
+
+                    bll.Save(administrador);
+                    ActualizarTabla();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Ooops: {ex.Message}");
+                    throw;
+                }
             }
         }
 
