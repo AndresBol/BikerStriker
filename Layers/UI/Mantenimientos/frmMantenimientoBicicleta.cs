@@ -61,29 +61,41 @@ namespace BikerStriker.Layers.UI.Mantenimientos
             }
         }
 
+        private bool Validaciones()
+        {
+            if (txtNumeroSerie.Text == "")
+            {
+                MessageBox.Show("Porfavor digite un numero de serie");
+                return false;
+            }
+            return true;
+        }
+
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-
-            try
+            if (Validaciones())
             {
-                IBLLBicicleta bll = new BLLBicicleta();
-                Bicicleta bicicleta = new Bicicleta();
-                bicicleta.NumeroSerie = txtNumeroSerie.Text;
-                bicicleta.Color = pnlColor.BackColor;
-                bicicleta.Modelo = (Modelo) cmbModelo.SelectedItem;
-
-                if(dgvBicicletas.SelectedRows.Count > 0)
+                try
                 {
-                    bicicleta.Id = ((Bicicleta)dgvBicicletas.CurrentRow.DataBoundItem).Id;
-                }
+                    IBLLBicicleta bll = new BLLBicicleta();
+                    Bicicleta bicicleta = new Bicicleta();
+                    bicicleta.NumeroSerie = txtNumeroSerie.Text;
+                    bicicleta.Color = EnsureColorIsHex(pnlColor.BackColor);
+                    bicicleta.Modelo = (Modelo)cmbModelo.SelectedItem;
 
-                bll.Save(bicicleta, ((Cliente) cmbCliente.SelectedItem).ClienteId);
-                ActualizarTabla();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Ooops: {ex.Message}");
-                throw;
+                    if (dgvBicicletas.SelectedRows.Count > 0)
+                    {
+                        bicicleta.Id = ((Bicicleta)dgvBicicletas.CurrentRow.DataBoundItem).Id;
+                    }
+
+                    bll.Save(bicicleta, ((Cliente)cmbCliente.SelectedItem).ClienteId);
+                    ActualizarTabla();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Ooops: {ex.Message}");
+                    throw;
+                }
             }
         }
 
@@ -145,7 +157,7 @@ namespace BikerStriker.Layers.UI.Mantenimientos
             colorDialog.AnyColor = true;
             if(colorDialog.ShowDialog() == DialogResult.OK)
             {
-                pnlColor.BackColor = EnsureColorIsHex(colorDialog.Color);
+                pnlColor.BackColor = colorDialog.Color;
             }
         }
     }

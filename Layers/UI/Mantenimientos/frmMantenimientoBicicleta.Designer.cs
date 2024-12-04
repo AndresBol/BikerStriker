@@ -40,13 +40,13 @@
             this.cmbModelo = new System.Windows.Forms.ComboBox();
             this.pnlBotom = new System.Windows.Forms.Panel();
             this.pnlRight = new System.Windows.Forms.Panel();
-            this.pnlLeft = new System.Windows.Forms.Panel();
-            this.lblColor = new System.Windows.Forms.Label();
-            this.colorDialog = new System.Windows.Forms.ColorDialog();
+            this.btnColor = new System.Windows.Forms.Button();
             this.pnlColor = new System.Windows.Forms.Panel();
+            this.lblColor = new System.Windows.Forms.Label();
+            this.pnlLeft = new System.Windows.Forms.Panel();
             this.lblCliente = new System.Windows.Forms.Label();
             this.cmbCliente = new System.Windows.Forms.ComboBox();
-            this.btnColor = new System.Windows.Forms.Button();
+            this.colorDialog = new System.Windows.Forms.ColorDialog();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBicicletas)).BeginInit();
             this.pnlBotom.SuspendLayout();
             this.pnlRight.SuspendLayout();
@@ -178,6 +178,35 @@
             this.pnlRight.Size = new System.Drawing.Size(363, 208);
             this.pnlRight.TabIndex = 1;
             // 
+            // btnColor
+            // 
+            this.btnColor.Image = ((System.Drawing.Image)(resources.GetObject("btnColor.Image")));
+            this.btnColor.Location = new System.Drawing.Point(263, 42);
+            this.btnColor.Name = "btnColor";
+            this.btnColor.Size = new System.Drawing.Size(88, 72);
+            this.btnColor.TabIndex = 10;
+            this.btnColor.Text = "Seleccionar";
+            this.btnColor.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnColor.UseVisualStyleBackColor = true;
+            this.btnColor.Click += new System.EventHandler(this.btnColor_Click);
+            // 
+            // pnlColor
+            // 
+            this.pnlColor.BackColor = System.Drawing.Color.White;
+            this.pnlColor.Location = new System.Drawing.Point(74, 42);
+            this.pnlColor.Name = "pnlColor";
+            this.pnlColor.Size = new System.Drawing.Size(183, 72);
+            this.pnlColor.TabIndex = 9;
+            // 
+            // lblColor
+            // 
+            this.lblColor.AutoSize = true;
+            this.lblColor.Location = new System.Drawing.Point(19, 45);
+            this.lblColor.Name = "lblColor";
+            this.lblColor.Size = new System.Drawing.Size(31, 13);
+            this.lblColor.TabIndex = 8;
+            this.lblColor.Text = "Color";
+            // 
             // pnlLeft
             // 
             this.pnlLeft.Controls.Add(this.lblCliente);
@@ -193,22 +222,6 @@
             this.pnlLeft.Name = "pnlLeft";
             this.pnlLeft.Size = new System.Drawing.Size(354, 208);
             this.pnlLeft.TabIndex = 0;
-            // 
-            // lblColor
-            // 
-            this.lblColor.AutoSize = true;
-            this.lblColor.Location = new System.Drawing.Point(19, 45);
-            this.lblColor.Name = "lblColor";
-            this.lblColor.Size = new System.Drawing.Size(31, 13);
-            this.lblColor.TabIndex = 8;
-            this.lblColor.Text = "Color";
-            // 
-            // pnlColor
-            // 
-            this.pnlColor.Location = new System.Drawing.Point(74, 42);
-            this.pnlColor.Name = "pnlColor";
-            this.pnlColor.Size = new System.Drawing.Size(183, 72);
-            this.pnlColor.TabIndex = 9;
             // 
             // lblCliente
             // 
@@ -227,18 +240,6 @@
             this.cmbCliente.Name = "cmbCliente";
             this.cmbCliente.Size = new System.Drawing.Size(223, 21);
             this.cmbCliente.TabIndex = 13;
-            // 
-            // btnColor
-            // 
-            this.btnColor.Image = ((System.Drawing.Image)(resources.GetObject("btnColor.Image")));
-            this.btnColor.Location = new System.Drawing.Point(263, 42);
-            this.btnColor.Name = "btnColor";
-            this.btnColor.Size = new System.Drawing.Size(88, 72);
-            this.btnColor.TabIndex = 10;
-            this.btnColor.Text = "Seleccionar";
-            this.btnColor.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnColor.UseVisualStyleBackColor = true;
-            this.btnColor.Click += new System.EventHandler(this.btnColor_Click);
             // 
             // frmMantenimientoBicicleta
             // 
