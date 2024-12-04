@@ -217,9 +217,9 @@
             this.lblIdentificacion.AutoSize = true;
             this.lblIdentificacion.Location = new System.Drawing.Point(24, 38);
             this.lblIdentificacion.Name = "lblIdentificacion";
-            this.lblIdentificacion.Size = new System.Drawing.Size(70, 13);
+            this.lblIdentificacion.Size = new System.Drawing.Size(83, 13);
             this.lblIdentificacion.TabIndex = 10;
-            this.lblIdentificacion.Text = "Identificación";
+            this.lblIdentificacion.Text = "Identificación ⨶";
             // 
             // lblApellidos
             // 

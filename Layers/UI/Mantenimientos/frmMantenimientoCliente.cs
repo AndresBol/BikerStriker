@@ -26,6 +26,16 @@ namespace BikerStriker.Layers.UI.Mantenimientos
         public frmMantenimientoCliente()
         {
             InitializeComponent();
+
+            ToolTip toolTip = new ToolTip
+            {
+                AutoPopDelay = 5000, 
+                InitialDelay = 500, 
+                ReshowDelay = 500,  
+                ShowAlways = true  
+            };
+
+            toolTip.SetToolTip(lblIdentificacion, "Para cédulas nacionales: #-####-####");
         }
 
         private async void frmMantenimientoCliente_Load(object sender, EventArgs e)
@@ -76,36 +86,75 @@ namespace BikerStriker.Layers.UI.Mantenimientos
             }
         }
 
+        private bool Validaciones()
+        {
+            if(txtIdentificacion.Text == "")
+            {
+                MessageBox.Show("Porfavor digite una identificacion");
+                return false;
+            }
+            if (txtCorreo.Text == "")
+            {
+                MessageBox.Show("Porfavor digite un correo");
+                return false;
+            }
+
+            if (!txtCorreo.Text.Contains('@'))
+            {
+                MessageBox.Show("Porfavor digite un correo valido");
+                return false;
+            }
+            if (txtContrasena.Text == "")
+            {
+                MessageBox.Show("Porfavor digite una contraseña");
+                return false;
+            }
+            if (txtNombre.Text == "")
+            {
+                MessageBox.Show("Porfavor digite un Nombre");
+                return false;
+            }
+            if (txtApellidos.Text == "")
+            {
+                MessageBox.Show("Porfavor digite los Apellidos");
+                return false;
+            }
+            return true;
+        }
+
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-
-            try
+            if (Validaciones())
             {
-                IBLLCliente bll = new BLLCliente();
-                Cliente cliente = new Cliente();
-                cliente.Correo = txtCorreo.Text;
-                cliente.Contraseña = txtContrasena.Text;
-                cliente.Direccion = $"{cmbProvincia.SelectedItem},{cmbCanton.SelectedItem},{cmbDistrito.SelectedItem}";
-                cliente.Identificacion = txtIdentificacion.Text;
-                cliente.Nombre = txtNombre.Text;
-                cliente.Apellidos = txtApellidos.Text;
-                cliente.Genero = (TipoGenero) cmbGenero.SelectedItem;
-
-                if(dgvClientes.SelectedRows.Count > 0)
+                try
                 {
-                    Cliente vCliente = (Cliente)dgvClientes.CurrentRow.DataBoundItem;
-                    cliente.UsuarioId = vCliente.UsuarioId;
-                    cliente.ClienteId = vCliente.ClienteId;
-                }
+                    IBLLCliente bll = new BLLCliente();
+                    Cliente cliente = new Cliente();
+                    cliente.Correo = txtCorreo.Text;
+                    cliente.Contraseña = txtContrasena.Text;
+                    cliente.Direccion = $"{cmbProvincia.SelectedItem},{cmbCanton.SelectedItem},{cmbDistrito.SelectedItem}";
+                    cliente.Identificacion = txtIdentificacion.Text;
+                    cliente.Nombre = txtNombre.Text;
+                    cliente.Apellidos = txtApellidos.Text;
+                    cliente.Genero = (TipoGenero)cmbGenero.SelectedItem;
 
-                bll.Save(cliente);
-                ActualizarTabla();
+                    if (dgvClientes.SelectedRows.Count > 0)
+                    {
+                        Cliente vCliente = (Cliente)dgvClientes.CurrentRow.DataBoundItem;
+                        cliente.UsuarioId = vCliente.UsuarioId;
+                        cliente.ClienteId = vCliente.ClienteId;
+                    }
+
+                    bll.Save(cliente);
+                    ActualizarTabla();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Ooops: {ex.Message}");
+                    throw;
+                }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Ooops: {ex.Message}");
-                throw;
-            }
+            
         }
 
         private void dgvClientes_SelectionChanged(object sender, EventArgs e)
