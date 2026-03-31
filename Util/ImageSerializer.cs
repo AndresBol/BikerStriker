@@ -22,19 +22,25 @@ namespace BikerStriker.Tools
 
         public static Image DeserializeImageFromString(byte[] imageBytes)
         {
-            using (MemoryStream ms = new MemoryStream(imageBytes))
-            {
-                using (Image loadedImage = Image.FromStream(ms))
-                {
-                    Image imageCopy = new Bitmap(loadedImage);
+            if (imageBytes == null || imageBytes.Length == 0)
+                return null;
 
-                    using (MemoryStream jpegStream = new MemoryStream())
+            try
+            {
+                using (MemoryStream ms = new MemoryStream(imageBytes))
+                {
+                    using (Image loadedImage = Image.FromStream(ms, false, true))
                     {
-                        imageCopy.Save(jpegStream, System.Drawing.Imaging.ImageFormat.Jpeg);
-                        jpegStream.Position = 0;
-                        return Image.FromStream(jpegStream);
+                        return new Bitmap(loadedImage);
                     }
                 }
+            }
+            catch (ArgumentException) { 
+                return null;
+            }
+            catch (OutOfMemoryException)
+            {
+                return null;
             }
         }
     }
